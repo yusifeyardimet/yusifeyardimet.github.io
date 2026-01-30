@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Yusifə Dəstək Olaq - Bir Ananın Fəryadı</title>
+    
+    <!-- İlk şəkli prioritet yükləmək üçün -->
+    <link rel="preload" as="image" href="yusif-main.jpg">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID_HERE');
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Meta Pixel Code -->
+    
+    <!-- TikTok Pixel - PIXEL ID-ni Buraya Yaz -->
+    <script>
+    // TIKTOK PIXEL - ID-ni dəyişdirəndə aşağıdakı 'YOUR_TIKTOK_PIXEL_ID' yazısını dəyiş
+    /*
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+      ttq.load('YOUR_TIKTOK_PIXEL_ID');
+      ttq.page();
+    }(window, document, 'ttq');
+    */
+    </script>
+    
+    <script>
+        // ═══════════════════════════════════════════════════════════
+        // 📝 DƏYİŞDİRƏ BİLƏCƏYİN BÜTÜN MƏLUMATLARI BURADAN İDARƏ ET
+        // ═══════════════════════════════════════════════════════════
+        
+        const SITE_CONFIG = {
+            // ═══════════════════════════════════════════════════════════
+            // 🎨 SAYT KONFİQURASİYASI - BURADAN HƏR ŞEYİ DƏYİŞƏ BİLƏRSƏN
+            // ═══════════════════════════════════════════════════════════
+            
+            // --- BAŞLIQ (Yuxarıda yazan logo) ---
+            siteName: "Yusifə Dəstək Olaq",
+            
+            // --- TƏCİLİ MESAJ ---
+            urgentMessage: "⏰ Yusifin həyatı müalicənin davam etməsindən asılıdır - bir ananın fəryadı",
+            urgentMessageEnabled: true,  // true = göstər, false = gizlət
+            
+            // --- SAYĞAC MƏLUMATLARI ---
+            targetAmount: 50000,        // Təxmini məbləğ
+            collectedAmount: 0,         // Toplanmış məbləğ
+            currencySymbol: "₼",        // Valyuta simvolu
+            
+            // --- PSİXOLOJİ TRİGGERLƏR ---
+            smallDonationText: "10 AZN belə böyük köməkdir 💛",
+            donationImpact: "Hər kömək Yusifin həyatına ümiddir",
+            
+            // --- SAYĞAC RƏNGLƏRİ ---
+            progressBarColor: "#FF9800",
+            progressBarColorEnd: "#FF9800",
+            
+            // --- ƏSAS MƏTNLƏR ---
+            mainTitle: "Yusif cəmi 11 yaşındadır.<br>Qan xərçəngi ilə mübarizə aparır.",
+            subtitle: "Kəskin limfoblast leykemiya (ALL) - ilik transplantasiyası sonrası ilik savaşı",
+            
+            // --- AİLƏ SİTATI ---
+            familyQuote: "Bir ana olaraq övladım üçün susa bilmərəm. Artıq bütün imkanlarımız tükənib. Yusifin yaşaması yalnız sizin köməyinizdən asılıdır.",
+            familyQuoteAuthor: "Yusifin anası - Gülər",
+            
+            // --- HİKAYƏ MƏTNLƏRİ ---
+            storyText1: "Oğlum Yusif Afiq oğlu Osmanov 11 yaşındadır və qan xərçəngi (kəskin limfoblast leykemiya - ALL) ilə mübarizə aparır. 2023-cü ildən bəri davamlı müalicə alır. İlik transplantasiyası olunub, amma bədənində ilik savaşı (transplantat əleyhinə reaksiya) başlayıb.",
+            highlightText: "Həkimlər dəfələrlə vurğulayıblar: müalicə fasiləsiz davam etməlidir. Əgər yarımçıq qalarsa, Yusifin həyatı üçün çox ciddi təhlükə yaranacaq.",
+            storyText2: "Yusifin atası gündəlik fəhləliklə ailəni dolandırmağa çalışır. Mən isə imkan tapdıqca evlərdə təmizliyə gedirəm. Qazandığımız bütün pul indiyə qədər oğlumun dərmanlarına, analizlərinə və xəstəxana xərclərinə sərf olunub. Artıq satmağa, girov qoymağa dəyər heç nəyimiz qalmayıb.",
+            storyText3: "Gündəlik xərcləri qarşılamaq belə çox çətindir. Müalicənin dayanması Yusifin həyatı üçün böyük risk deməkdir. Bu yükü təkbaşına daşımaq gücümüz yoxdur. İmkanı olan hər kəsdən xahiş edirik, bizə dəstək olsun.",
+            
+            // --- NİYƏ KÖMƏK LAZIMDIR ---
+            whyHelpTitle: "💡 Niyə kömək lazımdır?",
+            whyHelpNeeded: [
+                { icon: "💊", text: "Dərmanlar və müalicə", cost: "Davamlı" },
+                { icon: "🏥", text: "Xəstəxana xərcləri", cost: "Yüksək" },
+                { icon: "🩺", text: "Analizlər və monitorinq", cost: "Mütəmadi" },
+                { icon: "🏠", text: "Ailənin yaşayış xərcləri", cost: "Zəruri" }
+            ],
+            
+            // --- BÖLMƏLƏRİN BAŞLIQLARI ---
+            photoGalleryTitle: "📸 Yusif xəstəxanada",
+            medicalDocsTitle: "📋 Xəstəxana sənədləri",
+            donationSectionTitle: "💳 Yardım üçün bank hesabları",
+            contactInfoTitle: "📞 Əlaqə məlumatları",
+            shareTitle: "Hər paylaşım Yusifin yaşama şansını artırır.",
+            shareSubtitle: "Bu səhifəni paylaşaraq siz də Yusifin müalicəsinə töhfə verə bilərsiniz.",
+            
+            // --- ƏSAS ŞƏKIL (Təcili mesajdan sonra görünəcək) ---
+            mainPhoto: "yusif-main.jpg",
+            mainPhotoCaption: "Yusif - 11 yaşında",
+            
+            // --- ŞƏKILLƏR (FOTO QALEREYASı) ---
+            photoGallery: [
+                { file: "yusif1.jpg", caption: "Yusif" },
+                { file: "yusif2.jpg", caption: "Yusif" },
+                { file: "yusif3.jpg", caption: "Yusif" }
+            ],
+            
+            // --- XƏSTƏXANA SƏNƏDİ ---
+            medicalDocuments: [
+                { file: "document1.jpg", title: "Medical Park - Tibbi sənəd" },
+                { file: "document2.jpg", title: "Milli Hematologiya Mərkəzi - Epikriz" }
+            ],
+            
+            // --- SOSIAL MEDIA ---
+            instagramUsername: "",  // @ işarəsi olmadan, məsələn: "elxan_yardim"
+            instagramEnabled: false,  // true = göstər, false = gizlət
+            instagramButtonText: "Instagram-da izlə",
+            
+            // --- WHATSAPP ---
+            whatsappNumber: "994706605889",
+            whatsappMessage: "Salam, Yusifə yardım etmək istəyirəm",
+            whatsappButtonText: "Ana ilə əlaqə saxla (WhatsApp)",
+            
+            // --- BANK HESABLARI ---
+            bankAccounts: [
+                {
+                    bankName: "Kapital Bank",
+                    cardNumber: "4169 7388 7973 1556",
+                    cardHolder: "Osmanova Gülər Mehman qızı (Anası)"
+                },
+                {
+                    bankName: "LeoBank",
+                    cardNumber: "5411 2498 0407 2341",
+                    cardHolder: "Osmanova Gülər Mehman qızı (Anası)"
+                },
+                {
+                    bankName: "ABB Bank",
+                    cardNumber: "5522 0993 7518 0148",
+                    cardHolder: "Osmanova Gülər Mehman qızı (Anası)"
+                }
+            ],
+            
+            // --- KOPYALA DÜYMƏSI ---
+            copyButtonText: "📋 Kopyala",
+            copyButtonSuccessText: "✓ Kopyalandı",
+            copyButtonColor: "#4CAF50",
+            copyButtonHoverColor: "#45a049",
+            
+            // --- ƏLAQƏ MƏLUMATLARI ---
+            contactPhone: "070 660 58 89 (Anası - Gülər)",
+            contactAddress: "Bakı şəhəri, Yeni Ramana, Qarabağ küçəsi 104, ev 28",
+            contactPhoneLabel: "Telefon:",
+            contactAddressLabel: "Ünvan:",
+            
+            // --- PAYLAŞIM MƏTNLƏRİ ---
+            shareDescription: "Bu səhifəni paylaşaraq siz də Elxanın müalicəsinə töhfə verə bilərsiniz.",
+            shareTitle: "Elxana dəstək olaq 💛",
+            shareButtonWhatsApp: "WhatsApp",
+            shareButtonFacebook: "Facebook",
+            shareButtonInstagram: "Instagram",
+            
+            // --- FLOATING DÜYMƏ ---
+            floatingButtonText: "Kömək et",
+            floatingButtonIcon: "💳",
+            
+            // --- FOOTER MƏTNİ ---
+            footerText: "Göstərilən hər diqqət, edilən hər dəstək Yusif üçün bir ümid deməkdir",
+            footerSubtext: "Allah kömək olan hər kəsdən razı olsun 🤲"
+        };
+        
+        // ═══════════════════════════════════════════════════════════
+        // ⚠️ AŞAĞIDAKI KODLARA TOXUNMA - AVTOMATIK İŞLƏYİR
+        // ═══════════════════════════════════════════════════════════
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #d4a574;
+            --primary-dark: #b8895e;
+            --text: #2c2c2c;
+            --text-light: #666;
+            --bg: #fefdfb;
+            --bg-alt: #f9f7f4;
+            --accent: #c77e51;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --green: #25D366;
+            --urgent: #ff5252;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem 1.5rem;
+            background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg) 100%);
+            border-bottom: 1px solid rgba(212, 165, 116, 0.15);
+            position: relative;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0.6;
+        }
+
+        .logo {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: -0.5px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* TƏCİLİ MESAJ */
+        .urgent-banner {
+            background: linear-gradient(135deg, #ff5252 0%, #ff1744 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 82, 82, 0.3);
+            animation: pulse 2s ease infinite;
+            margin: 1rem auto;
+            border-radius: 12px;
+            max-width: 900px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .hero {
+            padding: 2.5rem 0 2rem;
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.3px;
+        }
+
+        /* SAYĞAC */
+        .progress-section {
+            background: linear-gradient(135deg, #fff9f0 0%, #ffe8d6 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem auto;
+            box-shadow: 0 8px 30px var(--shadow);
+            animation: slideUp 0.8s ease;
+            animation-delay: 0.1s;
+            animation-fill-mode: both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ROTATE ANİMASİYASINI SİLDİK - Performans üçün */
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ANİMASİYALAR SÖNDÜRÜLDÜ - PERFORMANS */
+        .photo-gallery,
+        .why-help,
+        .story,
+        .donation-section,
+        .medical-docs {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        .progress-header {
+            text-align: center;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-header h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.3rem;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+        }
+
+        .target-amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 0.5rem 0;
+        }
+
+        .progress-bar-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50px;
+            height: 35px;
+            overflow: hidden;
+            position: relative;
+            margin: 1rem 0;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 50px;
+            transition: width 2s cubic-bezier(0.4, 0.0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255,255,255,0.5), 
+                transparent
+            );
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-box {
+            text-align: center;
+            background: white;
+            padding: 1rem 0.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-value.current {
+            color: #FF9800;
+            font-weight: 800;
+        }
+
+        /* AİLƏ SİTATI */
+        .family-quote {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 1.5rem 2rem;
+            border-left: 5px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+            margin: 2rem auto;
+            font-style: italic;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            animation: slideUp 0.8s ease;
+            animation-delay: 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .family-quote p {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .family-quote .author {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* FOTO QALEREYASı - SADƏ SLIDER (yalnız nöqtələr) */
+        .photo-gallery {
+            margin: 2rem 0;
+            animation: slideUp 0.8s ease;
+            animation-delay: 0.3s;
+            animation-fill-mode: both;
+        }
+
+        .photo-gallery h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .gallery-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 8px 30px var(--shadow);
+        }
+
+        .gallery-wrapper {
+            display: flex;
+            transition: transform 0.25s ease-out;
+        }
+
+        .gallery-item {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            min-height: 400px;
+            max-height: 600px;
+            object-fit: contain;
+            display: block;
+            border-radius: 0 0 12px 12px;
+            background: #f5f5f5;
+            touch-action: pan-y;
+            pointer-events: none;
+        }
+
+        /* Caption silinib - artıq göstərilmir */
+
+        /* NÖQTƏLƏR */
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 1rem;
+            background: white;
+        }
+
+        .gallery-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ddd;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .gallery-dot.active {
+            background: var(--accent);
+            width: 24px;
+            border-radius: 5px;
+        }
+
+        /* ƏSAS ŞƏKIL - Elxan (Təcili mesajdan sonra) */
+        .main-photo-section {
+            text-align: center;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            animation: slideUp 0.8s ease;
+            animation-delay: 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .main-photo-frame {
+            display: inline-block;
+            padding: 0;
+            background: white;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            position: relative;
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .main-photo-frame::after {
+            content: '💛';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 3rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            z-index: 3;
+        }
+
+        .main-photo-frame img {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            min-height: 500px;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.7);
+        }
+
+        /* ŞƏKLİN ÜSTÜNDƏ MƏTN OVERLAY */
+        .photo-text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90%;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .photo-text-overlay h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            color: white;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+            letter-spacing: -0.5px;
+        }
+
+        .photo-text-overlay p {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: #FFB74D;
+            font-weight: 600;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.8);
+            letter-spacing: -0.3px;
+        }
+
+        .main-photo-caption {
+            display: none;
+        }
+
+        /* NİYƏ KÖMƏK LAZIMDIR - SADƏ SLIDER */
+        .why-help {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px var(--shadow);
+            margin: 2rem auto;
+            animation: slideUp 0.8s ease;
+            animation-delay: 0.4s;
+            animation-fill-mode: both;
+        }
+
+        .why-help h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .why-help-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-help-wrapper {
+            display: flex;
+            transition: transform 0.25s ease-out;
+        }
+
+        .help-item {
+            min-width: 100%;
+            flex-shrink: 0;
+            background: var(--bg-alt);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .help-item .icon {
+            font-size: 3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .help-item .text {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .help-item .cost {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .why-help-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .why-help-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ddd;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .why-help-dot.active {
+            background: var(--accent);
+            width: 24px;
+            border-radius: 5px;
+        }
+
+        /* HİKAYƏ */
+        .story {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px var(--shadow);
+            margin: 2rem auto;
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.8s ease;
+            animation-delay: 0.5s;
+            animation-fill-mode: both;
+        }
+
+        .story::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .story p {
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .story .highlight {
+            background: linear-gradient(120deg, rgba(212, 165, 116, 0.15) 0%, rgba(199, 126, 81, 0.15) 100%);
+            padding: 1.2rem;
+            border-left: 4px solid var(--primary);
+            margin: 1.5rem 0;
+            font-weight: 600;
+            color: var(--text);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+        }
+
+        /* XƏSTƏXANA SƏNƏDLƏRİ - SADƏ SLIDER */
+        .medical-docs {
+            margin: 2rem 0;
+            animation: slideUp 0.8s ease;
+            animation-delay: 0.6s;
+            animation-fill-mode: both;
+        }
+
+        .medical-docs h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .docs-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 8px 30px var(--shadow);
+        }
+
+        .docs-wrapper {
+            display: flex;
+            transition: transform 0.25s ease-out;
+        }
+
+        .doc-item {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+
+        .doc-item img {
+            width: 100%;
+            height: auto;
+            min-height: 600px;
+            max-height: 900px;
+            object-fit: contain;
+            filter: brightness(0.95);
+            background: #f5f5f5;
+            border-radius: 0 0 12px 12px;
+        }
+
+        /* Title silinib - artıq göstərilmir */
+
+        .docs-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 1rem;
+            background: white;
+        }
+
+        .docs-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ddd;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .docs-dot.active {
+            background: var(--accent);
+            width: 24px;
+            border-radius: 5px;
+        }
+
+        /* BANK HESABLARI */
+        .donation-section {
+            background: linear-gradient(135deg, #fff5eb 0%, #ffe8d6 100%);
+            padding: 1rem 0.8rem;
+            border-radius: 12px;
+            margin: 2rem auto;
+            box-shadow: 0 8px 30px var(--shadow);
+            animation: slideUp 0.8s ease;
+            animation-delay: 0.7s;
+            animation-fill-mode: both;
+        }
+
+        .donation-section h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 0.8rem;
+            text-align: center;
+        }
+
+        .account-info {
+            background: white;
+            padding: 0.6rem 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 0.6rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .account-info:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .account-header {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.2rem;
+            font-size: 0.85rem;
+        }
+
+        .account-holder {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            margin-bottom: 0.4rem;
+        }
+
+        .account-number {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-alt);
+            padding: 0.5rem 0.6rem;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            gap: 0.5rem;
+            border-left: 3px solid #4CAF50;
+        }
+
+        .account-number .number {
+            color: #1a1a1a;
+            font-weight: 900;
+        }
+
+        .number {
+            flex: 1;
+            min-width: 0;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.98);
+        }
+
+        .copy-btn.copied {
+            background: #2196F3 !important;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin-top: 0.8rem;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+        }
+
+        .contact-info h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .contact-item {
+            margin: 0.3rem 0;
+            color: var(--text-light);
+            line-height: 1.4;
+            font-size: 0.8rem;
+        }
+
+        .contact-item strong {
+            color: var(--text);
+        }
+
+        /* WHATSAPP */
+        .whatsapp-section {
+            text-align: center;
+            margin: 2rem 0;
+            animation: slideUp 0.8s ease;
+            animation-delay: 0.8s;
+            animation-fill-mode: both;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--green);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.3);
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            background: #20BA5A;
+        }
+
+        .whatsapp-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .whatsapp-icon {
+            font-size: 1.5rem;
+        }
+
+        /* INSTAGRAM */
+        .instagram-section {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f9f7f4 0%, #fff 100%);
+            border-radius: 12px;
+            animation: slideUp 0.8s ease;
+            animation-delay: 0.85s;
+            animation-fill-mode: both;
+        }
+
+        .instagram-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #E1306C 0%, #C13584 100%);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 18px rgba(225, 48, 108, 0.3);
+        }
+
+        .instagram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(225, 48, 108, 0.4);
+        }
+
+        /* PAYLAŞIM DÜYMƏLƏRİ */
+        .share-section {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem 1.5rem;
+            background: var(--bg-alt);
+            border-radius: 12px;
+            animation: slideUp 0.8s ease;
+            animation-delay: 0.9s;
+            animation-fill-mode: both;
+        }
+
+        .share-text {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .share-description {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+        }
+
+        .share-btn.whatsapp {
+            background: #25D366;
+        }
+
+        .share-btn.facebook {
+            background: #1877F2;
+        }
+
+        .share-btn.instagram {
+            background: linear-gradient(135deg, #E1306C, #C13584);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem 1.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(212, 165, 116, 0.15);
+            margin-top: 3rem;
+        }
+
+        .heart {
+            color: var(--accent);
+            display: inline-block;
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+        }
+
+        /* FLOATING DONATE DÜYMƏSI */
+        .floating-donate-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
+            cursor: pointer;
+            border: none;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideInUp 0.6s ease, pulse-donate 2s ease infinite;
+            transition: all 0.3s ease;
+        }
+
+        .floating-donate-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(255, 152, 0, 0.6);
+        }
+
+        .floating-donate-btn .icon {
+            font-size: 1.5rem;
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse-donate {
+            0%, 100% {
+                box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
+            }
+            50% {
+                box-shadow: 0 8px 35px rgba(255, 152, 0, 0.7);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .floating-donate-btn.hidden {
+            animation: slideOutDown 0.4s ease;
+            pointer-events: none;
+        }
+
+        @keyframes slideOutDown {
+            to {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+        }
+
+        /* MOBİL OPTIMALLAŞDIRMA */
+        @media (max-width: 768px) {
+            .urgent-banner {
+                font-size: 0.9rem;
+                padding: 0.8rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .impact-info {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .impact-box {
+                width: 100%;
+            }
+            
+            .progress-section {
+                padding: 1.2rem;
+            }
+            
+            .target-amount {
+                font-size: 1.6rem;
+            }
+            
+            .stat-value {
+                font-size: 1rem;
+            }
+            
+            .stat-label {
+                font-size: 0.7rem;
+            }
+
+            .help-item {
+                padding: 1.5rem 1rem;
+            }
+
+            .help-item .icon {
+                font-size: 2.5rem;
+            }
+
+            .help-item .cost {
+                font-size: 1.5rem;
+            }
+
+            .doc-item img {
+                min-height: 500px;
+                max-height: 700px;
+            }
+
+            .main-photo-frame img {
+                min-height: 400px;
+            }
+
+            .photo-text-overlay {
+                padding: 1.5rem;
+            }
+
+            .photo-text-overlay h2 {
+                font-size: 1.5rem;
+            }
+
+            .photo-text-overlay p {
+                font-size: 1rem;
+            }
+
+            .main-photo-caption {
+                font-size: 1.2rem;
+            }
+
+            .gallery-item img {
+                min-height: 350px;
+                max-height: 500px;
+            }
+            
+            .account-number {
+                flex-direction: column;
+                text-align: center;
+                padding: 0.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .copy-btn {
+                width: 100%;
+                padding: 0.5rem;
+                font-size: 0.75rem;
+            }
+            
+            .number {
+                margin-bottom: 0.4rem;
+                font-weight: 900;
+            }
+
+            .share-buttons {
+                flex-direction: column;
+            }
+
+            .share-btn {
+                width: 100%;
+            }
+
+            .floating-donate-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .floating-donate-btn .icon {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.8rem;
+            }
+            
+            .progress-stats {
+                gap: 0.5rem;
+            }
+            
+            .stat-box {
+                padding: 0.8rem 0.3rem;
+            }
+            
+            .story, .donation-section, .why-help {
+                padding: 1.5rem 1rem;
+            }
+
+            .family-quote {
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <header>
+        <div class="logo" id="siteName"></div>
+    </header>
+
+    <!-- TƏCİLİ MESAJ -->
+    <div id="urgentBanner" class="urgent-banner" style="display: none;">
+        <span id="urgentMessage"></span>
+    </div>
+
+    <!-- ƏSAS ŞƏKIL - Elxan -->
+    <div class="container">
+        <section class="main-photo-section">
+            <div class="main-photo-frame">
+                <img id="mainPhotoImg" alt="Elxan">
+                <!-- ŞƏKLİN ÜSTÜNDƏ MƏTN -->
+                <div class="photo-text-overlay">
+                    <h2 id="photoOverlayTitle"></h2>
+                    <p id="photoOverlaySubtitle"></p>
+                </div>
+            </div>
+            <p class="main-photo-caption" id="mainPhotoCaption"></p>
+        </section>
+    </div>
+
+    <div class="container">
+        <!-- SAYĞAC - YUXARIDA -->
+        <section class="progress-section" style="margin-top: 1rem;">
+            <div class="progress-header">
+                <h2>Hədəf məbləğ</h2>
+                <div class="target-amount" id="targetAmount"></div>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
+            <div class="progress-stats">
+                <div class="stat-box">
+                    <div class="stat-label">Toplanıb</div>
+                    <div class="stat-value current" id="collectedAmount"></div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Qalıb</div>
+                    <div class="stat-value" id="remainingAmount"></div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Faiz</div>
+                    <div class="stat-value" id="progressPercent"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BANK HESABLARI - SAYĞACDAN SONRA -->
+        <section class="donation-section">
+            <h2 id="donationSectionTitle"></h2>
+            <div id="bankAccountsContainer"></div>
+
+            <div class="contact-info">
+                <h3 id="contactInfoTitle"></h3>
+                <div class="contact-item">
+                    <strong id="contactPhoneLabel"></strong> <span id="contactPhone"></span>
+                </div>
+                <div class="contact-item">
+                    <strong id="contactAddressLabel"></strong> <span id="contactAddress"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- AİLƏ SİTATI -->
+        <div class="family-quote">
+            <p>"<span id="familyQuote"></span>"</p>
+            <div class="author">— <span id="familyQuoteAuthor"></span></div>
+        </div>
+
+        <!-- FOTO QALEREYASı - SADƏ SLIDER -->
+        <section class="photo-gallery">
+            <h3 id="photoGalleryTitle"></h3>
+            <div class="gallery-container">
+                <div class="gallery-wrapper" id="galleryWrapper"></div>
+                <div class="gallery-dots" id="galleryDots"></div>
+            </div>
+        </section>
+
+        <!-- NİYƏ KÖMƏK LAZIMDIR - SADƏ SLIDER -->
+        <section class="why-help">
+            <h2 id="whyHelpTitle"></h2>
+            <div class="why-help-container">
+                <div class="why-help-wrapper" id="whyHelpWrapper"></div>
+            </div>
+            <div class="why-help-dots" id="whyHelpDots"></div>
+        </section>
+
+        <!-- HİKAYƏ -->
+        <section class="story">
+            <p id="storyText1"></p>
+            <div class="highlight" id="highlightText"></div>
+            <p id="storyText2"></p>
+            <p><strong id="storyText3"></strong></p>
+        </section>
+
+        <!-- XƏSTƏXANA SƏNƏDLƏRİ - SADƏ SLIDER -->
+        <section class="medical-docs" id="medicalDocsSection">
+            <h3 id="medicalDocsTitle"></h3>
+            <div class="docs-container">
+                <div class="docs-wrapper" id="docsWrapper"></div>
+                <div class="docs-dots" id="docsDots"></div>
+            </div>
+        </section>
+
+        <!-- WHATSAPP -->
+        <section class="whatsapp-section">
+            <a id="whatsappBtn" class="whatsapp-btn" target="_blank">
+                <span class="whatsapp-icon">📱</span>
+                <span id="whatsappBtnText"></span>
+            </a>
+        </section>
+
+        <!-- INSTAGRAM -->
+        <section class="instagram-section" id="instagramSection" style="display: none;">
+            <h3 style="margin-bottom: 1rem; color: var(--text);">Kampaniyanı izləyin</h3>
+            <a id="instagramBtn" class="instagram-btn" target="_blank">
+                <span>📷</span>
+                <span>Instagram-da izlə</span>
+            </a>
+        </section>
+
+        <!-- PAYLAŞIM DÜYMƏLƏRİ -->
+        <section class="share-section">
+            <p class="share-text" id="shareTitle"></p>
+            <p class="share-description" id="shareDescription"></p>
+            <div class="share-buttons">
+                <a href="#" class="share-btn whatsapp" id="shareWhatsApp">
+                    <span>📱</span>
+                    <span id="shareButtonWhatsApp"></span>
+                </a>
+                <a href="#" class="share-btn facebook" id="shareFacebook">
+                    <span>📘</span>
+                    <span id="shareButtonFacebook"></span>
+                </a>
+                <a href="#" class="share-btn instagram" id="shareInstagram">
+                    <span>📷</span>
+                    <span id="shareButtonInstagram"></span>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p><span id="footerText"></span> <span class="heart">❤️</span></p>
+        <p style="margin-top: 1rem; opacity: 0.7;" id="footerSubtext"></p>
+    </footer>
+
+    <!-- FLOATING DONATE DÜYMƏSI -->
+    <button class="floating-donate-btn" id="floatingDonateBtn">
+        <span class="icon" id="floatingButtonIcon"></span>
+        <span id="floatingButtonText"></span>
+    </button>
+
+    <script>
+        // Səhifə yükləndikdə
+        window.addEventListener('load', function() {
+            // Site adı
+            document.getElementById('siteName').textContent = SITE_CONFIG.siteName;
+            
+            // Təcili mesaj
+            if (SITE_CONFIG.urgentMessageEnabled) {
+                document.getElementById('urgentBanner').style.display = 'block';
+                document.getElementById('urgentMessage').textContent = SITE_CONFIG.urgentMessage;
+            }
+            
+            // Başlıqlar
+            document.getElementById('photoGalleryTitle').textContent = SITE_CONFIG.photoGalleryTitle;
+            document.getElementById('whyHelpTitle').textContent = SITE_CONFIG.whyHelpTitle;
+            document.getElementById('medicalDocsTitle').textContent = SITE_CONFIG.medicalDocsTitle;
+            document.getElementById('donationSectionTitle').textContent = SITE_CONFIG.donationSectionTitle;
+            document.getElementById('contactInfoTitle').textContent = SITE_CONFIG.contactInfoTitle;
+            document.getElementById('contactPhoneLabel').textContent = SITE_CONFIG.contactPhoneLabel;
+            document.getElementById('contactAddressLabel').textContent = SITE_CONFIG.contactAddressLabel;
+            
+            // Floating düymə
+            document.getElementById('floatingButtonIcon').textContent = SITE_CONFIG.floatingButtonIcon;
+            document.getElementById('floatingButtonText').textContent = SITE_CONFIG.floatingButtonText;
+            
+            // Footer
+            document.getElementById('footerText').textContent = SITE_CONFIG.footerText;
+            document.getElementById('footerSubtext').textContent = SITE_CONFIG.footerSubtext;
+            
+            // Paylaşım düymələri
+            document.getElementById('shareTitle').textContent = SITE_CONFIG.shareTitle;
+            document.getElementById('shareButtonWhatsApp').textContent = SITE_CONFIG.shareButtonWhatsApp;
+            document.getElementById('shareButtonFacebook').textContent = SITE_CONFIG.shareButtonFacebook;
+            document.getElementById('shareButtonInstagram').textContent = SITE_CONFIG.shareButtonInstagram;
+            
+            // Əsas şəkil (Elxan)
+            const mainPhotoImg = document.getElementById('mainPhotoImg');
+            mainPhotoImg.src = SITE_CONFIG.mainPhoto;
+            mainPhotoImg.loading = 'eager'; // İlk şəkil prioritetdir
+            mainPhotoImg.fetchpriority = 'high'; // Yüksək prioritet
+            mainPhotoImg.onerror = function() {
+                this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="900" height="500"%3E%3Crect fill="%23f0f0f0" width="900" height="500"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em" font-size="20"%3EYusifin şəklini buraya yükləyin (yusif-main.jpg)%3C/text%3E%3C/svg%3E';
+            };
+            document.getElementById('mainPhotoCaption').textContent = SITE_CONFIG.mainPhotoCaption;
+            
+            // Şəklin üstündə mətnlər
+            document.getElementById('photoOverlayTitle').innerHTML = SITE_CONFIG.mainTitle;
+            document.getElementById('photoOverlaySubtitle').textContent = SITE_CONFIG.subtitle;
+            
+            // Ailə sitatı
+            document.getElementById('familyQuote').textContent = SITE_CONFIG.familyQuote;
+            document.getElementById('familyQuoteAuthor').textContent = SITE_CONFIG.familyQuoteAuthor;
+            
+            // Hikayə
+            document.getElementById('storyText1').textContent = SITE_CONFIG.storyText1;
+            document.getElementById('highlightText').textContent = SITE_CONFIG.highlightText;
+            document.getElementById('storyText2').textContent = SITE_CONFIG.storyText2;
+            document.getElementById('storyText3').textContent = SITE_CONFIG.storyText3;
+            
+            // Paylaşım
+            document.getElementById('shareDescription').textContent = SITE_CONFIG.shareDescription;
+            
+            // Sayğac rəngi
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.background = `linear-gradient(90deg, ${SITE_CONFIG.progressBarColor}, ${SITE_CONFIG.progressBarColorEnd})`;
+            
+            // Sayğac
+            updateProgress();
+            
+            // Foto qalereyası - SADƏ SLIDER (nöqtələr + swipe)
+            const galleryWrapper = document.getElementById('galleryWrapper');
+            const galleryDotsContainer = document.getElementById('galleryDots');
+            let currentGallerySlide = 0;
+            
+            SITE_CONFIG.photoGallery.forEach((photo, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.innerHTML = `
+                    <img src="${photo.file}" alt="${photo.caption}" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'100%25\\' height=\\'350\\'%3E%3Crect fill=\\'%23f0f0f0\\' width=\\'100%25\\' height=\\'350\\'/%3E%3Ctext fill=\\'%23999\\' x=\\'50%25\\' y=\\'50%25\\' text-anchor=\\'middle\\' dy=\\'.3em\\' font-size=\\'18\\'%3EŞəkil yüklənir...%3C/text%3E%3C/svg%3E'">
+                `;
+                galleryWrapper.appendChild(item);
+                
+                const dot = document.createElement('button');
+                dot.className = 'gallery-dot' + (index === 0 ? ' active' : '');
+                dot.onclick = () => goToGallerySlide(index);
+                galleryDotsContainer.appendChild(dot);
+            });
+            
+            function goToGallerySlide(index) {
+                currentGallerySlide = index;
+                galleryWrapper.style.transform = `translateX(-${index * 100}%)`;
+                document.querySelectorAll('.gallery-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === index);
+                });
+            }
+            
+            // Yüngül swipe dəstəyi
+            let galleryTouchStart = 0;
+            galleryWrapper.addEventListener('touchstart', (e) => {
+                galleryTouchStart = e.touches[0].clientX;
+            }, {passive: true});
+            
+            galleryWrapper.addEventListener('touchend', (e) => {
+                const touchEnd = e.changedTouches[0].clientX;
+                const diff = galleryTouchStart - touchEnd;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0 && currentGallerySlide < SITE_CONFIG.photoGallery.length - 1) {
+                        goToGallerySlide(currentGallerySlide + 1);
+                    } else if (diff < 0 && currentGallerySlide > 0) {
+                        goToGallerySlide(currentGallerySlide - 1);
+                    }
+                }
+            }, {passive: true});
+            
+            
+            // Niyə kömək - SADƏ SLIDER (nöqtələr + swipe)
+            const whyHelpWrapper = document.getElementById('whyHelpWrapper');
+            const whyHelpDotsContainer = document.getElementById('whyHelpDots');
+            let currentWhyHelpSlide = 0;
+            
+            SITE_CONFIG.whyHelpNeeded.forEach((item, index) => {
+                const helpItem = document.createElement('div');
+                helpItem.className = 'help-item';
+                helpItem.innerHTML = `
+                    <div class="icon">${item.icon}</div>
+                    <div class="text">${item.text}</div>
+                    <div class="cost">${item.cost}</div>
+                `;
+                whyHelpWrapper.appendChild(helpItem);
+                
+                const dot = document.createElement('button');
+                dot.className = 'why-help-dot' + (index === 0 ? ' active' : '');
+                dot.onclick = () => goToWhyHelpSlide(index);
+                whyHelpDotsContainer.appendChild(dot);
+            });
+            
+            function goToWhyHelpSlide(index) {
+                currentWhyHelpSlide = index;
+                whyHelpWrapper.style.transform = `translateX(-${index * 100}%)`;
+                document.querySelectorAll('.why-help-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === index);
+                });
+            }
+            
+            // Yüngül swipe
+            let whyHelpTouchStart = 0;
+            whyHelpWrapper.addEventListener('touchstart', (e) => {
+                whyHelpTouchStart = e.touches[0].clientX;
+            }, {passive: true});
+            
+            whyHelpWrapper.addEventListener('touchend', (e) => {
+                const touchEnd = e.changedTouches[0].clientX;
+                const diff = whyHelpTouchStart - touchEnd;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0 && currentWhyHelpSlide < SITE_CONFIG.whyHelpNeeded.length - 1) {
+                        goToWhyHelpSlide(currentWhyHelpSlide + 1);
+                    } else if (diff < 0 && currentWhyHelpSlide > 0) {
+                        goToWhyHelpSlide(currentWhyHelpSlide - 1);
+                    }
+                }
+            }, {passive: true});
+            
+            
+            // Xəstəxana sənədləri - SADƏ SLIDER (nöqtələr + swipe)
+            if (SITE_CONFIG.medicalDocuments.length > 0) {
+                const docsWrapper = document.getElementById('docsWrapper');
+                const docsDotsContainer = document.getElementById('docsDots');
+                let currentDocsSlide = 0;
+                
+                SITE_CONFIG.medicalDocuments.forEach((doc, index) => {
+                    const docItem = document.createElement('div');
+                    docItem.className = 'doc-item';
+                    docItem.innerHTML = `
+                        <img src="${doc.file}" alt="${doc.title}" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'100%25\\' height=\\'600\\'%3E%3Crect fill=\\'%23e0e0e0\\' width=\\'100%25\\' height=\\'600\\'/%3E%3Ctext fill=\\'%23666\\' x=\\'50%25\\' y=\\'50%25\\' text-anchor=\\'middle\\' dy=\\'.3em\\' font-size=\\'18\\'%3ESənəd%3C/text%3E%3C/svg%3E'">
+                    `;
+                    docsWrapper.appendChild(docItem);
+                    
+                    const dot = document.createElement('button');
+                    dot.className = 'docs-dot' + (index === 0 ? ' active' : '');
+                    dot.onclick = () => goToDocsSlide(index);
+                    docsDotsContainer.appendChild(dot);
+                });
+                
+                function goToDocsSlide(index) {
+                    currentDocsSlide = index;
+                    docsWrapper.style.transform = `translateX(-${index * 100}%)`;
+                    document.querySelectorAll('.docs-dot').forEach((d, i) => {
+                        d.classList.toggle('active', i === index);
+                    });
+                }
+                
+                // Yüngül swipe
+                let docsTouchStart = 0;
+                docsWrapper.addEventListener('touchstart', (e) => {
+                    docsTouchStart = e.touches[0].clientX;
+                }, {passive: true});
+                
+                docsWrapper.addEventListener('touchend', (e) => {
+                    const touchEnd = e.changedTouches[0].clientX;
+                    const diff = docsTouchStart - touchEnd;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0 && currentDocsSlide < SITE_CONFIG.medicalDocuments.length - 1) {
+                            goToDocsSlide(currentDocsSlide + 1);
+                        } else if (diff < 0 && currentDocsSlide > 0) {
+                            goToDocsSlide(currentDocsSlide - 1);
+                        }
+                    }
+                }, {passive: true});
+            } else {
+                document.getElementById('medicalDocsSection').style.display = 'none';
+            }
+            
+            // WhatsApp
+            const whatsappUrl = `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(SITE_CONFIG.whatsappMessage)}`;
+            document.getElementById('whatsappBtn').href = whatsappUrl;
+            document.getElementById('whatsappBtnText').textContent = SITE_CONFIG.whatsappButtonText;
+            
+            // Instagram
+            if (SITE_CONFIG.instagramEnabled && SITE_CONFIG.instagramUsername) {
+                document.getElementById('instagramSection').style.display = 'block';
+                document.getElementById('instagramBtn').href = `https://instagram.com/${SITE_CONFIG.instagramUsername}`;
+            }
+            
+            // Paylaşım düymələri
+            const currentUrl = window.location.href;
+            const shareTitle = SITE_CONFIG.shareTitle;
+            const shareText = SITE_CONFIG.shareDescription;
+            
+            document.getElementById('shareWhatsApp').href = `https://wa.me/?text=${encodeURIComponent(shareTitle + ' - ' + currentUrl)}`;
+            document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
+            
+            // Instagram - səhifə linkini clipboard-a kopyalayır və Instagram açır
+            document.getElementById('shareInstagram').addEventListener('click', (e) => {
+                e.preventDefault();
+                // Linki kopyala
+                navigator.clipboard.writeText(currentUrl).then(() => {
+                    alert('Link köçürüldü! İndi Instagram-da story paylaşa bilərsiniz 📷');
+                    // Instagram-ı aç (mobil-də)
+                    window.open('https://www.instagram.com/', '_blank');
+                });
+            });
+            
+            // Bank hesabları
+            const container = document.getElementById('bankAccountsContainer');
+            SITE_CONFIG.bankAccounts.forEach(account => {
+                const accountDiv = document.createElement('div');
+                accountDiv.className = 'account-info';
+                accountDiv.innerHTML = `
+                    <div class="account-header">${account.bankName}</div>
+                    <div class="account-holder">Alan: ${account.cardHolder}</div>
+                    <div class="account-number">
+                        <span class="number">${account.cardNumber}</span>
+                        <button class="copy-btn" style="background: ${SITE_CONFIG.copyButtonColor};" 
+                                onmouseover="this.style.background='${SITE_CONFIG.copyButtonHoverColor}'" 
+                                onmouseout="if(!this.classList.contains('copied')) this.style.background='${SITE_CONFIG.copyButtonColor}'"
+                                onclick="copyToClipboard('${account.cardNumber.replace(/\s/g, '')}', this)">${SITE_CONFIG.copyButtonText}</button>
+                    </div>
+                `;
+                container.appendChild(accountDiv);
+            });
+            
+            // Əlaqə
+            document.getElementById('contactPhone').textContent = SITE_CONFIG.contactPhone;
+            document.getElementById('contactAddress').textContent = SITE_CONFIG.contactAddress;
+        });
+
+        function updateProgress() {
+            const target = SITE_CONFIG.targetAmount;
+            const collected = SITE_CONFIG.collectedAmount;
+            const percentage = Math.min((collected / target) * 100, 100);
+            const remaining = Math.max(target - collected, 0);
+            
+            document.getElementById('targetAmount').textContent = '$' + target.toLocaleString();
+            document.getElementById('progressBar').style.width = percentage + '%';
+            document.getElementById('collectedAmount').textContent = '$' + collected.toLocaleString();
+            document.getElementById('remainingAmount').textContent = '$' + remaining.toLocaleString();
+            document.getElementById('progressPercent').textContent = percentage.toFixed(1) + '%';
+        }
+
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.innerHTML;
+                const originalColor = SITE_CONFIG.copyButtonColor;
+                button.innerHTML = SITE_CONFIG.copyButtonSuccessText;
+                button.classList.add('copied');
+                
+                // Facebook Pixel Event - Kart Kopyalandı
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'AddToCart', {
+                        content_name: 'Bank Card Copy',
+                        content_category: 'Donation',
+                        content_ids: [text.substring(0, 4)], // İlk 4 rəqəm (məsələn: 4276)
+                        value: 0,
+                        currency: 'USD'
+                    });
+                }
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('copied');
+                    button.style.background = originalColor;
+                }, 2000);
+            }).catch(err => {
+                alert('Kopyalama uğursuz oldu. Zəhmət olmasa əl ilə kopyalayın.');
+            });
+        }
+
+        // Scroll animasiyaları SÖNDÜRÜLDÜ - Performans üçün
+        // IntersectionObserver çox resurs işlədir
+
+        // Floating Donate Düyməsi
+        const floatingBtn = document.getElementById('floatingDonateBtn');
+        const donationSection = document.querySelector('.donation-section');
+        
+        // Düyməyə klik edəndə HƏMIŞƏ kartlara get və mərkəzlə
+        floatingBtn.addEventListener('click', () => {
+            donationSection.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+        });
+        
+        // Scroll event throttle (performans üçün - hər 150ms-də yoxlayır)
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) return;
+            
+            scrollTimeout = setTimeout(() => {
+                const donationRect = donationSection.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                const windowCenter = windowHeight / 2;
+                
+                const sectionCenter = donationRect.top + (donationRect.height / 2);
+                const distanceFromCenter = Math.abs(sectionCenter - windowCenter);
+                
+                if (distanceFromCenter < 100 && donationRect.top < windowHeight && donationRect.bottom > 0) {
+                    floatingBtn.classList.add('hidden');
+                } else {
+                    floatingBtn.classList.remove('hidden');
+                }
+                
+                scrollTimeout = null;
+            }, 150);
+        }, {passive: true});
+    </script>
+</body>
+</html>
