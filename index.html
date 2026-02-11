@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Elxana Dəstək Olaq - Hər Yardım Bir Ümiddir</title>
+    <title>Yusifə Dəstək Olaq - Bir Ananın Fəryadı</title>
     
     <!-- İlk şəkli prioritet yükləmək üçün -->
-    <link rel="preload" as="image" href="elxan-main.jpg">
+    <link rel="preload" as="image" href="yusif-main.jpg">
     
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
@@ -20,7 +20,7 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1403052920683023');
+    fbq('init', 'YOUR_PIXEL_ID_HERE');
     fbq('track', 'PageView');
     </script>
     <noscript>
@@ -46,108 +46,133 @@
         // ═══════════════════════════════════════════════════════════
         
         const SITE_CONFIG = {
+            // ═══════════════════════════════════════════════════════════
+            // 🎨 SAYT KONFİQURASİYASI - BURADAN HƏR ŞEYİ DƏYİŞƏ BİLƏRSƏN
+            // ═══════════════════════════════════════════════════════════
+            
             // --- BAŞLIQ (Yuxarıda yazan logo) ---
-            siteName: "Elxana Dəstək Olaq",
+            siteName: "Yusifə Dəstək Olaq",
             
             // --- TƏCİLİ MESAJ ---
-            urgentMessage: "⏰ Elxanın həyatı müalicənin davam etməsindən asılıdır - kritik vəziyyət",
+            urgentMessage: "⏰ Yusifin həyatı müalicənin davam etməsindən asılıdır - bir ananın fəryadı",
             urgentMessageEnabled: true,  // true = göstər, false = gizlət
             
             // --- SAYĞAC MƏLUMATLARI ---
-            targetAmount: 70000,        // 3 milyon TL = təxminən 70,000 USD
-            collectedAmount: 5000,      // Toplanmış məbləğ
+            targetAmount: 50000,        // Təxmini ehtiyac
+            collectedAmount: 0,         // Toplanmış məbləğ
+            currencySymbol: "₼",        // Valyuta simvolu - Manat
             
             // --- PSİXOLOJİ TRİGGERLƏR ---
-            smallDonationText: "50 AZN belə fərq yaradır 💛",
-            donationImpact: "Hər 100 AZN = 1 gün əlavə müalicə",
+            smallDonationText: "10 AZN belə böyük köməkdir 💛",
+            donationImpact: "Hər kömək Yusifin həyatına ümiddir",
             
             // --- SAYĞAC RƏNGLƏRİ ---
             progressBarColor: "#FF9800",
             progressBarColorEnd: "#FF9800",
             
             // --- ƏSAS MƏTNLƏR ---
-            mainTitle: "Elxan cəmi 9 yaşındadır.<br>Ağır xəstəliklə mübarizə aparır.",
-            subtitle: "Kəskin mieloblast leykoz - transplantasiya sonrası kritik vəziyyət",
+            mainTitle: "Yusif cəmi 11 yaşındadır.<br>Qan xərçəngi ilə mübarizə aparır.",
+            subtitle: "Kəskin limfoblast leykemiya (ALL) - ilik transplantasiyası sonrası ilik savaşı",
             
             // --- AİLƏ SİTATI ---
-            familyQuote: "Artıq bütün imkanlarımız tükənib. İndi Elxanın yaşaması yalnız sizin köməyinizdən asılıdır.",
-            familyQuoteAuthor: "Elxanın atası",
+            familyQuote: "Bir ana olaraq övladım üçün susa bilmərəm. Artıq bütün imkanlarımız tükənib. Yusifin yaşaması yalnız sizin köməyinizdən asılıdır.",
+            familyQuoteAuthor: "Yusifin anası - Gülər",
             
-            storyText1: "Elxan 9 yaşında uşaqdır. Türkiyədə 2 kurs kimyaterapiya keçib, ilik transplantasiyası olunub. Hazırda transplantat əleyhinə reaksiya (RTxX) inkişaf edib və vəziyyət kritikdir.",
-            highlightText: "Müalicə xərcləri 3 milyon Türk lirəsi (təxminən 70 min dollar) təşkil edir. Ailəsinin imkanları tamamilə tükənib.",
-            storyText2: "Elxan İzmir Şəhər Xəstəxanasında müalicə alır. Həkimlər müalicənin davam etməsinin zəruri olduğunu bildiriblər.",
-            storyText3: "Hər kəsin 1-2 manatlıq köməyi belə Elxanın yaşaması üçün bir addım ola bilər. Zəhmət olmasa, paylaşın.",
+            // --- HİKAYƏ MƏTNLƏRİ ---
+            storyText1: "Oğlum Yusif Afiq oğlu Osmanov 11 yaşındadır və qan xərçəngi (kəskin limfoblast leykemiya - ALL) ilə mübarizə aparır. 2023-cü ildən bəri davamlı müalicə alır. İlik transplantasiyası olunub, amma bədənində ilik savaşı (transplantat əleyhinə reaksiya) başlayıb.",
+            highlightText: "Həkimlər dəfələrlə vurğulayıblar: müalicə fasiləsiz davam etməlidir. Əgər yarımçıq qalarsa, Yusifin həyatı üçün çox ciddi təhlükə yaranacaq.",
+            storyText2: "Yusifin atası gündəlik fəhləliklə ailəni dolandırmağa çalışır. Mən isə imkan tapdıqca evlərdə təmizliyə gedirəm. Qazandığımız bütün pul indiyə qədər oğlumun dərmanlarına, analizlərinə və xəstəxana xərclərinə sərf olunub. Artıq satmağa, girov qoymağa dəyər heç nəyimiz qalmayıb.",
+            storyText3: "Gündəlik xərcləri qarşılamaq belə çox çətindir. Müalicənin dayanması Yusifin həyatı üçün böyük risk deməkdir. Bu yükü təkbaşına daşımaq gücümüz yoxdur. İmkanı olan hər kəsdən xahiş edirik, bizə dəstək olsun.",
             
             // --- NİYƏ KÖMƏK LAZIMDIR ---
+            whyHelpTitle: "💡 Niyə kömək lazımdır?",
             whyHelpNeeded: [
-                { icon: "💊", text: "RTxX müalicəsi və dərmanlar", cost: "$25,000" },
-                { icon: "🏥", text: "Xəstəxana xərcləri", cost: "$30,000" },
-                { icon: "🩺", text: "Analizlər və monitorinq", cost: "$10,000" },
-                { icon: "🏠", text: "Ailənin yaşayış xərcləri", cost: "$5,000" }
+                { icon: "💊", text: "Dərmanlar və müalicə", cost: "Davamlı" },
+                { icon: "🏥", text: "Xəstəxana xərcləri", cost: "Yüksək" },
+                { icon: "🩺", text: "Analizlər və monitorinq", cost: "Mütəmadi" },
+                { icon: "🏠", text: "Ailənin yaşayış xərcləri", cost: "Zəruri" }
             ],
             
+            // --- BÖLMƏLƏRİN BAŞLIQLARI ---
+            photoGalleryTitle: "📸 Yusif xəstəxanada",
+            medicalDocsTitle: "📋 Xəstəxana sənədləri",
+            donationSectionTitle: "💳 Yardım üçün bank hesabları",
+            contactInfoTitle: "📞 Əlaqə məlumatları",
+            shareTitle: "Hər paylaşım Yusifin yaşama şansını artırır.",
+            shareSubtitle: "Bu səhifəni paylaşaraq siz də Yusifin müalicəsinə töhfə verə bilərsiniz.",
+            
             // --- ƏSAS ŞƏKIL (Təcili mesajdan sonra görünəcək) ---
-            mainPhoto: "elxan-main.jpg",  // Elxanın əsas şəkli
-            mainPhotoCaption: "Elxan - 9 yaşında",
+            mainPhoto: "yusif-main.jpg",
+            mainPhotoCaption: "Yusif - 11 yaşında",
             
             // --- ŞƏKILLƏR (FOTO QALEREYASı) ---
             photoGallery: [
-                { file: "elxan1.jpg", caption: "Elxan" },
-                { file: "elxan2.jpg", caption: "Elxan" },
-                { file: "elxan3.jpg", caption: "Elxan" }
+                { file: "yusif1.jpg", caption: "Yusif" },
+                { file: "yusif2.jpg", caption: "Yusif" },
+                { file: "yusif3.jpg", caption: "Yusif" }
             ],
             
             // --- XƏSTƏXANA SƏNƏDİ ---
             medicalDocuments: [
-                { file: "document1.jpg", title: "Tibbi sənəd" },
-                { file: "document2.jpg", title: "Tibbi sənəd" }
+                { file: "document1.jpg", title: "Medical Park - Tibbi sənəd" },
+                { file: "document2.jpg", title: "Milli Hematologiya Mərkəzi - Epikriz" }
             ],
             
             // --- SOSIAL MEDIA ---
-            instagramUsername: "",  // @ işarəsi olmadan, məsələn: "elxan_yardim"
+            instagramUsername: "",  // @ işarəsi olmadan, məsələn: "yusif_yardim"
             instagramEnabled: false,  // true = göstər, false = gizlət
+            instagramButtonText: "Instagram-da izlə",
             
             // --- WHATSAPP ---
-            whatsappNumber: "994557236555",
-            whatsappMessage: "Salam, Elxana yardım etmək istəyirəm",
-            whatsappButtonText: "WhatsApp ilə əlaqə saxla",
+            whatsappNumber: "994706605889",
+            whatsappMessage: "Salam, Yusifə yardım etmək istəyirəm",
+            whatsappButtonText: "Ana ilə əlaqə saxla (WhatsApp)",
             
             // --- BANK HESABLARI ---
             bankAccounts: [
                 {
-                    bankName: "Sberbank (Rusiya)",
-                    cardNumber: "4276 3802 0330 5540",
-                    cardHolder: "Ruslan Baloglanov (dayı)"
-                },
-                {
                     bankName: "Kapital Bank",
-                    cardNumber: "4169 7388 5885 2712",
-                    cardHolder: "Nagiyev Elturan (Atası)"
-                },
-                {
-                    bankName: "ABB Bank",
-                    cardNumber: "5522 0993 7218 3095",
-                    cardHolder: "Nagiyev Elturan (Atası)"
+                    cardNumber: "4169 7388 7973 1556",
+                    cardHolder: "Osmanova Gülər Mehman qızı (Anası)"
                 },
                 {
                     bankName: "LeoBank",
-                    cardNumber: "4098 5844 9546 5906",
-                    cardHolder: "Nagiyev Rufat (Əmi)"
+                    cardNumber: "5411 2498 0407 2341",
+                    cardHolder: "Osmanova Gülər Mehman qızı (Anası)"
+                },
+                {
+                    bankName: "ABB Bank",
+                    cardNumber: "5522 0993 7518 0148",
+                    cardHolder: "Nagiyev Elturan (Atası)"
                 }
             ],
             
-            // --- KOPYALA DÜYMƏSI RƏNGİ ---
+            // --- KOPYALA DÜYMƏSI ---
+            copyButtonText: "📋 Kopyala",
+            copyButtonSuccessText: "✓ Kopyalandı",
             copyButtonColor: "#4CAF50",
             copyButtonHoverColor: "#45a049",
             
             // --- ƏLAQƏ MƏLUMATLARI ---
-            contactPhone: "055 723 65 55 (Atası)",
-            contactAddress: "Bakı, Binəqədi ray., Səddar Bəhlulzadə, bina 62, ev 29",
+            contactPhone: "070 660 58 89 (Anası - Gülər)",
+            contactAddress: "Bakı şəhəri, Yeni Ramana, Qarabağ küçəsi 104, ev 28",
+            contactPhoneLabel: "Telefon:",
+            contactAddressLabel: "Ünvan:",
             
-            // --- PAYLAŞIM MƏTNİ ---
-            shareText: "Hər paylaşım Elxanın yaşama şansını artırır.",
-            shareDescription: "Bu səhifəni paylaşaraq siz də Elxanın müalicəsinə töhfə verə bilərsiniz.",
-            shareTitle: "Elxana dəstək olaq 💛"
+            // --- PAYLAŞIM MƏTNLƏRİ ---
+            shareDescription: "Bu səhifəni paylaşaraq siz də Yusifin müalicəsinə töhfə verə bilərsiniz.",
+            shareTitle: "Yusifə dəstək olaq 💛",
+            shareButtonWhatsApp: "WhatsApp",
+            shareButtonFacebook: "Facebook",
+            shareButtonInstagram: "Instagram",
+            
+            // --- FLOATING DÜYMƏ ---
+            floatingButtonText: "Kömək et",
+            floatingButtonIcon: "💳",
+            
+            // --- FOOTER MƏTNİ ---
+            footerText: "Göstərilən hər diqqət, edilən hər dəstək Yusif üçün bir ümid deməkdir",
+            footerSubtext: "Allah kömək olan hər kəsdən razı olsun 🤲"
         };
         
         // ═══════════════════════════════════════════════════════════
@@ -477,16 +502,20 @@
             border-radius: 12px;
             background: white;
             box-shadow: 0 8px 30px var(--shadow);
+            width: 100%;
         }
 
         .gallery-wrapper {
             display: flex;
+            width: 100%;
             transition: transform 0.25s ease-out;
         }
 
         .gallery-item {
             min-width: 100%;
+            width: 100%;
             flex-shrink: 0;
+            overflow: hidden;
         }
 
         .gallery-item img {
@@ -529,7 +558,7 @@
             border-radius: 5px;
         }
 
-        /* ƏSAS ŞƏKIL - Elxan (Təcili mesajdan sonra) */
+        /* ƏSAS ŞƏKIL - Yusif (Təcili mesajdan sonra) */
         .main-photo-section {
             text-align: center;
             margin: 2rem auto;
@@ -1312,11 +1341,11 @@
         <span id="urgentMessage"></span>
     </div>
 
-    <!-- ƏSAS ŞƏKIL - Elxan -->
+    <!-- ƏSAS ŞƏKIL - Yusif -->
     <div class="container">
         <section class="main-photo-section">
             <div class="main-photo-frame">
-                <img id="mainPhotoImg" alt="Elxan">
+                <img id="mainPhotoImg" alt="Yusif">
                 <!-- ŞƏKLİN ÜSTÜNDƏ MƏTN -->
                 <div class="photo-text-overlay">
                     <h2 id="photoOverlayTitle"></h2>
@@ -1357,16 +1386,16 @@
 
         <!-- BANK HESABLARI - SAYĞACDAN SONRA -->
         <section class="donation-section">
-            <h2>💳 Yardım üçün hesablar</h2>
+            <h2 id="donationSectionTitle"></h2>
             <div id="bankAccountsContainer"></div>
 
             <div class="contact-info">
-                <h3>📞 Əlaqə məlumatları</h3>
+                <h3 id="contactInfoTitle"></h3>
                 <div class="contact-item">
-                    <strong>Telefon:</strong> <span id="contactPhone"></span>
+                    <strong id="contactPhoneLabel"></strong> <span id="contactPhone"></span>
                 </div>
                 <div class="contact-item">
-                    <strong>Ünvan:</strong> <span id="contactAddress"></span>
+                    <strong id="contactAddressLabel"></strong> <span id="contactAddress"></span>
                 </div>
             </div>
         </section>
@@ -1379,7 +1408,7 @@
 
         <!-- FOTO QALEREYASı - SADƏ SLIDER -->
         <section class="photo-gallery">
-            <h3>📸 Elxan xəstəxanada</h3>
+            <h3 id="photoGalleryTitle"></h3>
             <div class="gallery-container">
                 <div class="gallery-wrapper" id="galleryWrapper"></div>
                 <div class="gallery-dots" id="galleryDots"></div>
@@ -1388,7 +1417,7 @@
 
         <!-- NİYƏ KÖMƏK LAZIMDIR - SADƏ SLIDER -->
         <section class="why-help">
-            <h2>💡 Niyə kömək lazımdır?</h2>
+            <h2 id="whyHelpTitle"></h2>
             <div class="why-help-container">
                 <div class="why-help-wrapper" id="whyHelpWrapper"></div>
             </div>
@@ -1405,7 +1434,7 @@
 
         <!-- XƏSTƏXANA SƏNƏDLƏRİ - SADƏ SLIDER -->
         <section class="medical-docs" id="medicalDocsSection">
-            <h3>📋 Xəstəxana sənədləri</h3>
+            <h3 id="medicalDocsTitle"></h3>
             <div class="docs-container">
                 <div class="docs-wrapper" id="docsWrapper"></div>
                 <div class="docs-dots" id="docsDots"></div>
@@ -1431,34 +1460,34 @@
 
         <!-- PAYLAŞIM DÜYMƏLƏRİ -->
         <section class="share-section">
-            <p class="share-text" id="shareText"></p>
+            <p class="share-text" id="shareTitle"></p>
             <p class="share-description" id="shareDescription"></p>
             <div class="share-buttons">
                 <a href="#" class="share-btn whatsapp" id="shareWhatsApp">
                     <span>📱</span>
-                    <span>WhatsApp</span>
+                    <span id="shareButtonWhatsApp"></span>
                 </a>
                 <a href="#" class="share-btn facebook" id="shareFacebook">
                     <span>📘</span>
-                    <span>Facebook</span>
+                    <span id="shareButtonFacebook"></span>
                 </a>
                 <a href="#" class="share-btn instagram" id="shareInstagram">
                     <span>📷</span>
-                    <span>Instagram</span>
+                    <span id="shareButtonInstagram"></span>
                 </a>
             </div>
         </section>
     </div>
 
     <footer>
-        <p>Hər kəsin kiçik bir dəstəyi böyük bir dəyişiklik yarada bilər <span class="heart">❤️</span></p>
-        <p style="margin-top: 1rem; opacity: 0.7;">Allah şəfa versin, inşallah 🤲</p>
+        <p><span id="footerText"></span> <span class="heart">❤️</span></p>
+        <p style="margin-top: 1rem; opacity: 0.7;" id="footerSubtext"></p>
     </footer>
 
     <!-- FLOATING DONATE DÜYMƏSI -->
     <button class="floating-donate-btn" id="floatingDonateBtn">
-        <span class="icon">💳</span>
-        <span>Kömək et</span>
+        <span class="icon" id="floatingButtonIcon"></span>
+        <span id="floatingButtonText"></span>
     </button>
 
     <script>
@@ -1473,13 +1502,36 @@
                 document.getElementById('urgentMessage').textContent = SITE_CONFIG.urgentMessage;
             }
             
-            // Əsas şəkil (Elxan)
+            // Başlıqlar
+            document.getElementById('photoGalleryTitle').textContent = SITE_CONFIG.photoGalleryTitle;
+            document.getElementById('whyHelpTitle').textContent = SITE_CONFIG.whyHelpTitle;
+            document.getElementById('medicalDocsTitle').textContent = SITE_CONFIG.medicalDocsTitle;
+            document.getElementById('donationSectionTitle').textContent = SITE_CONFIG.donationSectionTitle;
+            document.getElementById('contactInfoTitle').textContent = SITE_CONFIG.contactInfoTitle;
+            document.getElementById('contactPhoneLabel').textContent = SITE_CONFIG.contactPhoneLabel;
+            document.getElementById('contactAddressLabel').textContent = SITE_CONFIG.contactAddressLabel;
+            
+            // Floating düymə
+            document.getElementById('floatingButtonIcon').textContent = SITE_CONFIG.floatingButtonIcon;
+            document.getElementById('floatingButtonText').textContent = SITE_CONFIG.floatingButtonText;
+            
+            // Footer
+            document.getElementById('footerText').textContent = SITE_CONFIG.footerText;
+            document.getElementById('footerSubtext').textContent = SITE_CONFIG.footerSubtext;
+            
+            // Paylaşım düymələri
+            document.getElementById('shareTitle').textContent = SITE_CONFIG.shareTitle;
+            document.getElementById('shareButtonWhatsApp').textContent = SITE_CONFIG.shareButtonWhatsApp;
+            document.getElementById('shareButtonFacebook').textContent = SITE_CONFIG.shareButtonFacebook;
+            document.getElementById('shareButtonInstagram').textContent = SITE_CONFIG.shareButtonInstagram;
+            
+            // Əsas şəkil (Yusif)
             const mainPhotoImg = document.getElementById('mainPhotoImg');
             mainPhotoImg.src = SITE_CONFIG.mainPhoto;
             mainPhotoImg.loading = 'eager'; // İlk şəkil prioritetdir
             mainPhotoImg.fetchpriority = 'high'; // Yüksək prioritet
             mainPhotoImg.onerror = function() {
-                this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="900" height="500"%3E%3Crect fill="%23f0f0f0" width="900" height="500"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em" font-size="20"%3EElxanın şəklini buraya yükləyin (elxan-main.jpg)%3C/text%3E%3C/svg%3E';
+                this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="900" height="500"%3E%3Crect fill="%23f0f0f0" width="900" height="500"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em" font-size="20"%3EYusifin şəklini buraya yükləyin (yusif-main.jpg)%3C/text%3E%3C/svg%3E';
             };
             document.getElementById('mainPhotoCaption').textContent = SITE_CONFIG.mainPhotoCaption;
             
@@ -1498,7 +1550,6 @@
             document.getElementById('storyText3').textContent = SITE_CONFIG.storyText3;
             
             // Paylaşım
-            document.getElementById('shareText').textContent = SITE_CONFIG.shareText;
             document.getElementById('shareDescription').textContent = SITE_CONFIG.shareDescription;
             
             // Sayğac rəngi
@@ -1529,28 +1580,54 @@
             
             function goToGallerySlide(index) {
                 currentGallerySlide = index;
-                galleryWrapper.style.transform = `translateX(-${index * 100}%)`;
+                const containerWidth = galleryWrapper.parentElement.offsetWidth;
+                galleryWrapper.style.transition = 'transform 0.3s ease';
+                galleryWrapper.style.transform = `translateX(${-index * containerWidth}px)`;
                 document.querySelectorAll('.gallery-dot').forEach((d, i) => {
                     d.classList.toggle('active', i === index);
                 });
             }
             
-            // Yüngül swipe dəstəyi
-            let galleryTouchStart = 0;
+            // Swipe dəstəyi
+            let galleryTouchStartX = 0;
+            let galleryTouchStartY = 0;
+            let galleryIsSwiping = false;
+
             galleryWrapper.addEventListener('touchstart', (e) => {
-                galleryTouchStart = e.touches[0].clientX;
+                galleryTouchStartX = e.touches[0].clientX;
+                galleryTouchStartY = e.touches[0].clientY;
+                galleryIsSwiping = false;
+                galleryWrapper.style.transition = 'none';
             }, {passive: true});
-            
-            galleryWrapper.addEventListener('touchend', (e) => {
-                const touchEnd = e.changedTouches[0].clientX;
-                const diff = galleryTouchStart - touchEnd;
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0 && currentGallerySlide < SITE_CONFIG.photoGallery.length - 1) {
-                        goToGallerySlide(currentGallerySlide + 1);
-                    } else if (diff < 0 && currentGallerySlide > 0) {
-                        goToGallerySlide(currentGallerySlide - 1);
-                    }
+
+            galleryWrapper.addEventListener('touchmove', (e) => {
+                const dx = e.touches[0].clientX - galleryTouchStartX;
+                const dy = e.touches[0].clientY - galleryTouchStartY;
+                if (!galleryIsSwiping && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
+                    galleryIsSwiping = true;
                 }
+                if (galleryIsSwiping) {
+                    const containerWidth = galleryWrapper.parentElement.offsetWidth;
+                    const base = -currentGallerySlide * containerWidth;
+                    galleryWrapper.style.transform = `translateX(${base + dx}px)`;
+                }
+            }, {passive: true});
+
+            galleryWrapper.addEventListener('touchend', (e) => {
+                const dx = e.changedTouches[0].clientX - galleryTouchStartX;
+                galleryWrapper.style.transition = 'transform 0.3s ease';
+                if (galleryIsSwiping && Math.abs(dx) > 50) {
+                    if (dx < 0 && currentGallerySlide < SITE_CONFIG.photoGallery.length - 1) {
+                        goToGallerySlide(currentGallerySlide + 1);
+                    } else if (dx > 0 && currentGallerySlide > 0) {
+                        goToGallerySlide(currentGallerySlide - 1);
+                    } else {
+                        goToGallerySlide(currentGallerySlide);
+                    }
+                } else {
+                    goToGallerySlide(currentGallerySlide);
+                }
+                galleryIsSwiping = false;
             }, {passive: true});
             
             
@@ -1694,7 +1771,7 @@
                         <button class="copy-btn" style="background: ${SITE_CONFIG.copyButtonColor};" 
                                 onmouseover="this.style.background='${SITE_CONFIG.copyButtonHoverColor}'" 
                                 onmouseout="if(!this.classList.contains('copied')) this.style.background='${SITE_CONFIG.copyButtonColor}'"
-                                onclick="copyToClipboard('${account.cardNumber.replace(/\s/g, '')}', this)">📋 Kopyala</button>
+                                onclick="copyToClipboard('${account.cardNumber.replace(/\s/g, '')}', this)">${SITE_CONFIG.copyButtonText}</button>
                     </div>
                 `;
                 container.appendChild(accountDiv);
@@ -1722,7 +1799,7 @@
             navigator.clipboard.writeText(text).then(() => {
                 const originalText = button.innerHTML;
                 const originalColor = SITE_CONFIG.copyButtonColor;
-                button.innerHTML = '✓ Kopyalandı';
+                button.innerHTML = SITE_CONFIG.copyButtonSuccessText;
                 button.classList.add('copied');
                 
                 // Facebook Pixel Event - Kart Kopyalandı
