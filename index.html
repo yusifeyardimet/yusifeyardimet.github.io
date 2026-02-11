@@ -71,7 +71,7 @@
             progressBarColorEnd: "#FF9800",
             
             // --- ƏSAS MƏTNLƏR ---
-            mainTitle: "Oğlum Yusif 11 yaşındadır.<br>Qan xərçəngi ilə mübarizə aparır.",
+            mainTitle: "Yusif cəmi 11 yaşındadır.<br>Qan xərçəngi ilə mübarizə aparır.",
             subtitle: "Kəskin limfoblast leykemiya (ALL) - ilik transplantasiyası sonrası ilik savaşı",
             
             // --- AİLƏ SİTATI ---
@@ -1577,27 +1577,51 @@
             
             function goToGallerySlide(index) {
                 currentGallerySlide = index;
+                galleryWrapper.style.transition = 'transform 0.3s ease';
                 galleryWrapper.style.transform = `translateX(-${index * 100}%)`;
                 document.querySelectorAll('.gallery-dot').forEach((d, i) => {
                     d.classList.toggle('active', i === index);
                 });
             }
             
-            // Yüngül swipe dəstəyi
             let galleryTouchStart = 0;
+            let galleryTouchStartY = 0;
+            let galleryDragging = false;
+
             galleryWrapper.addEventListener('touchstart', (e) => {
                 galleryTouchStart = e.touches[0].clientX;
+                galleryTouchStartY = e.touches[0].clientY;
+                galleryDragging = true;
+                galleryWrapper.style.transition = 'none';
             }, {passive: true});
-            
+
+            galleryWrapper.addEventListener('touchmove', (e) => {
+                if (!galleryDragging) return;
+                const dx = e.touches[0].clientX - galleryTouchStart;
+                const dy = e.touches[0].clientY - galleryTouchStartY;
+                if (Math.abs(dx) > Math.abs(dy)) {
+                    const base = -currentGallerySlide * 100;
+                    const pct = (dx / galleryWrapper.parentElement.offsetWidth) * 100;
+                    galleryWrapper.style.transform = `translateX(${base + pct}%)`;
+                }
+            }, {passive: true});
+
             galleryWrapper.addEventListener('touchend', (e) => {
+                if (!galleryDragging) return;
+                galleryDragging = false;
                 const touchEnd = e.changedTouches[0].clientX;
                 const diff = galleryTouchStart - touchEnd;
+                galleryWrapper.style.transition = 'transform 0.3s ease';
                 if (Math.abs(diff) > 50) {
                     if (diff > 0 && currentGallerySlide < SITE_CONFIG.photoGallery.length - 1) {
                         goToGallerySlide(currentGallerySlide + 1);
                     } else if (diff < 0 && currentGallerySlide > 0) {
                         goToGallerySlide(currentGallerySlide - 1);
+                    } else {
+                        goToGallerySlide(currentGallerySlide);
                     }
+                } else {
+                    goToGallerySlide(currentGallerySlide);
                 }
             }, {passive: true});
             
@@ -1625,27 +1649,51 @@
             
             function goToWhyHelpSlide(index) {
                 currentWhyHelpSlide = index;
+                whyHelpWrapper.style.transition = 'transform 0.3s ease';
                 whyHelpWrapper.style.transform = `translateX(-${index * 100}%)`;
                 document.querySelectorAll('.why-help-dot').forEach((d, i) => {
                     d.classList.toggle('active', i === index);
                 });
             }
             
-            // Yüngül swipe
             let whyHelpTouchStart = 0;
+            let whyHelpTouchStartY = 0;
+            let whyHelpDragging = false;
+
             whyHelpWrapper.addEventListener('touchstart', (e) => {
                 whyHelpTouchStart = e.touches[0].clientX;
+                whyHelpTouchStartY = e.touches[0].clientY;
+                whyHelpDragging = true;
+                whyHelpWrapper.style.transition = 'none';
             }, {passive: true});
-            
+
+            whyHelpWrapper.addEventListener('touchmove', (e) => {
+                if (!whyHelpDragging) return;
+                const dx = e.touches[0].clientX - whyHelpTouchStart;
+                const dy = e.touches[0].clientY - whyHelpTouchStartY;
+                if (Math.abs(dx) > Math.abs(dy)) {
+                    const base = -currentWhyHelpSlide * 100;
+                    const pct = (dx / whyHelpWrapper.parentElement.offsetWidth) * 100;
+                    whyHelpWrapper.style.transform = `translateX(${base + pct}%)`;
+                }
+            }, {passive: true});
+
             whyHelpWrapper.addEventListener('touchend', (e) => {
+                if (!whyHelpDragging) return;
+                whyHelpDragging = false;
                 const touchEnd = e.changedTouches[0].clientX;
                 const diff = whyHelpTouchStart - touchEnd;
+                whyHelpWrapper.style.transition = 'transform 0.3s ease';
                 if (Math.abs(diff) > 50) {
                     if (diff > 0 && currentWhyHelpSlide < SITE_CONFIG.whyHelpNeeded.length - 1) {
                         goToWhyHelpSlide(currentWhyHelpSlide + 1);
                     } else if (diff < 0 && currentWhyHelpSlide > 0) {
                         goToWhyHelpSlide(currentWhyHelpSlide - 1);
+                    } else {
+                        goToWhyHelpSlide(currentWhyHelpSlide);
                     }
+                } else {
+                    goToWhyHelpSlide(currentWhyHelpSlide);
                 }
             }, {passive: true});
             
@@ -1672,27 +1720,51 @@
                 
                 function goToDocsSlide(index) {
                     currentDocsSlide = index;
+                    docsWrapper.style.transition = 'transform 0.3s ease';
                     docsWrapper.style.transform = `translateX(-${index * 100}%)`;
                     document.querySelectorAll('.docs-dot').forEach((d, i) => {
                         d.classList.toggle('active', i === index);
                     });
                 }
                 
-                // Yüngül swipe
                 let docsTouchStart = 0;
+                let docsTouchStartY = 0;
+                let docsDragging = false;
+
                 docsWrapper.addEventListener('touchstart', (e) => {
                     docsTouchStart = e.touches[0].clientX;
+                    docsTouchStartY = e.touches[0].clientY;
+                    docsDragging = true;
+                    docsWrapper.style.transition = 'none';
                 }, {passive: true});
-                
+
+                docsWrapper.addEventListener('touchmove', (e) => {
+                    if (!docsDragging) return;
+                    const dx = e.touches[0].clientX - docsTouchStart;
+                    const dy = e.touches[0].clientY - docsTouchStartY;
+                    if (Math.abs(dx) > Math.abs(dy)) {
+                        const base = -currentDocsSlide * 100;
+                        const pct = (dx / docsWrapper.parentElement.offsetWidth) * 100;
+                        docsWrapper.style.transform = `translateX(${base + pct}%)`;
+                    }
+                }, {passive: true});
+
                 docsWrapper.addEventListener('touchend', (e) => {
+                    if (!docsDragging) return;
+                    docsDragging = false;
                     const touchEnd = e.changedTouches[0].clientX;
                     const diff = docsTouchStart - touchEnd;
+                    docsWrapper.style.transition = 'transform 0.3s ease';
                     if (Math.abs(diff) > 50) {
                         if (diff > 0 && currentDocsSlide < SITE_CONFIG.medicalDocuments.length - 1) {
                             goToDocsSlide(currentDocsSlide + 1);
                         } else if (diff < 0 && currentDocsSlide > 0) {
                             goToDocsSlide(currentDocsSlide - 1);
+                        } else {
+                            goToDocsSlide(currentDocsSlide);
                         }
+                    } else {
+                        goToDocsSlide(currentDocsSlide);
                     }
                 }, {passive: true});
             } else {
