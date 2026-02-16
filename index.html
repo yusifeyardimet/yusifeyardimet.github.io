@@ -59,7 +59,7 @@
             
             // --- SAYĞAC MƏLUMATLARI ---
             targetAmount: 50000,        // Təxmini ehtiyac
-            collectedAmount: 500,         // Toplanmış məbləğ
+            collectedAmount: 0,         // Toplanmış məbləğ
             currencySymbol: "₼",        // Valyuta simvolu - Manat
             
             // --- PSİXOLOJİ TRİGGERLƏR ---
@@ -71,7 +71,7 @@
             progressBarColorEnd: "#FF9800",
             
             // --- ƏSAS MƏTNLƏR ---
-            mainTitle: "Yusif cəmi 12 yaşındadır.<br>Qan xərçəngi ilə mübarizə aparır.",
+            mainTitle: "Yusif cəmi 11 yaşındadır.<br>Qan xərçəngi ilə mübarizə aparır.",
             subtitle: "Kəskin limfoblast leykemiya (ALL) - ilik transplantasiyası sonrası ilik savaşı",
             
             // --- AİLƏ SİTATI ---
@@ -79,7 +79,7 @@
             familyQuoteAuthor: "Yusifin anası - Gülər",
             
             // --- HİKAYƏ MƏTNLƏRİ ---
-            storyText1: "Oğlum Yusif Afiq oğlu Osmanov 12 yaşındadır və qan xərçəngi (kəskin limfoblast leykemiya - ALL) ilə mübarizə aparır. 2023-cü ildən bəri davamlı müalicə alır. İlik transplantasiyası olunub, amma bədənində ilik savaşı (transplantat əleyhinə reaksiya) başlayıb.",
+            storyText1: "Oğlum Yusif Afiq oğlu Osmanov 11 yaşındadır və qan xərçəngi (kəskin limfoblast leykemiya - ALL) ilə mübarizə aparır. 2023-cü ildən bəri davamlı müalicə alır. İlik transplantasiyası olunub, amma bədənində ilik savaşı (transplantat əleyhinə reaksiya) başlayıb.",
             highlightText: "Həkimlər dəfələrlə vurğulayıblar: müalicə fasiləsiz davam etməlidir. Əgər yarımçıq qalarsa, Yusifin həyatı üçün çox ciddi təhlükə yaranacaq.",
             storyText2: "Yusifin atası gündəlik fəhləliklə ailəni dolandırmağa çalışır. Mən isə imkan tapdıqca evlərdə təmizliyə gedirəm. Qazandığımız bütün pul indiyə qədər oğlumun dərmanlarına, analizlərinə və xəstəxana xərclərinə sərf olunub. Artıq satmağa, girov qoymağa dəyər heç nəyimiz qalmayıb.",
             storyText3: "Gündəlik xərcləri qarşılamaq belə çox çətindir. Müalicənin dayanması Yusifin həyatı üçün böyük risk deməkdir. Bu yükü təkbaşına daşımaq gücümüz yoxdur. İmkanı olan hər kəsdən xahiş edirik, bizə dəstək olsun.",
@@ -143,7 +143,7 @@
                 {
                     bankName: "ABB Bank",
                     cardNumber: "5522 0993 7518 0148",
-                    cardHolder: "Osmanova Gülər Mehman qızı (Anası)"
+                    cardHolder: "Nagiyev Elturan (Atası)"
                 }
             ],
             
@@ -1358,31 +1358,7 @@
 
     <div class="container">
         <!-- SAYĞAC - YUXARIDA -->
-        <section class="progress-section" style="margin-top: 1rem;">
-            <div class="progress-header">
-                <h2>Hədəf məbləğ</h2>
-                <div class="target-amount" id="targetAmount"></div>
-            </div>
-            
-            <div class="progress-bar-container">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-            
-            <div class="progress-stats">
-                <div class="stat-box">
-                    <div class="stat-label">Toplanıb</div>
-                    <div class="stat-value current" id="collectedAmount"></div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-label">Qalıb</div>
-                    <div class="stat-value" id="remainingAmount"></div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-label">Faiz</div>
-                    <div class="stat-value" id="progressPercent"></div>
-                </div>
-            </div>
-        </section>
+
 
         <!-- BANK HESABLARI - SAYĞACDAN SONRA -->
         <section class="donation-section">
@@ -1552,12 +1528,7 @@
             // Paylaşım
             document.getElementById('shareDescription').textContent = SITE_CONFIG.shareDescription;
             
-            // Sayğac rəngi
-            const progressBar = document.getElementById('progressBar');
-            progressBar.style.background = `linear-gradient(90deg, ${SITE_CONFIG.progressBarColor}, ${SITE_CONFIG.progressBarColorEnd})`;
-            
-            // Sayğac
-            updateProgress();
+
             
             // Foto qalereyası - SADƏ SLIDER (nöqtələr + swipe)
             const galleryWrapper = document.getElementById('galleryWrapper');
@@ -1782,18 +1753,7 @@
             document.getElementById('contactAddress').textContent = SITE_CONFIG.contactAddress;
         });
 
-        function updateProgress() {
-            const target = SITE_CONFIG.targetAmount;
-            const collected = SITE_CONFIG.collectedAmount;
-            const percentage = Math.min((collected / target) * 100, 100);
-            const remaining = Math.max(target - collected, 0);
-            
-            document.getElementById('targetAmount').textContent = '$' + target.toLocaleString();
-            document.getElementById('progressBar').style.width = percentage + '%';
-            document.getElementById('collectedAmount').textContent = '$' + collected.toLocaleString();
-            document.getElementById('remainingAmount').textContent = '$' + remaining.toLocaleString();
-            document.getElementById('progressPercent').textContent = percentage.toFixed(1) + '%';
-        }
+
 
         function copyToClipboard(text, button) {
             navigator.clipboard.writeText(text).then(() => {
