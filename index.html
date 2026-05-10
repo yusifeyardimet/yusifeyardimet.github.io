@@ -163,6 +163,27 @@
             color: var(--text-primary);
             background: var(--bg-primary);
             overflow-x: hidden;
+            /* Prevent accidental selection on tap (mobile UX) */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Allow text selection on readable content (manual copy, translation) */
+        .hero-title, .hero-subtitle,
+        .section-title, .section-subtitle,
+        .story-text, .story-text p, .story-text strong, .story-signature,
+        .impact-amount, .impact-description,
+        .gallery-caption,
+        .doc-title,
+        .bank-name, .bank-number, .bank-holder, .bank-holder strong,
+        .footer-text, .footer-contact {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
         }
 
         img {
@@ -1309,10 +1330,17 @@
             }
 
             .last-updated-badge {
-                top: 76px;
+                top: 88px; /* clears 44px hamburger button (top ~20-64px) with breathing room */
                 right: 16px;
                 font-size: 11px;
                 padding: 6px 12px;
+            }
+
+            /* Move scroll indicator above floating WhatsApp button (60px circle @ bottom 20px = clears at 80px) */
+            .scroll-indicator {
+                bottom: 120px; /* 40px clearance from WhatsApp button top edge */
+                font-size: 12px;
+                letter-spacing: 1.8px;
             }
 
             /* Story */
@@ -1417,6 +1445,22 @@
 
             .footer-text {
                 font-size: 18px;
+            }
+        }
+
+        /* Very small phones — tighter scroll indicator */
+        @media (max-width: 400px) {
+            .scroll-indicator {
+                font-size: 11px;
+                letter-spacing: 1.5px;
+                bottom: 130px;
+                gap: 8px;
+            }
+
+            .scroll-chevron,
+            .scroll-chevron-2 {
+                width: 16px;
+                height: 16px;
             }
         }
 
@@ -2121,54 +2165,76 @@
 
         // ═══════════════════════════════════════════════════════════
         // COPY TO CLIPBOARD + Meta Pixel AddToCart event
+        // Uses execCommand exclusively — navigator.clipboard.writeText()
+        // triggers Android's "Edit/Share" system overlay; execCommand
+        // copies silently and matches our own toast UX better.
         // ═══════════════════════════════════════════════════════════
+        function execCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.setAttribute('readonly', ''); // suppresses mobile keyboard
+            textarea.setAttribute('aria-hidden', 'true');
+            // Position off-screen but inside viewport (required for iOS focus)
+            textarea.style.position = 'fixed';
+            textarea.style.top = '0';
+            textarea.style.left = '0';
+            textarea.style.width = '1px';
+            textarea.style.height = '1px';
+            textarea.style.padding = '0';
+            textarea.style.border = 'none';
+            textarea.style.outline = 'none';
+            textarea.style.boxShadow = 'none';
+            textarea.style.background = 'transparent';
+            textarea.style.opacity = '0';
+            textarea.style.pointerEvents = 'none';
+            document.body.appendChild(textarea);
+
+            // Preserve current focus + scroll
+            const prevFocus = document.activeElement;
+            const prevScrollY = window.scrollY;
+
+            textarea.focus({ preventScroll: true });
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // iOS Safari
+
+            let success = false;
+            try { success = document.execCommand('copy'); } catch (e) {}
+
+            document.body.removeChild(textarea);
+            if (prevFocus && typeof prevFocus.focus === 'function') {
+                prevFocus.focus({ preventScroll: true });
+            }
+            window.scrollTo({ top: prevScrollY, behavior: 'instant' });
+            return success;
+        }
+
         function copyCardNumber(button) {
             const cardNumber = button.dataset.card;
             const t = TRANSLATIONS[currentLang];
 
-            const fallbackCopy = () => {
-                const textarea = document.createElement('textarea');
-                textarea.value = cardNumber;
-                textarea.style.position = 'fixed';
-                textarea.style.opacity = '0';
-                document.body.appendChild(textarea);
-                textarea.select();
-                try { document.execCommand('copy'); } catch (e) {}
-                document.body.removeChild(textarea);
-            };
+            const success = execCopy(cardNumber);
+            if (!success) return;
 
-            const onSuccess = () => {
-                button.classList.add('copied');
-                button.innerHTML = `✓ ${t.copyBtn === 'Copy' ? 'Copied' : t.copyBtn === 'Копировать' ? 'Скопировано' : 'Kopyalandı'}`;
+            button.classList.add('copied');
+            button.innerHTML = `✓ ${t.copyBtn === 'Copy' ? 'Copied' : t.copyBtn === 'Копировать' ? 'Скопировано' : 'Kopyalandı'}`;
 
-                // Meta Pixel: AddToCart event when card is copied
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'AddToCart', {
-                        content_name: 'Bank Card Copy',
-                        content_category: 'Donation',
-                        content_ids: [cardNumber.substring(0, 4)],
-                        value: 0,
-                        currency: 'AZN'
-                    });
-                }
-
-                showToast(t.copiedToast);
-
-                setTimeout(() => {
-                    button.classList.remove('copied');
-                    button.innerHTML = `📋 ${t.copyBtn}`;
-                }, 2400);
-            };
-
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(cardNumber).then(onSuccess).catch(() => {
-                    fallbackCopy();
-                    onSuccess();
+            // Meta Pixel: AddToCart event when card is copied
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'AddToCart', {
+                    content_name: 'Bank Card Copy',
+                    content_category: 'Donation',
+                    content_ids: [cardNumber.substring(0, 4)],
+                    value: 0,
+                    currency: 'AZN'
                 });
-            } else {
-                fallbackCopy();
-                onSuccess();
             }
+
+            showToast(t.copiedToast);
+
+            setTimeout(() => {
+                button.classList.remove('copied');
+                button.innerHTML = `📋 ${t.copyBtn}`;
+            }, 2400);
         }
 
         // ═══════════════════════════════════════════════════════════
@@ -2201,26 +2267,10 @@
             document.getElementById('shareInstagram').addEventListener('click', (e) => {
                 e.preventDefault();
                 const t = TRANSLATIONS[currentLang];
-                const fallbackCopy = () => {
-                    const textarea = document.createElement('textarea');
-                    textarea.value = window.location.href;
-                    textarea.style.position = 'fixed';
-                    textarea.style.opacity = '0';
-                    document.body.appendChild(textarea);
-                    textarea.select();
-                    try { document.execCommand('copy'); } catch (err) {}
-                    document.body.removeChild(textarea);
-                };
-                const finish = () => {
-                    showToast(t.instagramAlert);
-                    setTimeout(() => window.open('https://www.instagram.com/', '_blank'), 600);
-                };
-                if (navigator.clipboard && window.isSecureContext) {
-                    navigator.clipboard.writeText(window.location.href).then(finish).catch(() => { fallbackCopy(); finish(); });
-                } else {
-                    fallbackCopy();
-                    finish();
-                }
+                // execCommand avoids Android system clipboard overlay
+                execCopy(window.location.href);
+                showToast(t.instagramAlert);
+                setTimeout(() => window.open('https://www.instagram.com/', '_blank'), 600);
             });
         }
 
