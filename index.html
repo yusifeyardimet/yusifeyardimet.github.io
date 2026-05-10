@@ -485,52 +485,71 @@
             animation: heroFadeIn 1.2s ease 0.9s both;
         }
 
-        /* Scroll indicator */
+        /* Scroll indicator (clickable, hides on scroll) */
         .scroll-indicator {
             position: absolute;
-            bottom: 32px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 2;
-            color: white;
+            color: rgba(255, 255, 255, 0.85);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
-            font-size: 12px;
+            gap: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
             letter-spacing: 2px;
             text-transform: uppercase;
-            opacity: 0.7;
-            animation: scrollHint 2s ease infinite;
+            cursor: pointer;
+            user-select: none;
+            transition: opacity 0.5s ease, transform 0.3s ease;
+            animation: heroFadeIn 1.2s ease 0.9s both;
+            will-change: opacity, transform;
         }
 
-        .scroll-indicator-line {
-            width: 1px;
-            height: 40px;
-            background: white;
-            position: relative;
-            overflow: hidden;
+        .scroll-indicator:hover,
+        .scroll-indicator:focus-visible {
+            opacity: 1;
+            color: white;
+            transform: translateX(-50%) scale(1.08);
+            outline: none;
         }
 
-        .scroll-indicator-line::after {
-            content: '';
-            position: absolute;
-            top: -40px;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            background: var(--accent-gold);
-            animation: scrollLine 2s ease infinite;
+        .scroll-indicator.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
 
-        @keyframes scrollHint {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.9; }
+        .scroll-indicator-arrows {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1;
         }
 
-        @keyframes scrollLine {
-            0% { top: -40px; }
-            100% { top: 40px; }
+        .scroll-chevron {
+            display: block;
+            color: white;
+            animation: chevronBounce 1.8s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        .scroll-chevron-2 {
+            margin-top: -10px;
+            animation-delay: 0.2s;
+            opacity: 0.6;
+        }
+
+        .scroll-indicator:hover .scroll-chevron,
+        .scroll-indicator:focus-visible .scroll-chevron {
+            animation-play-state: paused;
+        }
+
+        @keyframes chevronBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
         }
 
         /* ============================================
@@ -1129,20 +1148,20 @@
         }
 
         /* ============================================
-           Floating Donate Button
+           Floating Donate Button (above WhatsApp btn)
            ============================================ */
         .floating-donate {
             position: fixed;
-            bottom: 24px;
-            right: 24px;
+            bottom: 110px; /* 30px (WA bottom) + 65px (WA size) + 15px gap */
+            right: 30px;
             background: var(--accent-gold);
             color: white;
-            padding: 16px 28px;
+            padding: 14px 24px;
             border-radius: 999px;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 14px;
             box-shadow: 0 8px 28px rgba(201, 169, 97, 0.5);
-            z-index: 90;
+            z-index: 9997;
             display: none;
             align-items: center;
             gap: 8px;
@@ -1368,11 +1387,11 @@
                 margin: 0 auto;
             }
 
-            /* Floating */
+            /* Floating donate (above WhatsApp btn on mobile) */
             .floating-donate {
-                bottom: 16px;
-                right: 16px;
-                padding: 12px 20px;
+                bottom: 92px; /* 20 (WA) + 60 (WA size) + 12 gap */
+                right: 20px;
+                padding: 11px 18px;
                 font-size: 13px;
             }
 
@@ -1399,9 +1418,164 @@
             }
         }
 
+        /* ============================================
+           Floating WhatsApp Button
+           ============================================ */
+        .float-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+            z-index: 9998;
+            opacity: 0;
+            transform: translateY(100px) scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, box-shadow 0.3s ease, background 0.3s ease;
+            will-change: transform, opacity;
+        }
+
+        .float-whatsapp.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            animation: whatsappPulse 3s ease-in-out 2s infinite;
+        }
+
+        .float-whatsapp:hover {
+            transform: translateY(0) scale(1.1);
+            background: #1eba56;
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.55);
+            animation-play-state: paused;
+        }
+
+        .float-whatsapp:active {
+            transform: translateY(0) scale(1.05);
+        }
+
+        .float-whatsapp svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+            display: block;
+            pointer-events: none;
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                transform: translateY(0) scale(1.05);
+                box-shadow: 0 6px 22px rgba(37, 211, 102, 0.55), 0 0 0 10px rgba(37, 211, 102, 0.08);
+            }
+        }
+
+        /* WhatsApp Tooltip (desktop hover only) */
+        .float-whatsapp-tooltip {
+            position: absolute;
+            right: calc(100% + 14px);
+            top: 50%;
+            transform: translateY(-50%);
+            background: #FFFFFF;
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+            box-shadow: 0 4px 14px rgba(44, 36, 22, 0.15);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            letter-spacing: normal;
+            text-transform: none;
+        }
+
+        .float-whatsapp-tooltip::after {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 6px solid #FFFFFF;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .float-whatsapp:hover .float-whatsapp-tooltip {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .float-whatsapp {
+                bottom: 20px;
+                right: 20px;
+                width: 60px;
+                height: 60px;
+            }
+
+            .float-whatsapp svg {
+                width: 30px;
+                height: 30px;
+            }
+
+            .float-whatsapp-tooltip {
+                display: none;
+            }
+        }
+
+        /* Hide floating WhatsApp + donate when mobile menu is open */
+        .nav.mobile-open ~ .float-whatsapp,
+        .nav.mobile-open ~ .floating-donate {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+
+        /* ============================================
+           Reduced Motion (accessibility)
+           ============================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .float-whatsapp.visible {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            .scroll-chevron,
+            .scroll-chevron-2,
+            .float-whatsapp,
+            .hero-cta {
+                animation: none !important;
+            }
+        }
+
         /* Print friendly */
         @media print {
-            .nav, .floating-donate, .hero-cta, .scroll-indicator { display: none; }
+            .nav, .floating-donate, .float-whatsapp, .hero-cta, .scroll-indicator { display: none; }
         }
     </style>
 </head>
@@ -1449,9 +1623,12 @@
                 <span data-i18n="heroCta">Kömək et</span>
             </a>
         </div>
-        <div class="scroll-indicator">
-            <span data-i18n="scrollHint">AŞAĞI</span>
-            <div class="scroll-indicator-line"></div>
+        <div class="scroll-indicator" id="scrollIndicator" role="button" tabindex="0" aria-label="Aşağı sürüşdür">
+            <span data-i18n="scrollIndicatorText">Yusifin hekayəsini oxu</span>
+            <div class="scroll-indicator-arrows" aria-hidden="true">
+                <svg class="scroll-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                <svg class="scroll-chevron scroll-chevron-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
         </div>
     </section>
 
@@ -1623,6 +1800,19 @@
         <span data-i18n="floatingBtn">Kömək et</span>
     </a>
 
+    <!-- Floating WhatsApp button (always accessible, 2s entry delay) -->
+    <a href="https://wa.me/994706605889?text=Salam%2C%20Yusif%C9%99%20yard%C4%B1m%20etm%C9%99k%20ist%C9%99yir%C9%99m"
+       class="float-whatsapp"
+       id="floatWhatsapp"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="WhatsApp ilə əlaqə">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span class="float-whatsapp-tooltip" data-i18n="whatsappTooltip">Anaya yaz - Gülər 💛</span>
+    </a>
+
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
         <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
@@ -1662,6 +1852,8 @@
                 heroSubtitle: "11 yaş. Qan xərçəngi. Sənin köməyinə möhtac.",
                 heroCta: "Kömək et",
                 scrollHint: "AŞAĞI",
+                scrollIndicatorText: "Yusifin hekayəsini oxu",
+                whatsappTooltip: "Anaya yaz - Gülər 💛",
 
                 storyTitle: "Yusifin hekayəsi",
                 storyLead: "\"Mən Gülər. Yusifin anası.\"",
@@ -1716,6 +1908,8 @@
                 heroSubtitle: "11 лет. Рак крови. Нуждается в твоей помощи.",
                 heroCta: "Помочь",
                 scrollHint: "ВНИЗ",
+                scrollIndicatorText: "Прочитайте историю Юсифа",
+                whatsappTooltip: "Напишите маме - Гюляр 💛",
 
                 storyTitle: "История Yusif-а",
                 storyLead: "\"Я Gülər. Мама Yusif-а.\"",
@@ -1770,6 +1964,8 @@
                 heroSubtitle: "11 years old. Blood cancer. In need of your help.",
                 heroCta: "Donate",
                 scrollHint: "SCROLL",
+                scrollIndicatorText: "Read Yusif's story",
+                whatsappTooltip: "Message mom - Gülər 💛",
 
                 storyTitle: "Yusif's Story",
                 storyLead: "\"I am Gülər. Yusif's mother.\"",
@@ -2132,6 +2328,57 @@
         }
 
         // ═══════════════════════════════════════════════════════════
+        // SCROLL INDICATOR (clickable + hides on scroll)
+        // ═══════════════════════════════════════════════════════════
+        function setupScrollIndicator() {
+            const indicator = document.getElementById('scrollIndicator');
+            const story = document.getElementById('story');
+            if (!indicator || !story) return;
+
+            const goToStory = () => story.scrollIntoView({ behavior: 'smooth' });
+            indicator.addEventListener('click', goToStory);
+            indicator.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    goToStory();
+                }
+            });
+
+            // Hide indicator after 100px scroll (rAF throttled)
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        indicator.classList.toggle('hidden', window.scrollY > 100);
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // FLOATING WHATSAPP (2s entry delay + Contact pixel event)
+        // ═══════════════════════════════════════════════════════════
+        function setupFloatingWhatsapp() {
+            const btn = document.getElementById('floatWhatsapp');
+            if (!btn) return;
+
+            // Show after 2s delay so it doesn't compete with hero on load
+            setTimeout(() => btn.classList.add('visible'), 2000);
+
+            // Track Contact via Meta Pixel
+            btn.addEventListener('click', () => {
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Contact', {
+                        content_name: 'WhatsApp Float Button',
+                        content_category: 'Donation Contact'
+                    });
+                }
+            });
+        }
+
+        // ═══════════════════════════════════════════════════════════
         // INIT
         // ═══════════════════════════════════════════════════════════
         document.addEventListener('DOMContentLoaded', () => {
@@ -2141,6 +2388,8 @@
             setupLightbox();
             setupInstagramShare();
             setupHeroParallax();
+            setupScrollIndicator();
+            setupFloatingWhatsapp();
             observeReveals();
             applyLanguage(currentLang);
         });
