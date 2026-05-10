@@ -1947,6 +1947,7 @@
                 cardHolderLabel: "Kart sahibi:",
                 copyBtn: "Kopyala",
                 copiedToast: "Kart nömrəsi kopyalandı",
+                selectedToast: "Nömrə seçildi - basıb saxlayın",
                 whatsappBtn: "Ana ilə əlaqə (WhatsApp)",
 
                 shareTitle: "Yardım paylaşımla başlayır",
@@ -2003,6 +2004,7 @@
                 cardHolderLabel: "Держатель карты:",
                 copyBtn: "Копировать",
                 copiedToast: "Номер карты скопирован",
+                selectedToast: "Номер выделен — удержите для копирования",
                 whatsappBtn: "Связаться с мамой (WhatsApp)",
 
                 shareTitle: "Помощь начинается с шеринга",
@@ -2059,6 +2061,7 @@
                 cardHolderLabel: "Cardholder:",
                 copyBtn: "Copy",
                 copiedToast: "Card number copied",
+                selectedToast: "Number selected — hold to copy",
                 whatsappBtn: "Contact mother (WhatsApp)",
 
                 shareTitle: "Help Starts with Sharing",
@@ -2208,17 +2211,34 @@
             return success;
         }
 
+        // Selection mode: DOM-da kart nömrəsini seçir, clipboard-a YAZMIR.
+        // Beləliklə Xiaomi/MIUI/HyperOS-un sistem clipboard overlay-i açılmır.
+        // İstifadəçi long-press → "Kopyala" ilə özü götürür.
         function copyCardNumber(button) {
             const cardNumber = button.dataset.card;
             const t = TRANSLATIONS[currentLang];
 
-            const success = execCopy(cardNumber);
-            if (!success) return;
+            const card = button.closest('.bank-card');
+            const numberEl = card ? card.querySelector('.bank-number') : null;
 
+            if (numberEl) {
+                const range = document.createRange();
+                range.selectNodeContents(numberEl);
+                const selection = window.getSelection();
+                if (selection) {
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                }
+            }
+
+            // Visual feedback
             button.classList.add('copied');
-            button.innerHTML = `✓ ${t.copyBtn === 'Copy' ? 'Copied' : t.copyBtn === 'Копировать' ? 'Скопировано' : 'Kopyalandı'}`;
+            const selectedLabel = t.copyBtn === 'Copy' ? 'Selected'
+                                : t.copyBtn === 'Копировать' ? 'Выделено'
+                                : 'Seçildi';
+            button.innerHTML = `✓ ${selectedLabel}`;
 
-            // Meta Pixel: AddToCart event when card is copied
+            // Meta Pixel: signals donation intent (event name unchanged for analytics continuity)
             if (typeof fbq !== 'undefined') {
                 fbq('track', 'AddToCart', {
                     content_name: 'Bank Card Copy',
@@ -2229,12 +2249,12 @@
                 });
             }
 
-            showToast(t.copiedToast);
+            showToast(t.selectedToast);
 
             setTimeout(() => {
                 button.classList.remove('copied');
                 button.innerHTML = `📋 ${t.copyBtn}`;
-            }, 2400);
+            }, 3500); // longer than 2.4s — user needs time to long-press
         }
 
         // ═══════════════════════════════════════════════════════════
