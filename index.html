@@ -2211,16 +2211,20 @@
             return success;
         }
 
-        // Selection mode: DOM-da kart nömrəsini seçir, clipboard-a YAZMIR.
-        // Beləliklə Xiaomi/MIUI/HyperOS-un sistem clipboard overlay-i açılmır.
-        // İstifadəçi long-press → "Kopyala" ilə özü götürür.
+        // Copies the card number to clipboard AND visually selects it.
+        // The visual selection acts as extra confirmation feedback.
+        //
+        // Note on Xiaomi/MIUI/HyperOS: their "Universal Clipboard" feature
+        // shows a system "Düzənlə/Paylaş" overlay on every clipboard write —
+        // this is an OS-level feature JavaScript cannot suppress. User can
+        // disable it in: Settings → Additional Settings → Universal Clipboard.
         function copyCardNumber(button) {
             const cardNumber = button.dataset.card;
             const t = TRANSLATIONS[currentLang];
 
+            // Visually highlight the card number (extra feedback)
             const card = button.closest('.bank-card');
             const numberEl = card ? card.querySelector('.bank-number') : null;
-
             if (numberEl) {
                 const range = document.createRange();
                 range.selectNodeContents(numberEl);
@@ -2231,14 +2235,14 @@
                 }
             }
 
-            // Visual feedback
-            button.classList.add('copied');
-            const selectedLabel = t.copyBtn === 'Copy' ? 'Selected'
-                                : t.copyBtn === 'Копировать' ? 'Выделено'
-                                : 'Seçildi';
-            button.innerHTML = `✓ ${selectedLabel}`;
+            // Actually copy to clipboard
+            const success = execCopy(cardNumber);
+            if (!success) return;
 
-            // Meta Pixel: signals donation intent (event name unchanged for analytics continuity)
+            button.classList.add('copied');
+            button.innerHTML = `✓ ${t.copyBtn === 'Copy' ? 'Copied' : t.copyBtn === 'Копировать' ? 'Скопировано' : 'Kopyalandı'}`;
+
+            // Meta Pixel: AddToCart event when card is copied
             if (typeof fbq !== 'undefined') {
                 fbq('track', 'AddToCart', {
                     content_name: 'Bank Card Copy',
@@ -2249,12 +2253,12 @@
                 });
             }
 
-            showToast(t.selectedToast);
+            showToast(t.copiedToast);
 
             setTimeout(() => {
                 button.classList.remove('copied');
                 button.innerHTML = `📋 ${t.copyBtn}`;
-            }, 3500); // longer than 2.4s — user needs time to long-press
+            }, 2400);
         }
 
         // ═══════════════════════════════════════════════════════════
