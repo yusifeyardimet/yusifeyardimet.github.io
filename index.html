@@ -425,13 +425,15 @@
         }
 
         .hero-subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(18px, 2.5vw, 26px);
-            font-weight: 300;
-            letter-spacing: 0.5px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(20px, 2.8vw, 30px);
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0;
+            line-height: 1.4;
             margin-bottom: 48px;
             opacity: 0.95;
-            text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
             animation: heroFadeIn 1.2s ease 0.3s both;
         }
 
@@ -513,16 +515,18 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 2;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.92);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             font-family: 'Inter', sans-serif;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 500;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
+            white-space: nowrap;
+            text-align: center;
             cursor: pointer;
             user-select: none;
             transition: opacity 0.5s ease, transform 0.3s ease;
@@ -556,13 +560,15 @@
 
         .scroll-chevron {
             display: block;
+            width: 22px;
+            height: 22px;
             color: white;
             animation: chevronBounce 1.8s ease-in-out infinite;
             will-change: transform;
         }
 
         .scroll-chevron-2 {
-            margin-top: -10px;
+            margin-top: -11px;
             animation-delay: 0.2s;
             opacity: 0.6;
         }
@@ -1349,8 +1355,19 @@
             /* Move scroll indicator above floating WhatsApp button (60px circle @ bottom 20px = clears at 80px) */
             .scroll-indicator {
                 bottom: 120px; /* 40px clearance from WhatsApp button top edge */
-                font-size: 12px;
-                letter-spacing: 1.8px;
+                font-size: 14px;
+                letter-spacing: 2.2px;
+                gap: 12px;
+            }
+
+            .scroll-chevron,
+            .scroll-chevron-2 {
+                width: 20px;
+                height: 20px;
+            }
+
+            .scroll-chevron-2 {
+                margin-top: -10px;
             }
 
             /* Story */
@@ -1461,16 +1478,20 @@
         /* Very small phones — tighter scroll indicator */
         @media (max-width: 400px) {
             .scroll-indicator {
-                font-size: 11px;
-                letter-spacing: 1.5px;
+                font-size: 12px;
+                letter-spacing: 1.8px;
                 bottom: 130px;
-                gap: 8px;
+                gap: 10px;
             }
 
             .scroll-chevron,
             .scroll-chevron-2 {
-                width: 16px;
-                height: 16px;
+                width: 18px;
+                height: 18px;
+            }
+
+            .scroll-chevron-2 {
+                margin-top: -9px;
             }
         }
 
@@ -1688,10 +1709,6 @@
         <div class="hero-content">
             <h1 class="hero-title">Yusif.</h1>
             <p class="hero-subtitle" data-i18n="heroSubtitle">11 yaş. Qan xərçəngi. Sənin köməyinə möhtac.</p>
-            <a href="#donation" class="hero-cta">
-                <span class="hero-cta-icon">💛</span>
-                <span data-i18n="heroCta">Kömək et</span>
-            </a>
         </div>
         <div class="scroll-indicator" id="scrollIndicator" role="button" tabindex="0" aria-label="Aşağı sürüşdür">
             <span data-i18n="scrollIndicatorText">Yusifin hekayəsini oxu</span>
