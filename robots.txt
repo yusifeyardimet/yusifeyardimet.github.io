@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Bütün axtarış botlarına icazə verilir
+# Saytın indekslənməsi vacibdir - daha çox insana çatmaq üçün
+
+Sitemap: https://yusifeyardimet.github.io/sitemap.xml
