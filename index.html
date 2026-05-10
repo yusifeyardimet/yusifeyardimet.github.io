@@ -505,7 +505,7 @@
             cursor: pointer;
             user-select: none;
             transition: opacity 0.5s ease, transform 0.3s ease;
-            animation: heroFadeIn 1.2s ease 0.9s both;
+            animation: scrollIndicatorFadeIn 1.2s ease 0.9s both;
             will-change: opacity, transform;
         }
 
@@ -515,6 +515,10 @@
             color: white;
             transform: translateX(-50%) scale(1.08);
             outline: none;
+        }
+
+        .scroll-indicator.hidden {
+            transform: translateX(-50%) translateY(0);
         }
 
         .scroll-indicator.hidden {
@@ -550,6 +554,18 @@
         @keyframes chevronBounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(8px); }
+        }
+
+        /* Scroll indicator entry — preserves translateX(-50%) for centering */
+        @keyframes scrollIndicatorFadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
         }
 
         /* ============================================
