@@ -1752,7 +1752,7 @@
                 <div class="impact-card reveal reveal-delay-1">
                     <span class="impact-emoji">💊</span>
                     <div class="impact-amount">10 AZN</div>
-                    <div class="impact-description" data-i18n="impact1">1 günlük dərman dozası</div>
+                    <div class="impact-description" data-i18n="impact1">1 dərman dozası</div>
                 </div>
                 <div class="impact-card reveal reveal-delay-2">
                     <span class="impact-emoji">🩺</span>
@@ -1952,7 +1952,7 @@
 
                 impactTitle: "Bir bağışın həqiqi gücü",
                 impactSubtitle: "Hər manat Yusifin müalicəsinə birbaşa təsir edir",
-                impact1: "1 günlük dərman dozası",
+                impact1: "1 dərman dozası",
                 impact2: "Bir analiz və ya müayinə",
                 impact3: "Xəstəxana xərclərinin bir hissəsi",
                 impact4: "Bir həftəlik müalicə paketi",
@@ -2009,7 +2009,7 @@
 
                 impactTitle: "Истинная сила одного пожертвования",
                 impactSubtitle: "Каждый манат напрямую влияет на лечение Yusif-а",
-                impact1: "Лекарства на 1 день",
+                impact1: "1 доза лекарств",
                 impact2: "Один анализ или обследование",
                 impact3: "Часть больничных расходов",
                 impact4: "Недельный курс лечения",
@@ -2066,7 +2066,7 @@
 
                 impactTitle: "The True Power of a Single Donation",
                 impactSubtitle: "Every manat directly impacts Yusif's treatment",
-                impact1: "1 day of medication",
+                impact1: "1 dose of medication",
                 impact2: "One test or examination",
                 impact3: "Part of hospital expenses",
                 impact4: "One week's treatment package",
@@ -2327,22 +2327,49 @@
 
         // ═══════════════════════════════════════════════════════════
         // LIGHTBOX (gallery + documents)
+        //
+        // Uses History API so Android's back button closes the lightbox
+        // instead of leaving the site. Pattern:
+        //   open()  -> history.pushState({yusifLightbox: true})
+        //   close UI (X / ESC / backdrop) -> history.back() -> popstate
+        //   popstate listener -> actually remove the .active class
         // ═══════════════════════════════════════════════════════════
         function setupLightbox() {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightboxImg');
             const lightboxClose = document.getElementById('lightboxClose');
+            let isOpen = false;
 
             const open = (src, alt) => {
                 lightboxImg.src = src;
                 lightboxImg.alt = alt || '';
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
+                if (!isOpen) {
+                    isOpen = true;
+                    // Push a history entry so the OS back gesture pops it
+                    history.pushState({ yusifLightbox: true }, '');
+                }
             };
-            const close = () => {
+
+            // User-driven close (X button, ESC, backdrop click)
+            // Triggers history.back() which fires popstate -> finalize()
+            const requestClose = () => {
+                if (!isOpen) return;
+                if (history.state && history.state.yusifLightbox) {
+                    history.back();
+                } else {
+                    // History entry already gone (rare); just finalize
+                    finalize();
+                }
+            };
+
+            // Actually tears down the lightbox
+            const finalize = () => {
                 lightbox.classList.remove('active');
                 document.body.style.overflow = '';
                 setTimeout(() => { lightboxImg.src = ''; }, 300);
+                isOpen = false;
             };
 
             document.querySelectorAll('[data-img]').forEach(el => {
@@ -2351,12 +2378,17 @@
                     open(el.dataset.img, img ? img.alt : '');
                 });
             });
-            lightboxClose.addEventListener('click', close);
+            lightboxClose.addEventListener('click', requestClose);
             lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) close();
+                if (e.target === lightbox) requestClose();
             });
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && lightbox.classList.contains('active')) close();
+                if (e.key === 'Escape' && isOpen) requestClose();
+            });
+
+            // OS-level back gesture / browser back button
+            window.addEventListener('popstate', () => {
+                if (isOpen) finalize();
             });
         }
 
