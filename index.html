@@ -1266,14 +1266,24 @@
                 padding: 0 20px;
             }
 
-            /* Nav */
-            .nav-right .lang-switcher,
+            /* Nav — lang switcher inline (compact), hamburger removed */
             .nav-right .btn-cta {
-                display: none;
+                display: none; /* hero CTA + floating donate already cover this */
+            }
+
+            .nav-right .lang-switcher {
+                padding: 3px;
+                gap: 2px;
+            }
+
+            .nav-right .lang-btn {
+                padding: 5px 10px;
+                font-size: 12px;
+                letter-spacing: 0.2px;
             }
 
             .nav-mobile-toggle {
-                display: flex;
+                display: none; /* lang switcher is inline now */
             }
 
             .nav.mobile-open .nav-mobile-menu {
