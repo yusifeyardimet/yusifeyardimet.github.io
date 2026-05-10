@@ -273,6 +273,21 @@
             translations: {
                 az: {
                     // Azərbaycan dili - default (SITE_CONFIG-dəki dəyərləri istifadə edir)
+                    accountHolderLabel: "Alan:",
+                    copyButtonText: "📋 Kopyala",
+                    copyButtonSuccessText: "✓ Kopyalandı",
+                    whyHelpItems: [
+                        { text: "Dərmanlar və müalicə", cost: "Davamlı" },
+                        { text: "Xəstəxana xərcləri", cost: "Yüksək" },
+                        { text: "Analizlər və monitorinq", cost: "Mütəmadi" },
+                        { text: "Ailənin yaşayış xərcləri", cost: "Zəruri" }
+                    ],
+                    donationImpactDescriptions: [
+                        "1 günlük dərman dozası",
+                        "Bir analiz və ya müayinə",
+                        "Xəstəxana xərclərinin bir hissəsi",
+                        "Bir həftəlik müalicə paketi"
+                    ],
                     monthNames: ["Yanvar", "Fevral", "Mart", "Aprel", "May", "İyun", "İyul", "Avqust", "Sentyabr", "Oktyabr", "Noyabr", "Dekabr"]
                 },
                 ru: {
@@ -302,6 +317,21 @@
                     footerText: "Каждое проявленное внимание, каждая поддержка - это надежда для Юсифа",
                     footerSubtext: "Пусть Аллах будет доволен каждым, кто помогает 🤲",
                     lastUpdatedLabel: "Последнее обновление",
+                    accountHolderLabel: "Получатель:",
+                    copyButtonText: "📋 Копировать",
+                    copyButtonSuccessText: "✓ Скопировано",
+                    whyHelpItems: [
+                        { text: "Лекарства и лечение", cost: "Постоянно" },
+                        { text: "Больничные расходы", cost: "Высокие" },
+                        { text: "Анализы и мониторинг", cost: "Регулярно" },
+                        { text: "Расходы семьи на жизнь", cost: "Необходимо" }
+                    ],
+                    donationImpactDescriptions: [
+                        "Лекарства на 1 день",
+                        "Один анализ или обследование",
+                        "Часть больничных расходов",
+                        "Недельный курс лечения"
+                    ],
                     monthNames: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
                 },
                 en: {
@@ -331,6 +361,21 @@
                     footerText: "Every attention shown, every support given is hope for Yusif",
                     footerSubtext: "May Allah bless everyone who helps 🤲",
                     lastUpdatedLabel: "Last updated",
+                    accountHolderLabel: "Recipient:",
+                    copyButtonText: "📋 Copy",
+                    copyButtonSuccessText: "✓ Copied",
+                    whyHelpItems: [
+                        { text: "Medications and treatment", cost: "Continuous" },
+                        { text: "Hospital expenses", cost: "High" },
+                        { text: "Tests and monitoring", cost: "Regular" },
+                        { text: "Family living expenses", cost: "Essential" }
+                    ],
+                    donationImpactDescriptions: [
+                        "1 day of medication",
+                        "One test or examination",
+                        "Part of hospital expenses",
+                        "One week's treatment course"
+                    ],
                     monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
                 }
             }
@@ -2055,11 +2100,11 @@
                 accountDiv.className = 'account-info';
                 accountDiv.innerHTML = `
                     <div class="account-header">${account.bankName}</div>
-                    <div class="account-holder">Alan: ${account.cardHolder}</div>
+                    <div class="account-holder"><span class="holder-label">Alan:</span> ${account.cardHolder}</div>
                     <div class="account-number">
                         <span class="number">${account.cardNumber}</span>
-                        <button class="copy-btn" style="background: ${SITE_CONFIG.copyButtonColor};" 
-                                onmouseover="this.style.background='${SITE_CONFIG.copyButtonHoverColor}'" 
+                        <button class="copy-btn" style="background: ${SITE_CONFIG.copyButtonColor};"
+                                onmouseover="this.style.background='${SITE_CONFIG.copyButtonHoverColor}'"
                                 onmouseout="if(!this.classList.contains('copied')) this.style.background='${SITE_CONFIG.copyButtonColor}'"
                                 onclick="copyToClipboard('${account.cardNumber.replace(/\s/g, '')}', this)">${SITE_CONFIG.copyButtonText}</button>
                     </div>
@@ -2155,6 +2200,43 @@
                 const d = new Date();
                 document.getElementById('lastUpdatedDate').textContent =
                     `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+
+                // "Alan:" yazılarını yenilə (bank account)
+                document.querySelectorAll('.holder-label').forEach(el => {
+                    el.textContent = t('accountHolderLabel');
+                });
+
+                // Kopyala düymələrini yenilə (yalnız "Kopyalandı" halında deyilsə)
+                document.querySelectorAll('.copy-btn').forEach(btn => {
+                    if (!btn.classList.contains('copied')) {
+                        btn.textContent = t('copyButtonText');
+                    }
+                });
+
+                // SITE_CONFIG-dəki copy mətnlərini yenilə (copyToClipboard timeout sonrası istifadə edir)
+                SITE_CONFIG.copyButtonText = t('copyButtonText');
+                SITE_CONFIG.copyButtonSuccessText = t('copyButtonSuccessText');
+
+                // "Niyə kömək lazımdır" slider kartlarını yenilə (text + cost)
+                const whyHelpItems = t('whyHelpItems');
+                if (Array.isArray(whyHelpItems)) {
+                    document.querySelectorAll('.help-item').forEach((el, idx) => {
+                        if (whyHelpItems[idx]) {
+                            const textEl = el.querySelector('.text');
+                            const costEl = el.querySelector('.cost');
+                            if (textEl) textEl.textContent = whyHelpItems[idx].text;
+                            if (costEl) costEl.textContent = whyHelpItems[idx].cost;
+                        }
+                    });
+                }
+
+                // "10 AZN nə alır?" kartlarının təsvirlərini yenilə
+                const impactDescriptions = t('donationImpactDescriptions');
+                if (Array.isArray(impactDescriptions)) {
+                    document.querySelectorAll('.impact-card .description').forEach((el, idx) => {
+                        if (impactDescriptions[idx]) el.textContent = impactDescriptions[idx];
+                    });
+                }
             }
 
             // Dil düymələrinə click event
@@ -2163,10 +2245,10 @@
             });
 
             // localStorage-dan saxlanılmış dili oxu və tətbiq et (default: az)
+            // AZ üçün də applyLanguage çağırılır ki, dinamik render edilmiş kartlar (whyHelp, impact, bank "Alan:")
+            // və copy düymələri default mətnlərini düzgün alsın
             const savedLang = localStorage.getItem('yusif-lang') || 'az';
-            if (savedLang !== 'az') {
-                applyLanguage(savedLang);
-            }
+            applyLanguage(savedLang);
         });
 
 
