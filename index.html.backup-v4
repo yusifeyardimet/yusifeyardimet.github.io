@@ -1830,93 +1830,66 @@
             justify-content: center;
         }
 
-        /* Web Share API primary action — big gold gradient with pulse */
-        .transfer-guide-share-btn {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            width: 100%;
-            padding: 16px 22px;
-            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-dark) 100%);
-            color: white;
-            border: none;
-            border-radius: var(--radius-md);
-            font-family: 'Inter', sans-serif;
-            cursor: pointer;
-            text-align: left;
-            margin-bottom: 6px;
-            box-shadow: 0 6px 18px rgba(201, 169, 97, 0.35);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            animation: shareBtnPulse 2.4s ease-in-out infinite;
-            will-change: transform, box-shadow;
+        .transfer-guide-apps {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
         }
 
-        .transfer-guide-share-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 24px rgba(201, 169, 97, 0.45);
-            animation-play-state: paused;
-        }
-
-        .transfer-guide-share-btn:active {
-            transform: translateY(0);
-        }
-
-        .transfer-guide-share-btn:focus-visible {
-            outline: 3px solid var(--accent-gold);
-            outline-offset: 3px;
-        }
-
-        .transfer-guide-share-icon {
-            font-size: 26px;
-            flex-shrink: 0;
-            line-height: 1;
-        }
-
-        .transfer-guide-share-label {
-            flex: 1;
+        .transfer-guide-app {
             display: flex;
             flex-direction: column;
-            gap: 2px;
-            min-width: 0;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 10px;
+            background: var(--bg-warm);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            border: 1px solid transparent;
+            transition: background 0.2s ease, border-color 0.2s ease;
+            text-decoration: none;
         }
 
-        .transfer-guide-share-main {
-            font-size: 17px;
-            font-weight: 700;
-            line-height: 1.2;
+        .transfer-guide-app:hover {
+            background: rgba(201, 169, 97, 0.12);
+            border-color: var(--accent-gold);
         }
 
-        .transfer-guide-share-sub {
-            font-size: 12px;
-            font-weight: 500;
-            opacity: 0.92;
-            line-height: 1.3;
-        }
-
-        @keyframes shareBtnPulse {
-            0%, 100% { box-shadow: 0 6px 18px rgba(201, 169, 97, 0.35); }
-            50%      { box-shadow: 0 6px 22px rgba(201, 169, 97, 0.55), 0 0 0 6px rgba(201, 169, 97, 0.10); }
-        }
-
-        /* "── və ya ──" divider between share and manual instructions */
-        .transfer-guide-divider {
+        .transfer-guide-app-logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
-            gap: 14px;
-            margin: 14px 0 20px;
-            color: var(--text-muted);
-            font-size: 13px;
-            font-weight: 500;
-            text-transform: lowercase;
-            letter-spacing: 0.5px;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
         }
 
-        .transfer-guide-divider::before,
-        .transfer-guide-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: rgba(0, 0, 0, 0.10);
+        .transfer-guide-app-logo.m10     { background: linear-gradient(135deg, #1a1a1a, #333); }
+        .transfer-guide-app-logo.kapital { background: linear-gradient(135deg, #c91c39, #8b1428); }
+        .transfer-guide-app-logo.leobank { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+        .transfer-guide-app-logo.abb     { background: linear-gradient(135deg, #047857, #064e3b); }
+
+        .transfer-guide-app-name {
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .transfer-guide-app-download {
+            font-size: 11px;
+            color: var(--accent-warm);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .transfer-guide-footer {
@@ -1963,21 +1936,17 @@
             .transfer-guide-section-title { font-size: 14px; }
             .transfer-guide-steps li { font-size: 14px; gap: 12px; padding: 8px 0; }
             .transfer-guide-steps li::before { width: 26px; height: 26px; font-size: 13px; }
-            .transfer-guide-share-btn { padding: 14px 18px; gap: 12px; margin-bottom: 4px; }
-            .transfer-guide-share-icon { font-size: 22px; }
-            .transfer-guide-share-main { font-size: 15px; }
-            .transfer-guide-share-sub { font-size: 11px; }
-            .transfer-guide-divider { margin: 12px 0 16px; font-size: 12px; }
+            .transfer-guide-app { padding: 12px 8px; }
+            .transfer-guide-app-logo { width: 34px; height: 34px; font-size: 14px; }
+            .transfer-guide-app-name { font-size: 12px; }
             .transfer-guide-thanks { font-size: 15px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
             .transfer-guide,
             .transfer-guide-content,
-            .transfer-guide-close,
-            .transfer-guide-share-btn {
+            .transfer-guide-close {
                 transition: none;
-                animation: none;
             }
         }
 
@@ -2234,28 +2203,60 @@
                 <div class="transfer-guide-card-number" id="transferGuideCardNumber" aria-label="Copied card number"></div>
             </div>
 
-            <!-- Web Share API primary action (auto-hidden if not supported) -->
-            <button class="transfer-guide-share-btn" id="transferGuideShareBtn" type="button" hidden
-                    aria-label="Share card details to a bank or messaging app">
-                <span class="transfer-guide-share-icon" aria-hidden="true">🚀</span>
-                <span class="transfer-guide-share-label">
-                    <span class="transfer-guide-share-main" data-i18n="shareButton">Tətbiqlərə Paylaş</span>
-                    <span class="transfer-guide-share-sub" data-i18n="shareSubtext">Birbank, m10, LeoBank və digər tətbiqlər</span>
-                </span>
-            </button>
-
-            <div class="transfer-guide-divider" id="transferGuideDivider" hidden aria-hidden="true">
-                <span data-i18n="transferDivider">və ya</span>
+            <div class="transfer-guide-section">
+                <div class="transfer-guide-section-title">
+                    💳 <span data-i18n="transferHowTitle">Necə köçürmək?</span>
+                </div>
+                <ol class="transfer-guide-steps">
+                    <li data-i18n="transferStep1">Bank tətbiqinizi açın</li>
+                    <li data-i18n="transferStep2">Köçürmə / Pul göndər seçin</li>
+                    <li data-i18n="transferStep3">Kart nömrəsi sahəsinə yapışdırın (basıb saxlayın → Yapışdır)</li>
+                    <li data-i18n="transferStep4">Məbləği yazın və göndərin</li>
+                </ol>
             </div>
 
             <div class="transfer-guide-section">
-                <div class="transfer-guide-section-title" data-i18n="manualTitle">💳 Əl ilə köçürmək:</div>
-                <ol class="transfer-guide-steps">
-                    <li data-i18n="transferStep1">Bank tətbiqini açın</li>
-                    <li data-i18n="transferStep2">Köçürmə bölməsinə girin</li>
-                    <li data-i18n="transferStep3">Kart nömrəsi sahəsində basıb saxlayın və Yapışdırın</li>
-                    <li data-i18n="transferStep4">Məbləği yazın və göndərin</li>
-                </ol>
+                <div class="transfer-guide-section-title">
+                    📱 <span data-i18n="transferNoAppTitle">Tətbiqim yoxdur</span>
+                </div>
+                <div class="transfer-guide-apps">
+                    <a class="transfer-guide-app"
+                       data-ios="https://apps.apple.com/az/app/m10-mobile-cüzdan/id1473023153"
+                       data-android="https://play.google.com/store/apps/details?id=az.azericard.m10"
+                       href="https://play.google.com/store/apps/details?id=az.azericard.m10"
+                       target="_blank" rel="noopener noreferrer">
+                        <span class="transfer-guide-app-logo m10" aria-hidden="true">m10</span>
+                        <span class="transfer-guide-app-name">m10</span>
+                        <span class="transfer-guide-app-download">↓ <span data-i18n="transferDownload">Endir</span></span>
+                    </a>
+                    <a class="transfer-guide-app"
+                       data-ios="https://apps.apple.com/az/app/birbank/id1486177830"
+                       data-android="https://play.google.com/store/apps/details?id=az.kapitalbank.android"
+                       href="https://play.google.com/store/apps/details?id=az.kapitalbank.android"
+                       target="_blank" rel="noopener noreferrer">
+                        <span class="transfer-guide-app-logo kapital" aria-hidden="true">K</span>
+                        <span class="transfer-guide-app-name">Kapital Bank</span>
+                        <span class="transfer-guide-app-download">↓ <span data-i18n="transferDownload">Endir</span></span>
+                    </a>
+                    <a class="transfer-guide-app"
+                       data-ios="https://apps.apple.com/az/app/leobank/id1530924900"
+                       data-android="https://play.google.com/store/apps/details?id=az.leobank.mobile"
+                       href="https://play.google.com/store/apps/details?id=az.leobank.mobile"
+                       target="_blank" rel="noopener noreferrer">
+                        <span class="transfer-guide-app-logo leobank" aria-hidden="true">L</span>
+                        <span class="transfer-guide-app-name">LeoBank</span>
+                        <span class="transfer-guide-app-download">↓ <span data-i18n="transferDownload">Endir</span></span>
+                    </a>
+                    <a class="transfer-guide-app"
+                       data-ios="https://apps.apple.com/az/app/abb-mobile/id1437299935"
+                       data-android="https://play.google.com/store/apps/details?id=com.ibavi.abbmobile"
+                       href="https://play.google.com/store/apps/details?id=com.ibavi.abbmobile"
+                       target="_blank" rel="noopener noreferrer">
+                        <span class="transfer-guide-app-logo abb" aria-hidden="true">A</span>
+                        <span class="transfer-guide-app-name">ABB Mobile</span>
+                        <span class="transfer-guide-app-download">↓ <span data-i18n="transferDownload">Endir</span></span>
+                    </a>
+                </div>
             </div>
 
             <div class="transfer-guide-footer">
@@ -2335,14 +2336,13 @@
                 copiedToast: "Kart nömrəsi kopyalandı",
                 selectedToast: "Nömrə seçildi - basıb saxlayın",
                 transferTitle: "Kart nömrəsi kopyalandı!",
-                shareButton: "Tətbiqlərə Paylaş",
-                shareSubtext: "Birbank, m10, LeoBank və digər tətbiqlər",
-                transferDivider: "və ya",
-                manualTitle: "💳 Əl ilə köçürmək:",
-                transferStep1: "Bank tətbiqini açın",
-                transferStep2: "Köçürmə bölməsinə girin",
-                transferStep3: "Kart nömrəsi sahəsində basıb saxlayın və Yapışdırın",
+                transferHowTitle: "Necə köçürmək?",
+                transferStep1: "Bank tətbiqinizi açın",
+                transferStep2: "Köçürmə / Pul göndər seçin",
+                transferStep3: "Kart nömrəsi sahəsinə yapışdırın (basıb saxlayın → Yapışdır)",
                 transferStep4: "Məbləği yazın və göndərin",
+                transferNoAppTitle: "Tətbiqim yoxdur",
+                transferDownload: "Endir",
                 transferThanks: "💛 Allah razı olsun!",
                 transferCloseBtn: "Bağla",
                 whatsappBtn: "Ana ilə əlaqə (WhatsApp)",
@@ -2403,14 +2403,13 @@
                 copiedToast: "Номер карты скопирован",
                 selectedToast: "Номер выделен — удержите для копирования",
                 transferTitle: "Номер карты скопирован!",
-                shareButton: "Поделиться с приложением",
-                shareSubtext: "Birbank, m10, LeoBank и другие приложения",
-                transferDivider: "или",
-                manualTitle: "💳 Перевод вручную:",
+                transferHowTitle: "Как перевести?",
                 transferStep1: "Откройте банковское приложение",
-                transferStep2: "Перейдите в раздел «Перевод»",
-                transferStep3: "Нажмите и удерживайте поле номера карты → Вставить",
+                transferStep2: "Выберите «Перевод / Отправить деньги»",
+                transferStep3: "Вставьте номер карты в поле (нажмите и удерживайте → Вставить)",
                 transferStep4: "Введите сумму и отправьте",
+                transferNoAppTitle: "Нет приложения?",
+                transferDownload: "Скачать",
                 transferThanks: "💛 Спасибо за помощь!",
                 transferCloseBtn: "Закрыть",
                 whatsappBtn: "Связаться с мамой (WhatsApp)",
@@ -2471,14 +2470,13 @@
                 copiedToast: "Card number copied",
                 selectedToast: "Number selected — hold to copy",
                 transferTitle: "Card number copied!",
-                shareButton: "Share to App",
-                shareSubtext: "Birbank, m10, LeoBank and other apps",
-                transferDivider: "or",
-                manualTitle: "💳 Manual transfer:",
+                transferHowTitle: "How to transfer?",
                 transferStep1: "Open your banking app",
-                transferStep2: "Go to Transfer section",
-                transferStep3: "Long-press the card number field → Paste",
+                transferStep2: "Select 'Transfer / Send Money'",
+                transferStep3: "Paste card number in the field (long-press → Paste)",
                 transferStep4: "Enter amount and send",
+                transferNoAppTitle: "Don't have an app?",
+                transferDownload: "Download",
                 transferThanks: "💛 Thank you for your support!",
                 transferCloseBtn: "Close",
                 whatsappBtn: "Contact mother (WhatsApp)",
@@ -2641,13 +2639,9 @@
             const cardNumber = button.dataset.card;
             const t = TRANSLATIONS[currentLang];
 
-            // Find bank name + visible number element in the same .bank-card
+            // Visually highlight the card number (extra feedback)
             const card = button.closest('.bank-card');
             const numberEl = card ? card.querySelector('.bank-number') : null;
-            const bankNameEl = card ? card.querySelector('.bank-name') : null;
-            const bankName = bankNameEl ? bankNameEl.textContent.trim() : '';
-
-            // Visually highlight the card number (extra feedback)
             if (numberEl) {
                 const range = document.createRange();
                 range.selectNodeContents(numberEl);
@@ -2678,11 +2672,11 @@
 
             showToast(t.copiedToast);
 
-            // Open the transfer guide modal ~600ms after the toast appears.
-            // The bank name is passed so the Web Share API payload can
-            // include it, and so we can attribute the share event by bank.
+            // Open the transfer guide modal ~600ms after the toast appears,
+            // giving the toast a moment to register visually first. The
+            // copied card number is shown inside the modal as confirmation.
             setTimeout(() => {
-                if (typeof openTransferGuide === 'function') openTransferGuide(cardNumber, bankName);
+                if (typeof openTransferGuide === 'function') openTransferGuide(cardNumber);
             }, 600);
 
             setTimeout(() => {
@@ -2796,65 +2790,25 @@
         }
 
         // ═══════════════════════════════════════════════════════════
-        // TRANSFER GUIDE MODAL (Web Share API + manual instructions)
+        // TRANSFER GUIDE MODAL
         //
-        // Opens after a card is copied. Primary action uses navigator.share()
-        // to bring up the OS-native share sheet — every installed app appears:
-        // Birbank, m10, LeoBank, ABB, WhatsApp, Telegram, etc. This is the
-        // standard, reliable approach. URI-scheme deep linking is gone.
-        //
-        // If Web Share API is unavailable (e.g. desktop Firefox), the share
-        // button hides and only the manual instructions are shown.
-        //
-        // Back-gesture support uses the same History API pattern as Lightbox.
+        // Opens after a card is copied. Shows clear, app-agnostic transfer
+        // instructions plus optional download cards for local banking apps.
+        // No deep-link guessing — App Store / Play Store routing only when
+        // user explicitly taps a download card. Mirrors the lightbox History
+        // API pattern so the OS back gesture closes the modal.
         // ═══════════════════════════════════════════════════════════
-        let openTransferGuide = (cardNumber, bankName) => {}; // assigned by setupTransferGuide
-
-        async function shareCardForTransfer(cardNumber, bankName) {
-            const shareData = {
-                title: 'Yusifə yardım — Kart nömrəsi',
-                text: `Kart nömrəsi: ${cardNumber}\nBank: ${bankName}\nKart sahibi: Osmanova Gülər Mehman qızı`
-            };
-            try {
-                if (navigator.share && (!navigator.canShare || navigator.canShare(shareData))) {
-                    await navigator.share(shareData);
-                    // Successful share — track which bank was selected
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'Share', {
-                            content_name: bankName,
-                            content_category: 'Donation',
-                            content_ids: [cardNumber.substring(0, 4)]
-                        });
-                    }
-                }
-                // If unsupported we silently no-op — the manual instructions
-                // below the (hidden) share button already cover that case.
-            } catch (err) {
-                // AbortError = user cancelled the share sheet. Treat as normal,
-                // do not surface a "share failed" message.
-            }
-        }
+        let openTransferGuide = (cardNumber) => {}; // assigned by setupTransferGuide
 
         function setupTransferGuide() {
             const modal = document.getElementById('transferGuide');
             const closeX = document.getElementById('transferGuideCloseX');
             const closeBtn = document.getElementById('transferGuideCloseBtn');
             const cardNumberEl = document.getElementById('transferGuideCardNumber');
-            const shareBtn = document.getElementById('transferGuideShareBtn');
-            const divider = document.getElementById('transferGuideDivider');
             if (!modal || !closeX || !closeBtn) return;
             let isOpen = false;
-            let currentCard = { number: '', bank: '' };
 
-            // Feature-detect Web Share API. Show button only when supported.
-            const supportsShare = !!(navigator.share);
-            if (supportsShare && shareBtn && divider) {
-                shareBtn.hidden = false;
-                divider.hidden = false;
-            }
-
-            const open = (cardNumber, bankName) => {
-                currentCard = { number: cardNumber || '', bank: bankName || '' };
+            const open = (cardNumber) => {
                 if (cardNumberEl && cardNumber) {
                     cardNumberEl.textContent = cardNumber;
                 }
@@ -2864,13 +2818,8 @@
                     isOpen = true;
                     history.pushState({ yusifTransferGuide: true }, '');
                 }
-                // Move focus to share button (if visible) or close button
-                setTimeout(() => {
-                    try {
-                        const focusTarget = supportsShare && shareBtn ? shareBtn : closeBtn;
-                        focusTarget.focus();
-                    } catch (e) {}
-                }, 100);
+                // Move focus to the close button for accessibility
+                setTimeout(() => { try { closeBtn.focus(); } catch (e) {} }, 100);
             };
 
             const requestClose = () => {
@@ -2900,14 +2849,22 @@
                 if (isOpen) finalize();
             });
 
-            // Primary action: invoke native share sheet with copied card details
-            if (shareBtn) {
-                shareBtn.addEventListener('click', () => {
-                    shareCardForTransfer(currentCard.number, currentCard.bank);
+            // Smart store routing: pick iOS / Android / fallback link per device.
+            // Only triggers when the user explicitly taps a download card.
+            modal.querySelectorAll('.transfer-guide-app').forEach(item => {
+                item.addEventListener('click', () => {
+                    const ua = navigator.userAgent;
+                    let url = item.dataset.android || item.href;
+                    if (/iPhone|iPad|iPod/i.test(ua) && item.dataset.ios) {
+                        url = item.dataset.ios;
+                    } else if (/Android/i.test(ua) && item.dataset.android) {
+                        url = item.dataset.android;
+                    }
+                    item.setAttribute('href', url);
                 });
-            }
+            });
 
-            // Expose open() so copyCardNumber can trigger it
+            // Expose open() so copyCardNumber can trigger it with the copied number
             openTransferGuide = open;
         }
 
