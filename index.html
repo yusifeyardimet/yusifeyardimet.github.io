@@ -2163,9 +2163,13 @@
         // ═══════════════════════════════════════════════════════════
         // DATE — Show today's date in current language
         // ═══════════════════════════════════════════════════════════
+        // Son yenilənmə tarixi — sayta yenilik etdikdə yalnız bu sabiti yeniləyin.
+        // Format: YYYY-MM-DD (ISO 8601). T00:00:00 timezone shift-in qarşısını alır.
+        const LAST_UPDATED = '2026-05-15';
+
         function updateLastUpdatedDate() {
             const t = TRANSLATIONS[currentLang];
-            const d = new Date();
+            const d = new Date(LAST_UPDATED + 'T00:00:00');
             const dateStr = `${d.getDate()} ${t.monthNames[d.getMonth()]} ${d.getFullYear()}`;
             const el = document.getElementById('lastUpdatedDate');
             if (el) el.textContent = dateStr;
