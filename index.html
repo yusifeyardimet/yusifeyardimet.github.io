@@ -1695,6 +1695,7 @@
                     <button class="lang-btn active" data-lang="az" type="button">AZ</button>
                     <button class="lang-btn" data-lang="ru" type="button">RU</button>
                     <button class="lang-btn" data-lang="en" type="button">EN</button>
+                    <button class="lang-btn" data-lang="tr" type="button">TR</button>
                 </div>
                 <a href="#donation" class="btn-cta" data-i18n="navCta">Kömək et</a>
             </div>
@@ -1706,6 +1707,7 @@
                 <button class="lang-btn active" data-lang="az" type="button">AZ</button>
                 <button class="lang-btn" data-lang="ru" type="button">RU</button>
                 <button class="lang-btn" data-lang="en" type="button">EN</button>
+                <button class="lang-btn" data-lang="tr" type="button">TR</button>
             </div>
             <a href="#donation" class="btn-cta" data-i18n="navCta">Kömək et</a>
         </div>
@@ -2113,6 +2115,62 @@
                 floatingBtn: "Bank Cards",
 
                 monthNames: ["January","February","March","April","May","June","July","August","September","October","November","December"]
+            },
+            tr: {
+                navCta: "Yardım Et",
+                lastUpdated: "Son güncelleme",
+                heroSubtitle: "11 yaşında. Şu an kan kanseri ile mücadele ediyor. Bu mücadelede yalnız değil — sen de yanında olabilirsin.",
+                heroCta: "Yardım Et",
+                scrollHint: "AŞAĞI",
+                scrollIndicatorText: "Yusif'in hikâyesini oku",
+                whatsappTooltip: "Anneye yaz - Gülər 💛",
+
+                storyTitle: "Yusif'in hikâyesi",
+                storyLead: "\"Ben Gülər. Yusif'in annesiyim.\"",
+                storyP1: "Bir anne olarak bu sözleri yazmak benim için çok ağır. Ama çocuğumun hayatı için yardım istemekten başka çarem kalmadı.",
+                storyP2: "Oğlum <strong>Yusif 11 yaşında</strong> ve 2023 yılından beri kan kanseri ile mücadele ediyor. Kemik iliği nakli oldu, ama şu an GVHD ile savaşıyor.",
+                storyP3: "<strong>Doktorlar diyor ki: tedavi kesintisiz devam etmelidir.</strong> Yarıda kalırsa, oğlumun hayatı tehlikededir.",
+                storyP4: "Babası gündelikçi olarak çalışıyor, ben evlerde temizliğe gidiyorum. Tüm imkânlarımız tükendi. Sizden yardım diliyoruz.",
+                storySignature: "— Gülər, Yusif'in annesi",
+
+                impactTitle: "Bir bağışın gerçek gücü",
+                impactSubtitle: "Her manat Yusif'in tedavisine doğrudan etki eder",
+                impact1: "1 doz ilaç",
+                impact2: "Bir tahlil veya muayene",
+                impact3: "Hastane masraflarının bir kısmı",
+                impact4: "Bir haftalık tedavi paketi",
+
+                galleryTitle: "Yusif'in gözünden",
+                gallerySubtitle: "Hastanede geçen günler",
+                galleryCaption1: "Yusif — tedavi günlerinde",
+                galleryCaption2: "Yusif — hastanede",
+                galleryCaption3: "Yusif — umutla",
+
+                docsTitle: "Şeffaflık ve gerçek",
+                docsSubtitle: "Tüm bilgiler gerçek ve doğrulanmıştır",
+                doc1Title: "Medical Park — Tıbbi belge",
+                doc2Title: "Milli Hematoloji Merkezi — Epikriz",
+                verified: "✓ Doğrulandı",
+
+                donationTitle: "Banka Kartları",
+                donationSubtitle: "Her manat Yusif'in hayatı için bir adımdır",
+                cardHolderLabel: "Kart sahibi:",
+                copyBtn: "Kopyala",
+                copiedToast: "Kart numarası kopyalandı",
+                whatsappBtn: "Anneyle iletişim (WhatsApp)",
+
+                shareTitle: "Yardım paylaşımla başlar",
+                shareSubtitle: "Her paylaşım Yusif'in yaşama şansını artırır",
+                shareText: "Yusif'e destek olalım — 11 yaşında bir çocuk kanserle mücadele ediyor. Yardıma ihtiyacı var 💛",
+                instagramAlert: "Bağlantı kopyalandı! Şimdi Instagram hikâyesinde paylaşabilirsiniz 📷",
+
+                footerQuote: "Allah yardım eden herkesten razı olsun 🤲",
+                footerContact: "📞 070 660 58 89 &nbsp;|&nbsp; 📍 Bakü, Yeni Ramana, Karabağ sokağı 104, daire 28",
+                footerCopyright: "Yusif'e destek",
+
+                floatingBtn: "Banka Kartları",
+
+                monthNames: ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"]
             }
         };
 
@@ -2120,7 +2178,7 @@
         // STATE
         // ═══════════════════════════════════════════════════════════
         let currentLang = localStorage.getItem('yusif-lang') || 'az';
-        if (!['az', 'ru', 'en'].includes(currentLang)) currentLang = 'az';
+        if (!['az', 'ru', 'en', 'tr'].includes(currentLang)) currentLang = 'az';
 
         // ═══════════════════════════════════════════════════════════
         // LANGUAGE APPLICATION
