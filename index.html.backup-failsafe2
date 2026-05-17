@@ -4,13 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- FAILSAFE: tag <html> as "js" before the stylesheet parses, so the
-         hidden-state rule (scoped to html.js .reveal:not(.visible)) only
-         applies when JS is actually executing. If this script ever fails
-         (no-JS, ad-blockers, hostile WebViews), .reveal elements render
-         visible by default and nothing stays blank. -->
-    <script>document.documentElement.classList.add('js');</script>
-
     <!-- SEO Meta Tags -->
     <meta name="description" content="11 yaşlı Yusif qan xərçəngi (kəskin limfoblast leykemiya - ALL) ilə mübarizə aparır. Müalicəsi üçün ailəsinə dəstək olun. Bir ananın fəryadı.">
     <meta name="keywords" content="Yusif, xeyriyyə, qan xərçəngi, leykemiya, ALL, uşaq xərçəngi, dəstək, kömək, yardım, ilik transplantasiyası, GVHD, Bakı, Azərbaycan, sədəqə">
@@ -237,13 +230,7 @@
         /* ============================================
            Scroll Animations
            ============================================ */
-        /* FAILSAFE: only hide reveal elements while JS is active AND not yet
-           revealed. The :not(.visible) qualifier means as soon as JS adds
-           .visible (via IntersectionObserver, the 2s timeout, or the
-           first-scroll fallback) the rule stops matching — no specificity
-           war with .reveal.visible below. If JS never runs, html.js is
-           absent, rule never matches, content is visible by default. */
-        html.js .reveal:not(.visible) {
+        .reveal {
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 0.8s ease, transform 0.8s ease;
@@ -2271,7 +2258,7 @@
             grid.querySelectorAll('.bank-copy-btn').forEach(btn => {
                 btn.addEventListener('click', () => copyCardNumber(btn));
             });
-            grid.querySelectorAll('.reveal').forEach(reveal);
+            grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
         }
 
         // ═══════════════════════════════════════════════════════════
@@ -2524,31 +2511,19 @@
         }
 
         // ═══════════════════════════════════════════════════════════
-        // SCROLL ANIMATIONS (Intersection Observer + WebView failsafes)
-        //
-        // Layer 2: feature-detect IntersectionObserver. Older or stripped
-        // in-app WebViews may not expose it — in that case skip the
-        // observer entirely and reveal every .reveal element immediately.
+        // SCROLL ANIMATIONS (Intersection Observer)
         // ═══════════════════════════════════════════════════════════
-        const supportsIO = ('IntersectionObserver' in window);
-        const revealObserver = supportsIO ? new IntersectionObserver((entries) => {
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     revealObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }) : null;
-
-        // Single reveal entry-point used everywhere (incl. dynamically
-        // rendered cards). Observes when possible, else reveals immediately.
-        function reveal(el) {
-            if (revealObserver) revealObserver.observe(el);
-            else el.classList.add('visible');
-        }
+        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
         function observeReveals() {
-            document.querySelectorAll('.reveal').forEach(reveal);
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
         }
 
         // ═══════════════════════════════════════════════════════════
@@ -2652,26 +2627,6 @@
             setupFloatingWhatsapp();
             observeReveals();
             applyLanguage(currentLang);
-
-            // Layer 3: 2s hard timeout. On normal browsers IO has already
-            // revealed visible elements — this is a no-op. On in-app
-            // WebViews where IO fires unreliably, this is the safety net.
-            setTimeout(() => {
-                document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
-                    el.classList.add('visible');
-                });
-            }, 2000);
-
-            // Layer 4: first-scroll catch-all. Some WebViews miss IO
-            // callbacks but still fire scroll on user input.
-            let revealedOnScroll = false;
-            window.addEventListener('scroll', () => {
-                if (revealedOnScroll) return;
-                revealedOnScroll = true;
-                document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
-                    el.classList.add('visible');
-                });
-            }, { passive: true, once: true });
         });
     </script>
 </body>
