@@ -4,11 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- FAILSAFE: mark <html> as "js" before stylesheet parses. The hidden
-         state for .reveal is scoped to html.js, so if JS fails entirely
-         (in-app browsers, errors, etc.) all content stays visible. -->
-    <script>document.documentElement.classList.add('js');</script>
-
     <!-- SEO Meta Tags -->
     <meta name="description" content="11 yaşlı Yusif qan xərçəngi (kəskin limfoblast leykemiya - ALL) ilə mübarizə aparır. Müalicəsi üçün ailəsinə dəstək olun. Bir ananın fəryadı.">
     <meta name="keywords" content="Yusif, xeyriyyə, qan xərçəngi, leykemiya, ALL, uşaq xərçəngi, dəstək, kömək, yardım, ilik transplantasiyası, GVHD, Bakı, Azərbaycan, sədəqə">
@@ -235,10 +230,7 @@
         /* ============================================
            Scroll Animations
            ============================================ */
-        /* FAILSAFE: hide-then-reveal only activates when JS marks <html> as "js".
-           If the early classifier script doesn't run (no-JS, ad-blocker stripped
-           inline scripts, etc.), every .reveal element renders fully visible. */
-        html.js .reveal {
+        .reveal {
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 0.8s ease, transform 0.8s ease;
@@ -2266,7 +2258,7 @@
             grid.querySelectorAll('.bank-copy-btn').forEach(btn => {
                 btn.addEventListener('click', () => copyCardNumber(btn));
             });
-            grid.querySelectorAll('.reveal').forEach(reveal);
+            grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
         }
 
         // ═══════════════════════════════════════════════════════════
@@ -2520,31 +2512,18 @@
 
         // ═══════════════════════════════════════════════════════════
         // SCROLL ANIMATIONS (Intersection Observer)
-        //
-        // FAILSAFE Layer 2: feature-detect IntersectionObserver. Older
-        // in-app WebViews may not expose it — in that case we skip the
-        // observer entirely and reveal every .reveal element on contact.
         // ═══════════════════════════════════════════════════════════
-        const supportsIO = ('IntersectionObserver' in window);
-        const revealObserver = supportsIO ? new IntersectionObserver((entries) => {
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     revealObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }) : null;
-
-        // Single entry-point: observe if we can, otherwise just reveal it.
-        // Used everywhere reveal elements appear (including dynamic ones in
-        // renderDonationCards) so the fallback path is always covered.
-        function reveal(el) {
-            if (revealObserver) revealObserver.observe(el);
-            else el.classList.add('visible');
-        }
+        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
         function observeReveals() {
-            document.querySelectorAll('.reveal').forEach(reveal);
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
         }
 
         // ═══════════════════════════════════════════════════════════
@@ -2648,35 +2627,6 @@
             setupFloatingWhatsapp();
             observeReveals();
             applyLanguage(currentLang);
-
-            // ═══════════════════════════════════════════════════════════
-            // FAILSAFE Layer 3: hard timeout
-            // 2 seconds after DOMContentLoaded, force-reveal anything still
-            // hidden. On normal browsers the observer has already fired by
-            // then — this is a no-op. On TikTok / Facebook / Instagram
-            // WebViews where IntersectionObserver fires unreliably, this
-            // is what guarantees the page is fully visible.
-            // ═══════════════════════════════════════════════════════════
-            setTimeout(() => {
-                document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
-                    el.classList.add('visible');
-                });
-            }, 2000);
-
-            // ═══════════════════════════════════════════════════════════
-            // FAILSAFE Layer 4: first-scroll reveal
-            // Some in-app browsers don't fire scroll events to IO callbacks
-            // either. The first user-initiated scroll reveals everything
-            // outstanding. {once: true} auto-detaches after first fire.
-            // ═══════════════════════════════════════════════════════════
-            let revealedOnScroll = false;
-            window.addEventListener('scroll', () => {
-                if (revealedOnScroll) return;
-                revealedOnScroll = true;
-                document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
-                    el.classList.add('visible');
-                });
-            }, { passive: true, once: true });
         });
     </script>
 </body>
