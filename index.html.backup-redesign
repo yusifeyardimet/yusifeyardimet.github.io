@@ -89,8 +89,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" href="yusif-main.jpg">
 
-    <!-- Fonts: Fraunces (serif display, incl. italics) + Inter (sans-serif) -->
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Fonts: Playfair Display (serif) + Inter (sans-serif) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Meta Pixel Code (Pixel ID: 1388202686387085) -->
     <script>
@@ -125,40 +125,39 @@
 
     <style>
         /* ============================================
-           DESIGN SYSTEM — "İsti Editorial" (v2 redesign)
-           Warm light editorial: cream bg, terracotta/amber
-           accents, Fraunces serif display + Inter body.
+           DESIGN SYSTEM - Variables
            ============================================ */
         :root {
-            --bg-primary: #FBF7F1;
+            --bg-primary: #FFFAF5;
             --bg-elevated: #FFFFFF;
-            --bg-deep: #2B2118;
-            --terra: #C4552C;
-            --terra-dark: #A8441F;
-            --amber: #E8A33D;
-            --sage: #7A8B6F;
-            --text-primary: #241C13;
-            --text-secondary: #6E6155;
-            --text-muted: #A3968A;
-            --line: #EAE1D5;
+            --bg-warm: #F5EFE6;
+            --accent-gold: #C9A961;
+            --accent-gold-dark: #A88A4A;
+            --accent-warm: #8B5A2B;
+            --text-primary: #2C2416;
+            --text-secondary: #6B5D4F;
+            --text-muted: #9B8B7A;
             --urgent: #E63946;
             --success: #4CAF50;
             --whatsapp: #25D366;
             --facebook: #1877F2;
 
-            --shadow-sm: 0 2px 10px rgba(43, 33, 24, 0.06);
-            --shadow-md: 0 10px 26px rgba(43, 33, 24, 0.09);
-            --shadow-lg: 0 18px 44px rgba(43, 33, 24, 0.14);
-            --shadow-xl: 0 24px 60px rgba(43, 33, 24, 0.18);
+            --shadow-sm: 0 2px 8px rgba(44, 36, 22, 0.06);
+            --shadow-md: 0 8px 24px rgba(44, 36, 22, 0.10);
+            --shadow-lg: 0 16px 48px rgba(44, 36, 22, 0.15);
+            --shadow-xl: 0 24px 64px rgba(44, 36, 22, 0.20);
 
-            --radius-sm: 10px;
-            --radius-md: 18px;
-            --radius-lg: 26px;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
 
-            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
-            --container: 1080px;
-            --section-pad-y: 96px;
+            --container: 1200px;
+            --section-pad-y: 120px;
+            --section-pad-y-mobile: 60px;
         }
 
         /* ============================================
@@ -179,7 +178,7 @@
         body {
             font-family: 'Inter', system-ui, sans-serif;
             font-weight: 400;
-            font-size: 17px;
+            font-size: 18px;
             line-height: 1.7;
             color: var(--text-primary);
             background: var(--bg-primary);
@@ -193,9 +192,9 @@
         }
 
         /* Allow text selection on readable content (manual copy, translation) */
-        .hero-title, .hero-subtitle, .hero-note,
+        .hero-title, .hero-subtitle,
         .section-title, .section-subtitle,
-        .story-text, .story-text p, .story-text strong, .story-signature, .story-lead,
+        .story-text, .story-text p, .story-text strong, .story-signature,
         .impact-amount, .impact-description,
         .gallery-caption,
         .doc-title,
@@ -230,9 +229,9 @@
             padding: 0 24px;
         }
 
-        /* Typography utility */
+        /* Typography utility classes */
         .serif {
-            font-family: 'Fraunces', Georgia, serif;
+            font-family: 'Playfair Display', Georgia, serif;
         }
 
         /* ============================================
@@ -275,11 +274,11 @@
         }
 
         .nav.scrolled {
-            background: rgba(251, 247, 241, 0.92);
+            background: rgba(255, 250, 245, 0.95);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--line);
-            padding: 12px 0;
+            box-shadow: var(--shadow-sm);
+            padding: 14px 0;
         }
 
         .nav-inner {
@@ -292,12 +291,16 @@
         }
 
         .nav-logo {
-            font-family: 'Fraunces', Georgia, serif;
-            font-style: italic;
-            font-size: 26px;
-            font-weight: 600;
-            color: var(--text-primary);
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
             letter-spacing: -0.5px;
+            transition: var(--transition);
+        }
+
+        .nav.scrolled .nav-logo {
+            color: var(--text-primary);
         }
 
         .nav-right {
@@ -309,243 +312,194 @@
         /* Language Switcher */
         .lang-switcher {
             display: flex;
-            gap: 2px;
-            background: rgba(43, 33, 24, 0.05);
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 4px;
             border-radius: 999px;
             transition: var(--transition);
         }
 
+        .nav.scrolled .lang-switcher {
+            background: var(--bg-warm);
+        }
+
         .lang-btn {
-            padding: 6px 11px;
+            padding: 6px 12px;
             border-radius: 999px;
             font-size: 13px;
-            font-weight: 500;
-            color: var(--text-secondary);
+            font-weight: 600;
+            color: white;
             transition: var(--transition);
+        }
+
+        .nav.scrolled .lang-btn {
+            color: var(--text-secondary);
         }
 
         .lang-btn.active {
-            background: var(--text-primary);
-            color: var(--bg-primary);
+            background: var(--accent-gold);
+            color: white;
         }
 
-        /* CTA Button (nav + hero + mobile menu) */
-        .btn-cta {
-            background: var(--terra);
+        .nav.scrolled .lang-btn.active {
             color: white;
-            padding: 12px 26px;
+        }
+
+        /* CTA Button */
+        .btn-cta {
+            background: var(--accent-gold);
+            color: white;
+            padding: 12px 28px;
             border-radius: 999px;
             font-weight: 600;
             font-size: 15px;
-            letter-spacing: 0.2px;
+            letter-spacing: 0.3px;
             transition: var(--transition);
-            box-shadow: 0 6px 22px rgba(196, 85, 44, 0.32);
+            box-shadow: 0 4px 20px rgba(201, 169, 97, 0.4);
             display: inline-flex;
             align-items: center;
             gap: 8px;
         }
 
         .btn-cta:hover {
-            background: var(--terra-dark);
+            background: var(--accent-gold-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(196, 85, 44, 0.42);
+            box-shadow: 0 8px 28px rgba(201, 169, 97, 0.5);
         }
 
         .btn-cta:active {
             transform: translateY(0);
         }
 
-        .btn-outline {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border: 1.5px solid var(--text-primary);
-            color: var(--text-primary);
-            padding: 11px 26px;
-            border-radius: 999px;
-            font-weight: 600;
-            font-size: 15px;
-            transition: var(--transition);
-        }
-
-        .btn-outline:hover {
-            background: var(--text-primary);
-            color: var(--bg-primary);
-        }
-
-        /* Mobile menu (vestigial — hamburger hidden, inline lang switcher used) */
+        /* Mobile menu */
         .nav-mobile-toggle {
             display: none;
-        }
-
-        .nav-mobile-menu {
-            display: none;
-        }
-
-        .nav.mobile-open .nav-mobile-menu {
-            display: flex;
-            position: fixed;
-            inset: 0;
-            background: var(--bg-primary);
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 32px;
-            z-index: 99;
-        }
-
-        .nav-mobile-close {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            font-size: 32px;
-            color: var(--text-primary);
-            background: rgba(43, 33, 24, 0.06);
-            width: 48px;
-            height: 48px;
+            color: white;
+            font-size: 24px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px;
             border-radius: 50%;
-            display: flex;
+            width: 44px;
+            height: 44px;
             align-items: center;
             justify-content: center;
+        }
+
+        .nav.scrolled .nav-mobile-toggle {
+            color: var(--text-primary);
+            background: var(--bg-warm);
         }
 
         /* ============================================
-           Hero — light editorial split
+           Hero Section
            ============================================ */
         .hero {
             position: relative;
-            padding: 150px 0 84px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
         }
 
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: 56px;
-            align-items: center;
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-image: url('yusif-main.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            transition: transform 0.5s ease-out;
+            will-change: transform;
         }
 
-        .hero-kicker {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            font-size: 12.5px;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            color: var(--terra);
-            background: rgba(196, 85, 44, 0.09);
-            border: 1px solid rgba(196, 85, 44, 0.25);
-            padding: 7px 14px;
-            border-radius: 999px;
-            margin-bottom: 22px;
-            animation: heroFadeIn 1s ease;
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.2) 0%,
+                rgba(0, 0, 0, 0.3) 40%,
+                rgba(0, 0, 0, 0.7) 80%,
+                rgba(0, 0, 0, 0.9) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 0 24px;
+            max-width: 900px;
         }
 
         .hero-title {
-            font-family: 'Fraunces', Georgia, serif;
-            font-weight: 600;
-            font-size: clamp(38px, 6vw, 62px);
-            line-height: 1.07;
-            letter-spacing: -0.015em;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(56px, 12vw, 140px);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -3px;
             margin-bottom: 20px;
-            animation: heroFadeIn 1s ease 0.1s both;
-        }
-
-        .hero-title em {
-            font-style: italic;
-            color: var(--terra);
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            animation: heroFadeIn 1.2s ease;
         }
 
         .hero-subtitle {
-            font-size: clamp(16px, 2vw, 18.5px);
-            color: var(--text-secondary);
-            max-width: 460px;
-            margin-bottom: 30px;
-            animation: heroFadeIn 1s ease 0.2s both;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(20px, 2.8vw, 30px);
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0;
+            line-height: 1.4;
+            margin-bottom: 48px;
+            opacity: 0.95;
+            text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
+            animation: heroFadeIn 1.2s ease 0.3s both;
         }
 
-        .hero-cta-row {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 32px;
-            animation: heroFadeIn 1s ease 0.3s both;
-        }
-
-        .hero-cta-row .btn-cta {
-            padding: 14px 30px;
-            font-size: 16px;
-            animation: ctaPulse 2.5s ease 2s infinite;
-        }
-
-        .hero-trust {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            font-size: 13px;
-            color: var(--text-secondary);
-            animation: heroFadeIn 1s ease 0.45s both;
-        }
-
-        .hero-trust span {
+        .hero-cta {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 12px;
+            background: var(--accent-gold);
+            color: white;
+            padding: 20px 44px;
+            border-radius: 999px;
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            box-shadow: 0 8px 40px rgba(201, 169, 97, 0.5);
+            animation: heroFadeIn 1.2s ease 0.6s both, ctaPulse 2.5s ease 2s infinite;
         }
 
-        .hero-photo {
-            position: relative;
-            animation: heroFadeIn 1s ease 0.25s both;
+        .hero-cta:hover {
+            background: var(--accent-gold-dark);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 50px rgba(201, 169, 97, 0.6);
+            animation: heroFadeIn 1.2s ease 0.6s both;
         }
 
-        .hero-photo .frame {
-            border-radius: calc(var(--radius-md) + 8px);
-            overflow: hidden;
-            aspect-ratio: 4/5;
-            transform: rotate(1.5deg);
-            box-shadow: var(--shadow-xl);
-            background: var(--bg-elevated);
+        .hero-cta-icon {
+            font-size: 20px;
+            display: inline-block;
+            transition: transform 0.3s ease;
         }
 
-        .hero-photo .frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-photo .tape {
-            position: absolute;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%) rotate(-2deg);
-            width: 110px;
-            height: 30px;
-            background: rgba(232, 163, 61, 0.55);
-            border-radius: 3px;
-            z-index: 2;
-        }
-
-        .hero-note {
-            position: absolute;
-            bottom: -16px;
-            left: -10px;
-            background: var(--bg-elevated);
-            border: 1px solid var(--line);
-            border-radius: 12px;
-            padding: 10px 16px;
-            font-family: 'Fraunces', Georgia, serif;
-            font-style: italic;
-            font-size: 15px;
-            box-shadow: var(--shadow-md);
-            transform: rotate(-1.5deg);
-            z-index: 2;
+        .hero-cta:hover .hero-cta-icon {
+            transform: scale(1.2) rotate(-10deg);
         }
 
         @keyframes heroFadeIn {
             from {
                 opacity: 0;
-                transform: translateY(26px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -555,81 +509,199 @@
 
         @keyframes ctaPulse {
             0%, 100% {
-                box-shadow: 0 6px 22px rgba(196, 85, 44, 0.32);
+                box-shadow: 0 8px 40px rgba(201, 169, 97, 0.5);
             }
             50% {
-                box-shadow: 0 8px 40px rgba(196, 85, 44, 0.55), 0 0 0 12px rgba(196, 85, 44, 0.12);
+                box-shadow: 0 8px 60px rgba(201, 169, 97, 0.8), 0 0 0 12px rgba(201, 169, 97, 0.15);
+            }
+        }
+
+        /* Last updated badge */
+        .last-updated-badge {
+            position: absolute;
+            top: 90px;
+            right: 24px;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 999px;
+            color: white;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: heroFadeIn 1.2s ease 0.9s both;
+        }
+
+        /* Scroll indicator (clickable, hides on scroll) */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: rgba(255, 255, 255, 0.92);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            transition: opacity 0.5s ease, transform 0.3s ease;
+            animation: scrollIndicatorFadeIn 1.2s ease 0.9s both;
+            will-change: opacity, transform;
+        }
+
+        .scroll-indicator:hover,
+        .scroll-indicator:focus-visible {
+            opacity: 1;
+            color: white;
+            transform: translateX(-50%) scale(1.08);
+            outline: none;
+        }
+
+        .scroll-indicator.hidden {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .scroll-indicator.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .scroll-indicator-arrows {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1;
+        }
+
+        .scroll-chevron {
+            display: block;
+            width: 22px;
+            height: 22px;
+            color: white;
+            animation: chevronBounce 1.8s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        .scroll-chevron-2 {
+            margin-top: -11px;
+            animation-delay: 0.2s;
+            opacity: 0.6;
+        }
+
+        .scroll-indicator:hover .scroll-chevron,
+        .scroll-indicator:focus-visible .scroll-chevron {
+            animation-play-state: paused;
+        }
+
+        @keyframes chevronBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        /* Scroll indicator entry — preserves translateX(-50%) for centering */
+        @keyframes scrollIndicatorFadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
             }
         }
 
         /* ============================================
-           Section base
+           Story Section
            ============================================ */
-        section {
+        .story {
             padding: var(--section-pad-y) 0;
-        }
-
-        .rule {
-            width: 52px;
-            height: 3px;
-            background: var(--terra);
-            border-radius: 2px;
-            margin-bottom: 18px;
-        }
-
-        .rule.centered {
-            margin-left: auto;
-            margin-right: auto;
+            background: var(--bg-primary);
         }
 
         .section-title {
-            font-family: 'Fraunces', Georgia, serif;
-            font-size: clamp(28px, 4vw, 40px);
-            font-weight: 600;
-            line-height: 1.12;
-            letter-spacing: -0.01em;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
             color: var(--text-primary);
+            margin-bottom: 24px;
+            text-align: center;
         }
 
         .section-subtitle {
-            font-size: clamp(15px, 1.5vw, 17px);
+            font-size: clamp(16px, 1.5vw, 19px);
             color: var(--text-secondary);
-            max-width: 560px;
-            margin-top: 10px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 64px;
             line-height: 1.7;
         }
 
-        /* ============================================
-           Story Section — editorial band
-           ============================================ */
-        .story {
-            background: var(--bg-elevated);
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 64px;
         }
 
-        .story-inner {
-            max-width: 720px;
-            margin: 0 auto;
+        .story-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            aspect-ratio: 4/5;
         }
 
-        .story-lead {
-            font-family: 'Fraunces', Georgia, serif;
-            font-style: italic;
-            font-size: 26px;
-            line-height: 1.4;
-            color: var(--text-primary);
-            margin: 32px 0 24px;
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .story-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .story-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(201, 169, 97, 0.15), transparent 50%);
+            z-index: 1;
+            pointer-events: none;
         }
 
         .story-text {
-            font-size: 17.5px;
+            font-size: 18px;
             line-height: 1.8;
             color: var(--text-secondary);
         }
 
         .story-text p {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        .story-text .lead {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 28px;
+            line-height: 1.4;
         }
 
         .story-text strong {
@@ -637,199 +709,209 @@
             font-weight: 600;
         }
 
-        .story-photo {
-            float: right;
-            width: 210px;
-            margin: 6px 0 16px 26px;
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-            transform: rotate(2deg);
-            box-shadow: var(--shadow-md);
-        }
-
         .story-signature {
-            margin-top: 26px;
-            font-family: 'Fraunces', Georgia, serif;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 2px solid var(--accent-gold);
             font-style: italic;
-            font-size: 18px;
-            color: var(--text-primary);
+            color: var(--accent-warm);
+            font-weight: 500;
         }
 
         /* ============================================
            Impact Section
            ============================================ */
+        .impact {
+            padding: var(--section-pad-y) 0;
+            background: var(--bg-warm);
+        }
+
         .impact-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            margin-top: 44px;
+            gap: 24px;
+            margin-top: 64px;
         }
 
         .impact-card {
             background: var(--bg-elevated);
-            border: 1px solid var(--line);
             border-radius: var(--radius-md);
-            padding: 28px 20px;
+            padding: 40px 28px;
             text-align: center;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--accent-gold);
+            box-shadow: var(--shadow-sm);
         }
 
-        .impact-emoji {
-            font-size: 30px;
-            display: block;
-            margin-bottom: 10px;
+        .impact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(201, 169, 97, 0.04) 0%, transparent 60%);
+            pointer-events: none;
         }
 
-        .impact-amount {
-            font-family: 'Fraunces', Georgia, serif;
-            font-size: 30px;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.5px;
-        }
-
-        .impact-description {
-            font-size: 13.5px;
-            color: var(--text-secondary);
-            margin-top: 6px;
-            line-height: 1.5;
-        }
-
-        .impact-card.hot {
-            background: var(--terra);
-            border-color: var(--terra);
-        }
-
-        .impact-card.hot .impact-amount {
-            color: #fff;
-        }
-
-        .impact-card.hot .impact-description {
-            color: rgba(255, 255, 255, 0.85);
-        }
-
-        /* ============================================
-           Gallery Section — polaroids
-           ============================================ */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-            margin-top: 44px;
-        }
-
-        .polaroid {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: var(--radius-sm);
-            padding: 12px 12px 16px;
-            box-shadow: var(--shadow-md);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .gallery-grid > :nth-child(1) .polaroid { transform: rotate(-1.6deg); }
-        .gallery-grid > :nth-child(2) .polaroid { transform: rotate(1.1deg); }
-        .gallery-grid > :nth-child(3) .polaroid { transform: rotate(-0.8deg); }
-
-        .polaroid:hover {
-            transform: rotate(0) translateY(-5px) !important;
+        .impact-card:hover {
+            transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
         }
 
-        .polaroid .ph {
-            border-radius: 6px;
-            overflow: hidden;
-            aspect-ratio: 3/4;
-            background: var(--bg-primary);
+        .impact-emoji {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
         }
 
-        .polaroid .ph img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .impact-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--accent-warm);
+            margin-bottom: 12px;
+            letter-spacing: -1px;
         }
 
-        .gallery-caption {
-            font-family: 'Fraunces', Georgia, serif;
-            font-style: italic;
-            font-size: 14.5px;
-            text-align: center;
-            margin-top: 12px;
+        .impact-description {
+            font-size: 15px;
             color: var(--text-secondary);
+            line-height: 1.5;
         }
 
         /* ============================================
-           Documents Section — editorial band
+           Gallery Section
+           ============================================ */
+        .gallery {
+            padding: var(--section-pad-y) 0;
+            background: var(--bg-primary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 64px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 32px 20px 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+
+        /* ============================================
+           Documents Section
            ============================================ */
         .documents {
-            background: var(--bg-elevated);
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
+            padding: var(--section-pad-y) 0;
+            background: var(--bg-warm);
         }
 
         .docs-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-top: 44px;
+            gap: 32px;
+            margin-top: 64px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .doc-card {
-            display: flex;
-            gap: 18px;
-            align-items: center;
-            background: var(--bg-primary);
-            border: 1px solid var(--line);
+            background: var(--bg-elevated);
             border-radius: var(--radius-md);
-            padding: 16px;
-            cursor: pointer;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
             transition: var(--transition);
+            cursor: pointer;
+            position: relative;
         }
 
         .doc-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
         }
 
         .doc-image {
-            width: 72px;
-            height: 92px;
-            border-radius: var(--radius-sm);
+            aspect-ratio: 3/4;
             overflow: hidden;
-            flex-shrink: 0;
-            background: #f0ece5;
+            background: #f5f5f5;
         }
 
         .doc-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .doc-card:hover .doc-image img {
+            transform: scale(1.03);
         }
 
         .doc-info {
+            padding: 24px;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
         }
 
         .doc-title {
             font-weight: 600;
             color: var(--text-primary);
-            font-size: 15.5px;
+            font-size: 15px;
             line-height: 1.4;
         }
 
         .doc-verified {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(122, 139, 111, 0.13);
-            color: var(--sage);
-            padding: 4px 11px;
+            background: rgba(76, 175, 80, 0.1);
+            color: var(--success);
+            padding: 4px 12px;
             border-radius: 999px;
-            font-size: 12.5px;
+            font-size: 12px;
             font-weight: 600;
             white-space: nowrap;
         }
@@ -837,21 +919,27 @@
         /* ============================================
            Donation Section
            ============================================ */
+        .donation {
+            padding: var(--section-pad-y) 0;
+            background: var(--bg-primary);
+        }
+
         .donation-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-top: 44px;
+            gap: 24px;
+            margin-top: 64px;
         }
 
         .bank-card {
             background: var(--bg-elevated);
-            border: 1px solid var(--line);
             border-radius: var(--radius-md);
-            padding: 26px 24px;
+            padding: 32px 28px;
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
-            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(201, 169, 97, 0.15);
         }
 
         .bank-card::before {
@@ -859,36 +947,33 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 5px;
-            background: var(--amber);
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-dark));
         }
 
-        .bank-card:nth-child(2)::before { background: var(--terra); }
-        .bank-card:nth-child(3)::before { background: var(--sage); }
-
         .bank-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
         }
 
         .bank-name {
-            font-family: 'Fraunces', Georgia, serif;
-            font-size: 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
             font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .bank-number {
-            font-size: 19px;
-            font-weight: 600;
+            font-family: 'Inter', monospace;
+            font-size: 22px;
+            font-weight: 700;
             color: var(--text-primary);
-            letter-spacing: 1px;
-            font-variant-numeric: tabular-nums;
-            margin-bottom: 18px;
-            background: var(--bg-primary);
-            padding: 14px;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+            background: var(--bg-warm);
+            padding: 16px;
             border-radius: var(--radius-sm);
             text-align: center;
             word-break: break-all;
@@ -896,11 +981,11 @@
 
         .bank-copy-btn {
             width: 100%;
-            background: var(--text-primary);
-            color: var(--bg-primary);
-            padding: 13px;
-            border-radius: 999px;
-            font-size: 14.5px;
+            background: var(--accent-gold);
+            color: white;
+            padding: 14px;
+            border-radius: var(--radius-sm);
+            font-size: 15px;
             font-weight: 600;
             transition: var(--transition);
             display: flex;
@@ -910,23 +995,21 @@
         }
 
         .bank-copy-btn:hover {
-            background: var(--terra);
+            background: var(--accent-gold-dark);
             transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
         }
 
         .bank-copy-btn.copied {
             background: var(--success);
-            color: #fff;
         }
 
         .bank-holder {
-            margin-top: 15px;
+            margin-top: 16px;
             font-size: 13px;
             color: var(--text-muted);
             text-align: center;
             line-height: 1.5;
-            border-top: 1px dashed var(--line);
-            padding-top: 12px;
         }
 
         .bank-holder strong {
@@ -936,7 +1019,7 @@
 
         .whatsapp-cta-wrap {
             text-align: center;
-            margin-top: 52px;
+            margin-top: 64px;
         }
 
         .whatsapp-cta {
@@ -945,18 +1028,18 @@
             gap: 12px;
             background: var(--whatsapp);
             color: white;
-            padding: 16px 34px;
+            padding: 18px 40px;
             border-radius: 999px;
             font-size: 16px;
             font-weight: 600;
             transition: var(--transition);
-            box-shadow: 0 10px 28px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.35);
         }
 
         .whatsapp-cta:hover {
             background: #1eba56;
             transform: translateY(-2px);
-            box-shadow: 0 14px 36px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 12px 36px rgba(37, 211, 102, 0.45);
         }
 
         .whatsapp-cta-icon {
@@ -964,32 +1047,18 @@
         }
 
         /* ============================================
-           Share Section — deep warm band
+           Share Section
            ============================================ */
         .share {
-            background: var(--bg-deep);
-            text-align: center;
-        }
-
-        .share .rule {
-            background: var(--amber);
-        }
-
-        .share .section-title {
-            color: #fff;
-        }
-
-        .share .section-subtitle {
-            color: rgba(251, 247, 241, 0.65);
-            margin-left: auto;
-            margin-right: auto;
+            padding: var(--section-pad-y) 0;
+            background: var(--bg-warm);
         }
 
         .share-buttons {
             display: flex;
             justify-content: center;
-            gap: 14px;
-            margin-top: 40px;
+            gap: 16px;
+            margin-top: 56px;
             flex-wrap: wrap;
         }
 
@@ -997,74 +1066,69 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 14px 28px;
+            padding: 16px 32px;
             border-radius: 999px;
-            border: 1px solid rgba(251, 247, 241, 0.25);
-            color: #fff;
+            color: white;
             font-size: 15px;
             font-weight: 600;
             transition: var(--transition);
-            min-width: 180px;
+            box-shadow: var(--shadow-md);
+            min-width: 200px;
             justify-content: center;
         }
 
         .share-btn:hover {
             transform: translateY(-3px);
-        }
-
-        .share-btn.whatsapp:hover {
-            background: var(--whatsapp);
-            border-color: var(--whatsapp);
-        }
-
-        .share-btn.facebook:hover {
-            background: var(--facebook);
-            border-color: var(--facebook);
-        }
-
-        .share-btn.instagram:hover {
-            background: linear-gradient(135deg, #E1306C, #C13584, #833AB4);
-            border-color: transparent;
+            box-shadow: var(--shadow-lg);
         }
 
         .share-btn-icon {
             font-size: 20px;
         }
 
+        .share-btn.whatsapp {
+            background: var(--whatsapp);
+        }
+
+        .share-btn.facebook {
+            background: var(--facebook);
+        }
+
+        .share-btn.instagram {
+            background: linear-gradient(135deg, #E1306C, #C13584, #833AB4);
+        }
+
         /* ============================================
-           Footer — continues the deep band
+           Footer
            ============================================ */
         footer {
-            background: var(--bg-deep);
-            color: rgba(251, 247, 241, 0.8);
-            padding: 0 0 56px;
+            padding: 80px 0 40px;
+            background: var(--text-primary);
+            color: rgba(255, 255, 255, 0.8);
             text-align: center;
         }
 
-        .footer-inner {
-            border-top: 1px solid rgba(251, 247, 241, 0.14);
-            padding-top: 44px;
-        }
-
         .footer-text {
-            font-family: 'Fraunces', Georgia, serif;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
             font-style: italic;
-            font-size: 21px;
-            color: var(--amber);
-            margin-bottom: 20px;
+            color: var(--accent-gold);
+            margin-bottom: 32px;
             line-height: 1.6;
         }
 
         .footer-contact {
             font-size: 14px;
-            color: rgba(251, 247, 241, 0.6);
-            margin-bottom: 24px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 32px;
             line-height: 1.8;
         }
 
         .footer-copyright {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 13px;
-            color: rgba(251, 247, 241, 0.35);
+            color: rgba(255, 255, 255, 0.4);
         }
 
         /* ============================================
@@ -1073,7 +1137,7 @@
         .lightbox {
             position: fixed;
             inset: 0;
-            background: rgba(20, 14, 8, 0.93);
+            background: rgba(0, 0, 0, 0.92);
             z-index: 1000;
             display: none;
             align-items: center;
@@ -1092,7 +1156,7 @@
             max-width: 90vw;
             max-height: 90vh;
             object-fit: contain;
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius-md);
             box-shadow: var(--shadow-xl);
         }
 
@@ -1126,7 +1190,7 @@
             left: 50%;
             transform: translateX(-50%) translateY(100px);
             background: var(--text-primary);
-            color: var(--bg-primary);
+            color: white;
             padding: 16px 28px;
             border-radius: 999px;
             font-weight: 600;
@@ -1159,13 +1223,13 @@
             position: fixed;
             bottom: 110px; /* 30px (WA bottom) + 65px (WA size) + 15px gap */
             right: 30px;
-            background: var(--terra);
+            background: var(--accent-gold);
             color: white;
             padding: 14px 24px;
             border-radius: 999px;
             font-weight: 700;
             font-size: 14px;
-            box-shadow: 0 10px 28px rgba(196, 85, 44, 0.45);
+            box-shadow: 0 8px 28px rgba(201, 169, 97, 0.5);
             z-index: 9997;
             display: none;
             align-items: center;
@@ -1179,9 +1243,9 @@
         }
 
         .floating-donate:hover {
-            background: var(--terra-dark);
+            background: var(--accent-gold-dark);
             transform: translateY(-3px);
-            box-shadow: 0 14px 36px rgba(196, 85, 44, 0.55);
+            box-shadow: 0 12px 36px rgba(201, 169, 97, 0.6);
         }
 
         @keyframes floatIn {
@@ -1200,39 +1264,21 @@
            ============================================ */
         @media (max-width: 1024px) {
             :root {
-                --section-pad-y: 76px;
+                --section-pad-y: 80px;
+            }
+
+            .story-grid {
+                gap: 48px;
             }
 
             .impact-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
+                gap: 20px;
             }
 
             .donation-grid {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 14px;
-            }
-        }
-
-        /* Hero stacks a bit earlier than the rest */
-        @media (max-width: 920px) {
-            .hero {
-                padding: 124px 0 64px;
-            }
-
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-
-            .hero-subtitle {
-                max-width: 100%;
-            }
-
-            .hero-photo {
-                max-width: 380px;
-                margin: 0 auto;
-                width: 100%;
+                gap: 16px;
             }
         }
 
@@ -1252,10 +1298,9 @@
                 padding: 0 20px;
             }
 
-            /* Nav — lang switcher inline (compact), CTA hidden
-               (hero CTA + floating donate already cover this) */
+            /* Nav — lang switcher inline (compact), hamburger removed */
             .nav-right .btn-cta {
-                display: none;
+                display: none; /* hero CTA + floating donate already cover this */
             }
 
             .nav-right .lang-switcher {
@@ -1269,90 +1314,155 @@
                 letter-spacing: 0.2px;
             }
 
+            .nav-mobile-toggle {
+                display: none; /* lang switcher is inline now */
+            }
+
+            .nav.mobile-open .nav-mobile-menu {
+                display: flex;
+            }
+
+            .nav-mobile-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--bg-primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 32px;
+                z-index: 99;
+            }
+
             .nav-mobile-menu .lang-switcher {
-                background: rgba(43, 33, 24, 0.05);
+                display: flex;
+                background: var(--bg-warm);
+            }
+
+            .nav-mobile-menu .lang-btn {
+                color: var(--text-primary);
             }
 
             .nav-mobile-menu .btn-cta {
-                display: inline-flex;
                 font-size: 18px;
                 padding: 16px 36px;
             }
 
+            .nav-mobile-close {
+                position: absolute;
+                top: 24px;
+                right: 24px;
+                font-size: 32px;
+                color: var(--text-primary);
+                background: var(--bg-warm);
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
             /* Hero */
-            .hero {
-                padding: 112px 0 60px;
+            .hero-title {
+                letter-spacing: -2px;
             }
 
-            .hero-trust {
-                gap: 12px;
-                font-size: 12.5px;
+            .last-updated-badge {
+                top: 88px; /* clears 44px hamburger button (top ~20-64px) with breathing room */
+                right: 16px;
+                font-size: 11px;
+                padding: 6px 12px;
             }
 
-            .hero-note {
-                left: 0;
+            /* Move scroll indicator above floating WhatsApp button (60px circle @ bottom 20px = clears at 80px) */
+            .scroll-indicator {
+                bottom: 120px; /* 40px clearance from WhatsApp button top edge */
                 font-size: 14px;
+                letter-spacing: 2.2px;
+                gap: 12px;
+            }
+
+            .scroll-chevron,
+            .scroll-chevron-2 {
+                width: 20px;
+                height: 20px;
+            }
+
+            .scroll-chevron-2 {
+                margin-top: -10px;
             }
 
             /* Story */
-            .story-lead {
-                font-size: 21px;
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
 
-            .story-photo {
-                float: none;
-                width: 100%;
-                max-width: 340px;
-                margin: 0 auto 20px;
-                transform: none;
+            .story-image {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .story-text .lead {
+                font-size: 20px;
             }
 
             /* Impact - 2x2 */
             .impact-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+                gap: 16px;
             }
 
             .impact-card {
-                padding: 22px 14px;
+                padding: 28px 16px;
             }
 
             .impact-amount {
-                font-size: 26px;
+                font-size: 28px;
             }
 
             .impact-emoji {
-                font-size: 26px;
+                font-size: 36px;
             }
 
             .impact-description {
-                font-size: 12.5px;
+                font-size: 13px;
             }
 
             /* Gallery */
             .gallery-grid {
                 grid-template-columns: 1fr;
-                gap: 22px;
+                gap: 16px;
                 max-width: 400px;
                 margin-left: auto;
                 margin-right: auto;
             }
 
+            .gallery-caption {
+                opacity: 1;
+                font-size: 12px;
+                padding: 20px 16px 14px;
+            }
+
             /* Documents */
             .docs-grid {
                 grid-template-columns: 1fr;
-                gap: 14px;
+                gap: 20px;
             }
 
             /* Donation */
             .donation-grid {
                 grid-template-columns: 1fr;
-                gap: 14px;
+                gap: 16px;
             }
 
             .bank-number {
-                font-size: 17px;
-                letter-spacing: 0.5px;
+                font-size: 18px;
+                letter-spacing: 1px;
             }
 
             .whatsapp-cta {
@@ -1383,7 +1493,7 @@
             }
 
             footer {
-                padding-bottom: 40px;
+                padding: 56px 0 32px;
             }
 
             .footer-text {
@@ -1391,13 +1501,33 @@
             }
         }
 
+        /* Very small phones — tighter scroll indicator */
+        @media (max-width: 400px) {
+            .scroll-indicator {
+                font-size: 12px;
+                letter-spacing: 1.8px;
+                bottom: 130px;
+                gap: 10px;
+            }
+
+            .scroll-chevron,
+            .scroll-chevron-2 {
+                width: 18px;
+                height: 18px;
+            }
+
+            .scroll-chevron-2 {
+                margin-top: -9px;
+            }
+        }
+
         @media (max-width: 380px) {
             .hero-title {
-                font-size: 34px;
+                font-size: 48px;
             }
 
             .hero-subtitle {
-                font-size: 15px;
+                font-size: 16px;
             }
 
             .impact-grid {
@@ -1478,7 +1608,7 @@
             font-weight: 500;
             font-family: 'Inter', sans-serif;
             white-space: nowrap;
-            box-shadow: 0 4px 14px rgba(43, 33, 24, 0.15);
+            box-shadow: 0 4px 14px rgba(44, 36, 22, 0.15);
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.2s ease;
@@ -1552,15 +1682,17 @@
                 transform: translateY(0) scale(1);
             }
 
+            .scroll-chevron,
+            .scroll-chevron-2,
             .float-whatsapp,
-            .hero-cta-row .btn-cta {
+            .hero-cta {
                 animation: none !important;
             }
         }
 
         /* Print friendly */
         @media print {
-            .nav, .floating-donate, .float-whatsapp, .hero-cta-row, .scroll-indicator { display: none; }
+            .nav, .floating-donate, .float-whatsapp, .hero-cta, .scroll-indicator { display: none; }
         }
     </style>
 </head>
@@ -1570,7 +1702,7 @@
          ============================================ -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
-            <a href="#" class="nav-logo">Yusif</a>
+            <a href="#" class="nav-logo serif">Yusif</a>
             <div class="nav-right">
                 <div class="lang-switcher" role="group" aria-label="Language">
                     <button class="lang-btn active" data-lang="az" type="button">AZ</button>
@@ -1595,47 +1727,38 @@
     </nav>
 
     <!-- ============================================
-         Hero — light editorial split
+         Hero
          ============================================ -->
     <section class="hero" id="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-copy">
-                    <span class="hero-kicker">📅 <span data-i18n="lastUpdated">Son yenilənmə</span>: <span id="lastUpdatedDate"></span></span>
-                    <h1 class="hero-title" data-i18n="heroTitle">Yusifin <em>yaşamaq</em> uğrunda mübarizəsinə qoşul</h1>
-                    <p class="hero-subtitle" data-i18n="heroSubtitle">11 yaşı var. İndi qan xərçəngi ilə döyüşür. Bu döyüşdə tək deyil — sən də onun yanında ola bilərsən.</p>
-                    <div class="hero-cta-row">
-                        <a href="#donation" class="btn-cta" data-i18n="heroCta">Kömək et</a>
-                        <a href="#story" class="btn-outline" data-i18n="heroCta2">Hekayəni oxu</a>
-                    </div>
-                    <div class="hero-trust">
-                        <span data-i18n="trust1">✓ Sənədlər yoxlanılıb</span>
-                        <span data-i18n="trust2">✓ Birbaşa ananın kartına</span>
-                        <span data-i18n="trust3">✓ Ana ilə birbaşa əlaqə</span>
-                    </div>
-                </div>
-                <div class="hero-photo">
-                    <div class="tape" aria-hidden="true"></div>
-                    <div class="frame"><img src="yusif-main.jpg" alt="Yusif" width="600" height="750"></div>
-                    <div class="hero-note" data-i18n="heroNote">"Oğlum sağalacaq, inanıram" — Gülər</div>
-                </div>
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="last-updated-badge">
+            📅 <span data-i18n="lastUpdated">Son yenilənmə</span>: <span id="lastUpdatedDate"></span>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Yusif.</h1>
+            <p class="hero-subtitle" data-i18n="heroSubtitle">11 yaşı var. İndi qan xərçəngi ilə döyüşür. Bu döyüşdə tək deyil — sən də onun yanında ola bilərsən.</p>
+        </div>
+        <div class="scroll-indicator" id="scrollIndicator" role="button" tabindex="0" aria-label="Aşağı sürüşdür">
+            <span data-i18n="scrollIndicatorText">Yusifin hekayəsini oxu</span>
+            <div class="scroll-indicator-arrows" aria-hidden="true">
+                <svg class="scroll-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                <svg class="scroll-chevron scroll-chevron-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
             </div>
         </div>
     </section>
 
     <!-- ============================================
-         Story — editorial band
+         Story
          ============================================ -->
     <section class="story" id="story">
         <div class="container">
-            <div class="story-inner">
-                <div class="rule reveal"></div>
-                <h2 class="section-title reveal" data-i18n="storyTitle">Yusifin hekayəsi</h2>
-                <p class="story-lead reveal reveal-delay-1" data-i18n="storyLead">"Mən Gülər. Yusifin anası."</p>
+            <h2 class="section-title reveal" data-i18n="storyTitle">Yusifin hekayəsi</h2>
+            <div class="story-grid">
+                <div class="story-image reveal">
+                    <img src="yusif1.jpg" alt="Yusif" loading="lazy" decoding="async" width="600" height="750">
+                </div>
                 <div class="story-text reveal reveal-delay-2">
-                    <div class="story-photo">
-                        <img src="yusif1.jpg" alt="Yusif" loading="lazy" decoding="async" width="600" height="750">
-                    </div>
+                    <p class="lead" data-i18n="storyLead">"Mən Gülər. Yusifin anası."</p>
                     <p data-i18n="storyP1">Bir ana olaraq bu sözləri yazmaq mənim üçün çox ağırdır. Amma övladımın həyatı üçün kömək istəməkdən başqa yolum qalmayıb.</p>
                     <p data-i18n="storyP2">Oğlum <strong>Yusif 11 yaşındadır</strong> və 2023-cü ildən bəri qan xərçəngi ilə mübarizə aparır. İlik transplantasiyası olunub, amma indi GVHD ilə döyüşür.</p>
                     <p data-i18n="storyP3"><strong>Həkimlər deyirlər: müalicə fasiləsiz davam etməlidir.</strong> Yarımçıq qalsa, oğlumun həyatı təhlükədədir.</p>
@@ -1651,28 +1774,27 @@
          ============================================ -->
     <section class="impact" id="impact">
         <div class="container">
-            <div class="rule reveal"></div>
             <h2 class="section-title reveal" data-i18n="impactTitle">Bir bağışın həqiqi gücü</h2>
             <p class="section-subtitle reveal reveal-delay-1" data-i18n="impactSubtitle">Hər manat Yusifin müalicəsinə birbaşa təsir edir</p>
             <div class="impact-grid">
                 <div class="impact-card reveal reveal-delay-1">
                     <span class="impact-emoji">💊</span>
-                    <div class="impact-amount">10 ₼</div>
+                    <div class="impact-amount">10 AZN</div>
                     <div class="impact-description" data-i18n="impact1">1 dərman dozası</div>
                 </div>
                 <div class="impact-card reveal reveal-delay-2">
                     <span class="impact-emoji">🩺</span>
-                    <div class="impact-amount">50 ₼</div>
+                    <div class="impact-amount">50 AZN</div>
                     <div class="impact-description" data-i18n="impact2">Bir analiz və ya müayinə</div>
                 </div>
                 <div class="impact-card reveal reveal-delay-3">
                     <span class="impact-emoji">🏥</span>
-                    <div class="impact-amount">100 ₼</div>
+                    <div class="impact-amount">100 AZN</div>
                     <div class="impact-description" data-i18n="impact3">Xəstəxana xərclərinin bir hissəsi</div>
                 </div>
-                <div class="impact-card hot reveal reveal-delay-4">
-                    <span class="impact-emoji">💛</span>
-                    <div class="impact-amount">500 ₼</div>
+                <div class="impact-card reveal reveal-delay-4">
+                    <span class="impact-emoji">💉</span>
+                    <div class="impact-amount">500 AZN</div>
                     <div class="impact-description" data-i18n="impact4">Bir həftəlik müalicə paketi</div>
                 </div>
             </div>
@@ -1680,42 +1802,34 @@
     </section>
 
     <!-- ============================================
-         Gallery — polaroids
+         Gallery
          ============================================ -->
     <section class="gallery" id="gallery">
         <div class="container">
-            <div class="rule reveal"></div>
             <h2 class="section-title reveal" data-i18n="galleryTitle">Yusifin gözündən</h2>
             <p class="section-subtitle reveal reveal-delay-1" data-i18n="gallerySubtitle">Xəstəxanada keçən günlər</p>
             <div class="gallery-grid">
-                <div class="reveal reveal-delay-1">
-                    <div class="polaroid" data-img="yusif1.jpg">
-                        <div class="ph"><img src="yusif1.jpg" alt="Yusif" loading="lazy" decoding="async" width="600" height="800"></div>
-                        <div class="gallery-caption" data-i18n="galleryCaption1">Yusif — müalicə günlərində</div>
-                    </div>
+                <div class="gallery-item reveal reveal-delay-1" data-img="yusif1.jpg">
+                    <img src="yusif1.jpg" alt="Yusif" loading="lazy" decoding="async" width="600" height="800">
+                    <div class="gallery-caption" data-i18n="galleryCaption1">Yusif — müalicə günlərində</div>
                 </div>
-                <div class="reveal reveal-delay-2">
-                    <div class="polaroid" data-img="yusif2.jpg">
-                        <div class="ph"><img src="yusif2.jpg" alt="Yusif" loading="lazy" decoding="async" width="600" height="800"></div>
-                        <div class="gallery-caption" data-i18n="galleryCaption2">Yusif — xəstəxanada</div>
-                    </div>
+                <div class="gallery-item reveal reveal-delay-2" data-img="yusif2.jpg">
+                    <img src="yusif2.jpg" alt="Yusif" loading="lazy" decoding="async" width="600" height="800">
+                    <div class="gallery-caption" data-i18n="galleryCaption2">Yusif — xəstəxanada</div>
                 </div>
-                <div class="reveal reveal-delay-3">
-                    <div class="polaroid" data-img="yusif3.jpg">
-                        <div class="ph"><img src="yusif3.jpg" alt="Yusif" loading="lazy" decoding="async" width="600" height="800"></div>
-                        <div class="gallery-caption" data-i18n="galleryCaption3">Yusif — ümidlə</div>
-                    </div>
+                <div class="gallery-item reveal reveal-delay-3" data-img="yusif3.jpg">
+                    <img src="yusif3.jpg" alt="Yusif" loading="lazy" decoding="async" width="600" height="800">
+                    <div class="gallery-caption" data-i18n="galleryCaption3">Yusif — ümidlə</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================
-         Documents — editorial band
+         Documents
          ============================================ -->
     <section class="documents" id="documents">
         <div class="container">
-            <div class="rule reveal"></div>
             <h2 class="section-title reveal" data-i18n="docsTitle">Şəffaflıq və həqiqət</h2>
             <p class="section-subtitle reveal reveal-delay-1" data-i18n="docsSubtitle">Bütün məlumatlar real və yoxlanılıbdır</p>
             <div class="docs-grid">
@@ -1746,7 +1860,6 @@
          ============================================ -->
     <section class="donation" id="donation">
         <div class="container">
-            <div class="rule reveal"></div>
             <h2 class="section-title reveal" data-i18n="donationTitle">Kart Hesabları</h2>
             <p class="section-subtitle reveal reveal-delay-1" data-i18n="donationSubtitle">Hər manat Yusifin həyatı üçün bir addımdır</p>
             <div class="donation-grid" id="donationGrid"></div>
@@ -1760,11 +1873,10 @@
     </section>
 
     <!-- ============================================
-         Share — deep warm band
+         Share
          ============================================ -->
     <section class="share" id="share">
         <div class="container">
-            <div class="rule centered reveal"></div>
             <h2 class="section-title reveal" data-i18n="shareTitle">Yardım paylaşımla başlayır</h2>
             <p class="section-subtitle reveal reveal-delay-1" data-i18n="shareSubtitle">Hər paylaşım Yusifin yaşama şansını artırır</p>
             <div class="share-buttons">
@@ -1789,13 +1901,11 @@
          ============================================ -->
     <footer>
         <div class="container">
-            <div class="footer-inner">
-                <p class="footer-text" data-i18n="footerQuote">Allah kömək olan hər kəsdən razı olsun 🤲</p>
-                <p class="footer-contact" data-i18n="footerContact">
-                    📞 070 660 58 89 &nbsp;|&nbsp; 📍 Bakı şəhəri, Yeni Ramana, Qarabağ küçəsi 104, ev 28
-                </p>
-                <p class="footer-copyright">© 2026 <span data-i18n="footerCopyright">Yusifə dəstək</span></p>
-            </div>
+            <p class="footer-text" data-i18n="footerQuote">Allah kömək olan hər kəsdən razı olsun 🤲</p>
+            <p class="footer-contact" data-i18n="footerContact">
+                📞 070 660 58 89 &nbsp;|&nbsp; 📍 Bakı şəhəri, Yeni Ramana, Qarabağ küçəsi 104, ev 28
+            </p>
+            <p class="footer-copyright">© 2026 <span data-i18n="footerCopyright">Yusifə dəstək</span></p>
         </div>
     </footer>
 
@@ -1856,12 +1966,6 @@
                 lastUpdated: "Son yenilənmə",
                 heroSubtitle: "11 yaşı var. İndi qan xərçəngi ilə döyüşür. Bu döyüşdə tək deyil — sən də onun yanında ola bilərsən.",
                 heroCta: "Kömək et",
-                heroTitle: "Yusifin <em>yaşamaq</em> uğrunda mübarizəsinə qoşul",
-                heroCta2: "Hekayəni oxu",
-                trust1: "✓ Sənədlər yoxlanılıb",
-                trust2: "✓ Birbaşa ananın kartına",
-                trust3: "✓ Ana ilə birbaşa əlaqə",
-                heroNote: "\"Oğlum sağalacaq, inanıram\" — Gülər",
                 scrollHint: "AŞAĞI",
                 scrollIndicatorText: "Yusifin hekayəsini oxu",
                 whatsappTooltip: "Anaya yaz - Gülər 💛",
@@ -1918,12 +2022,6 @@
                 lastUpdated: "Последнее обновление",
                 heroSubtitle: "Ему 11 лет. Сейчас он борется с раком крови. В этой борьбе он не одинок — ты можешь быть рядом.",
                 heroCta: "Помочь",
-                heroTitle: "Присоединись к борьбе Юсифа за <em>жизнь</em>",
-                heroCta2: "Прочитать историю",
-                trust1: "✓ Документы проверены",
-                trust2: "✓ Напрямую на карту мамы",
-                trust3: "✓ Прямая связь с мамой",
-                heroNote: "\"Мой сын выздоровеет, я верю\" — Гюляр",
                 scrollHint: "ВНИЗ",
                 scrollIndicatorText: "Прочитайте историю Юсифа",
                 whatsappTooltip: "Напишите маме - Гюляр 💛",
@@ -1980,12 +2078,6 @@
                 lastUpdated: "Last updated",
                 heroSubtitle: "He is 11. He is fighting blood cancer. He is not alone in this fight — you can stand by his side.",
                 heroCta: "Donate",
-                heroTitle: "Join Yusif's fight for <em>life</em>",
-                heroCta2: "Read the story",
-                trust1: "✓ Documents verified",
-                trust2: "✓ Directly to mom's card",
-                trust3: "✓ Direct contact with mom",
-                heroNote: "\"My son will recover, I believe\" — Gülər",
                 scrollHint: "SCROLL",
                 scrollIndicatorText: "Read Yusif's story",
                 whatsappTooltip: "Message mom - Gülər 💛",
@@ -2042,12 +2134,6 @@
                 lastUpdated: "Son güncelleme",
                 heroSubtitle: "11 yaşında. Şu an kan kanseri ile mücadele ediyor. Bu mücadelede yalnız değil — sen de yanında olabilirsin.",
                 heroCta: "Yardım Et",
-                heroTitle: "Yusif'in <em>yaşam</em> mücadelesine katıl",
-                heroCta2: "Hikâyeyi oku",
-                trust1: "✓ Belgeler doğrulandı",
-                trust2: "✓ Doğrudan annenin kartına",
-                trust3: "✓ Anneyle doğrudan iletişim",
-                heroNote: "\"Oğlum iyileşecek, inanıyorum\" — Gülər",
                 scrollHint: "AŞAĞI",
                 scrollIndicatorText: "Yusif'in hikâyesini oku",
                 whatsappTooltip: "Anneye yaz - Gülər 💛",
@@ -2471,7 +2557,6 @@
         function setupHeroParallax() {
             if (window.innerWidth <= 768) return;
             const heroBg = document.getElementById('heroBg');
-            if (!heroBg) return; // redesigned hero has no parallax bg layer
             let ticking = false;
             window.addEventListener('scroll', () => {
                 if (!ticking) {
