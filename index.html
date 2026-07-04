@@ -1397,6 +1397,23 @@
             }
         }
 
+        /* Keep the two hero CTAs side by side on narrow phones */
+        @media (max-width: 480px) {
+            .hero-cta-row {
+                gap: 10px;
+            }
+
+            .hero-cta-row .btn-cta {
+                padding: 13px 18px;
+                font-size: 14px;
+            }
+
+            .hero-cta-row .btn-outline {
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+        }
+
         @media (max-width: 380px) {
             .hero-title {
                 font-size: 34px;
@@ -1612,7 +1629,7 @@
                     <p class="hero-subtitle" data-i18n="heroSubtitle">11 yaşı var. İndi qan xərçəngi ilə döyüşür. Bu döyüşdə tək deyil — sən də onun yanında ola bilərsən.</p>
                     <div class="hero-cta-row">
                         <a href="#donation" class="btn-cta" data-i18n="heroCta">Kartlara bax</a>
-                        <a href="#story" class="btn-outline" data-i18n="heroCta2">Hekayəni oxu</a>
+                        <a href="#documents" class="btn-outline" data-i18n="heroCta2">Sənədlərə bax</a>
                     </div>
                     <div class="hero-trust">
                         <span data-i18n="trust1">✓ Sənədlər yoxlanılıb</span>
@@ -1863,7 +1880,7 @@
                 heroSubtitle: "11 yaşı var. İndi qan xərçəngi ilə döyüşür. Bu döyüşdə tək deyil — sən də onun yanında ola bilərsən.",
                 heroCta: "Kartlara bax",
                 heroTitle: "Yusifin <em>yaşamaq</em> uğrunda mübarizəsinə qoşul",
-                heroCta2: "Hekayəni oxu",
+                heroCta2: "Sənədlərə bax",
                 trust1: "✓ Sənədlər yoxlanılıb",
                 trust2: "✓ Birbaşa ananın kartına",
                 trust3: "✓ Ana ilə birbaşa əlaqə",
@@ -1925,7 +1942,7 @@
                 heroSubtitle: "Ему 11 лет. Сейчас он борется с раком крови. В этой борьбе он не одинок — ты можешь быть рядом.",
                 heroCta: "Посмотреть карты",
                 heroTitle: "Присоединись к борьбе Юсифа за <em>жизнь</em>",
-                heroCta2: "Прочитать историю",
+                heroCta2: "Посмотреть документы",
                 trust1: "✓ Документы проверены",
                 trust2: "✓ Напрямую на карту мамы",
                 trust3: "✓ Прямая связь с мамой",
@@ -1987,7 +2004,7 @@
                 heroSubtitle: "He is 11. He is fighting blood cancer. He is not alone in this fight — you can stand by his side.",
                 heroCta: "View cards",
                 heroTitle: "Join Yusif's fight for <em>life</em>",
-                heroCta2: "Read the story",
+                heroCta2: "View documents",
                 trust1: "✓ Documents verified",
                 trust2: "✓ Directly to mom's card",
                 trust3: "✓ Direct contact with mom",
@@ -2049,7 +2066,7 @@
                 heroSubtitle: "11 yaşında. Şu an kan kanseri ile mücadele ediyor. Bu mücadelede yalnız değil — sen de yanında olabilirsin.",
                 heroCta: "Kartlara bak",
                 heroTitle: "Yusif'in <em>yaşam</em> mücadelesine katıl",
-                heroCta2: "Hikâyeyi oku",
+                heroCta2: "Belgelere bak",
                 trust1: "✓ Belgeler doğrulandı",
                 trust2: "✓ Doğrudan annenin kartına",
                 trust3: "✓ Anneyle doğrudan iletişim",
@@ -2416,11 +2433,11 @@
 
             const onScroll = () => {
                 nav.classList.toggle('scrolled', window.scrollY > 60);
-                // Floating donate button — visible after hero
+                // Floating donate button — hidden on load, appears after a
+                // slight scroll (not tied to hero height anymore)
                 const floating = document.getElementById('floatingDonate');
-                const hero = document.getElementById('hero');
-                if (hero && floating) {
-                    floating.classList.toggle('visible', window.scrollY > hero.offsetHeight - 100);
+                if (floating) {
+                    floating.classList.toggle('visible', window.scrollY > 200);
                 }
             };
             window.addEventListener('scroll', onScroll, { passive: true });
