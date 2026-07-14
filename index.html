@@ -1859,11 +1859,12 @@
         // ═══════════════════════════════════════════════════════════
         const SITE = {
             bankAccounts: [
-                { bankName: "Kapital Bank", cardNumber: "4169 7388 7973 1556" },
+                { bankName: "Kapital Bank", cardNumber: "4169 7388 4067 0701", cardHolder: "Əhmədli Vüsalə (Ailənin gəlini)" },
                 { bankName: "ABB Bank",     cardNumber: "5522 0993 7518 0148" },
                 { bankName: "LeoBank",      cardNumber: "5411 2498 0407 2341" }
             ],
-            // Bank cardholder name — NEVER translated (legal/identity)
+            // Default cardholder name — NEVER translated (legal/identity).
+            // Per-card `cardHolder` (see above) overrides this for that card.
             cardHolderName: "Osmanova Gülər Mehman qızı (Anası)",
             whatsappNumber: "994706605889",
             whatsappMessage: "Salam, Yusifə yardım etmək istəyirəm"
@@ -2198,7 +2199,7 @@
                     </button>
                     <div class="bank-holder">
                         <strong>${t.cardHolderLabel}</strong><br>
-                        ${SITE.cardHolderName}
+                        ${account.cardHolder || SITE.cardHolderName}
                     </div>
                 `;
                 grid.appendChild(card);
