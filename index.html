@@ -196,7 +196,7 @@
         .hero-title, .hero-subtitle, .hero-note,
         .section-title, .section-subtitle,
         .story-text, .story-text p, .story-text strong, .story-signature, .story-lead,
-        .impact-amount, .impact-description,
+        .med-card h3, .med-card p,
         .gallery-caption,
         .doc-title,
         .bank-name, .bank-number, .bank-holder, .bank-holder strong,
@@ -662,56 +662,101 @@
         }
 
         /* ============================================
-           Impact Section
+           Medical Section
            ============================================ */
-        .impact-grid {
+        .med-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
             margin-top: 44px;
         }
 
-        .impact-card {
+        .med-card {
             background: var(--bg-elevated);
             border: 1px solid var(--line);
             border-radius: var(--radius-md);
-            padding: 28px 20px;
-            text-align: center;
+            padding: 30px 26px;
             transition: var(--transition);
         }
 
-        .impact-emoji {
-            font-size: 30px;
-            display: block;
-            margin-bottom: 10px;
+        .med-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
         }
 
-        .impact-amount {
+        .med-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .med-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .med-icon.terra { background: rgba(196, 85, 44, 0.12); }
+        .med-icon.terra svg { stroke: var(--terra); }
+        .med-icon.sage { background: rgba(122, 139, 111, 0.16); }
+        .med-icon.sage svg { stroke: var(--sage); }
+        .med-icon.amber { background: rgba(232, 163, 61, 0.18); }
+        .med-icon.amber svg { stroke: #B5781C; }
+
+        .med-card h3 {
             font-family: 'Fraunces', Georgia, serif;
-            font-size: 30px;
-            font-weight: 700;
+            font-size: 22px;
+            font-weight: 600;
             color: var(--text-primary);
-            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
         }
 
-        .impact-description {
-            font-size: 13.5px;
+        .med-card p {
+            font-size: 14.5px;
+            line-height: 1.7;
             color: var(--text-secondary);
-            margin-top: 6px;
-            line-height: 1.5;
         }
 
-        .impact-card.hot {
-            background: var(--terra);
-            border-color: var(--terra);
+        .med-rows {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px 16px;
+            align-items: start;
         }
 
-        .impact-card.hot .impact-amount {
-            color: #fff;
+        .med-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--terra);
+            padding-top: 3px;
         }
 
-        .impact-card.hot .impact-description {
-            color: rgba(255, 255, 255, 0.85);
+        .med-value {
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .med-value a {
+            color: var(--text-primary);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .med-value a:hover {
+            color: var(--terra);
+            border-bottom-color: var(--terra);
         }
 
         /* ============================================
@@ -1209,7 +1254,7 @@
                 --section-pad-y: 76px;
             }
 
-            .impact-grid {
+            .med-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
             }
@@ -1313,26 +1358,23 @@
                 transform: none;
             }
 
-            /* Impact - 2x2 */
-            .impact-grid {
-                grid-template-columns: repeat(2, 1fr);
+            /* Medical */
+            .med-grid {
+                grid-template-columns: 1fr;
                 gap: 12px;
             }
 
-            .impact-card {
-                padding: 22px 14px;
+            .med-card {
+                padding: 24px 20px;
             }
 
-            .impact-amount {
-                font-size: 26px;
+            .med-card h3 {
+                font-size: 20px;
             }
 
-            .impact-emoji {
-                font-size: 26px;
-            }
-
-            .impact-description {
-                font-size: 12.5px;
+            .med-card p,
+            .med-value {
+                font-size: 14px;
             }
 
             /* Gallery */
@@ -1423,7 +1465,7 @@
                 font-size: 15px;
             }
 
-            .impact-grid {
+            .med-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -1670,33 +1712,41 @@
     </section>
 
     <!-- ============================================
-         Impact
+         Medical condition & contact
          ============================================ -->
-    <section class="impact" id="impact">
+    <section class="medical" id="medical">
         <div class="container">
             <div class="rule reveal"></div>
-            <h2 class="section-title reveal" data-i18n="impactTitle">Bir bağışın həqiqi gücü</h2>
-            <p class="section-subtitle reveal reveal-delay-1" data-i18n="impactSubtitle">Hər manat Yusifin müalicəsinə birbaşa təsir edir</p>
-            <div class="impact-grid">
-                <div class="impact-card reveal reveal-delay-1">
-                    <span class="impact-emoji">💊</span>
-                    <div class="impact-amount">10 ₼</div>
-                    <div class="impact-description" data-i18n="impact1">1 dərman dozası</div>
+            <h2 class="section-title reveal" data-i18n="medTitle">Tibbi vəziyyət və əlaqə</h2>
+            <p class="section-subtitle reveal reveal-delay-1" data-i18n="medSubtitle">Yusifin diaqnozu, müalicəsi və ailəsi ilə əlaqə</p>
+            <div class="med-grid">
+                <div class="med-card reveal reveal-delay-1">
+                    <div class="med-icon terra">
+                        <svg viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg>
+                    </div>
+                    <h3 data-i18n="medDiagTitle">Diaqnoz</h3>
+                    <p data-i18n="medDiag">Kəskin limfoblast leykemiya (ALL) — qan xərçəngi. Yusif 2023-cü ildən müalicə olunur, ilik transplantasiyasından sonra isə GVHD ilə mübarizə aparır.</p>
                 </div>
-                <div class="impact-card reveal reveal-delay-2">
-                    <span class="impact-emoji">🩺</span>
-                    <div class="impact-amount">50 ₼</div>
-                    <div class="impact-description" data-i18n="impact2">Bir analiz və ya müayinə</div>
+                <div class="med-card reveal reveal-delay-2">
+                    <div class="med-icon sage">
+                        <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21.2l7.8-7.7 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+                    </div>
+                    <h3 data-i18n="medTreatTitle">Müalicə</h3>
+                    <p data-i18n="medTreat">Yusifin fasiləsiz dərman, müntəzəm analiz və həkim nəzarətinə ehtiyacı var — müalicə yarımçıq qalsa, həyatı təhlükəyə düşür.</p>
                 </div>
-                <div class="impact-card reveal reveal-delay-3">
-                    <span class="impact-emoji">🏥</span>
-                    <div class="impact-amount">100 ₼</div>
-                    <div class="impact-description" data-i18n="impact3">Xəstəxana xərclərinin bir hissəsi</div>
-                </div>
-                <div class="impact-card hot reveal reveal-delay-4">
-                    <span class="impact-emoji">💛</span>
-                    <div class="impact-amount">500 ₼</div>
-                    <div class="impact-description" data-i18n="impact4">Bir həftəlik müalicə paketi</div>
+                <div class="med-card reveal reveal-delay-3">
+                    <div class="med-icon amber">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+                    </div>
+                    <h3 data-i18n="medContactTitle">Ailə / Əlaqə</h3>
+                    <div class="med-rows">
+                        <div class="med-label" data-i18n="medLabelParent">Ana</div>
+                        <div class="med-value" data-i18n="medParent">Gülər — Yusifin anası</div>
+                        <div class="med-label" data-i18n="medLabelAddress">Ünvan</div>
+                        <div class="med-value" data-i18n="medAddress">Bakı şəhəri, Yeni Ramana, Qarabağ küçəsi 104, ev 28</div>
+                        <div class="med-label" data-i18n="medLabelPhone">Telefon</div>
+                        <div class="med-value"><a href="tel:+994706605889">+994 70 660 58 89</a></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1898,12 +1948,18 @@
                 storyP4: "Atası fəhləlik edir, mən təmizliyə gedirəm. Bütün imkanlarımız tükənib. Sizdən kömək diləyirik.",
                 storySignature: "— Gülər, Yusifin anası",
 
-                impactTitle: "Bir bağışın həqiqi gücü",
-                impactSubtitle: "Hər manat Yusifin müalicəsinə birbaşa təsir edir",
-                impact1: "1 dərman dozası",
-                impact2: "Bir analiz və ya müayinə",
-                impact3: "Xəstəxana xərclərinin bir hissəsi",
-                impact4: "Bir həftəlik müalicə paketi",
+                medTitle: "Tibbi vəziyyət və əlaqə",
+                medSubtitle: "Yusifin diaqnozu, müalicəsi və ailəsi ilə əlaqə",
+                medDiagTitle: "Diaqnoz",
+                medDiag: "Kəskin limfoblast leykemiya (ALL) — qan xərçəngi. Yusif 2023-cü ildən müalicə olunur, ilik transplantasiyasından sonra isə GVHD ilə mübarizə aparır.",
+                medTreatTitle: "Müalicə",
+                medTreat: "Yusifin fasiləsiz dərman, müntəzəm analiz və həkim nəzarətinə ehtiyacı var — müalicə yarımçıq qalsa, həyatı təhlükəyə düşür.",
+                medContactTitle: "Ailə / Əlaqə",
+                medLabelParent: "Ana",
+                medParent: "Gülər — Yusifin anası",
+                medLabelAddress: "Ünvan",
+                medAddress: "Bakı şəhəri, Yeni Ramana, Qarabağ küçəsi 104, ev 28",
+                medLabelPhone: "Telefon",
 
                 galleryTitle: "Yusifin gözündən",
                 gallerySubtitle: "Xəstəxanada keçən günlər",
@@ -1960,12 +2016,18 @@
                 storyP4: "Его отец работает подёнщиком, я хожу убирать в чужие дома. Все наши возможности исчерпаны. Просим вашей помощи.",
                 storySignature: "— Gülər, мама Yusif-а",
 
-                impactTitle: "Истинная сила одного пожертвования",
-                impactSubtitle: "Каждый манат напрямую влияет на лечение Yusif-а",
-                impact1: "1 доза лекарств",
-                impact2: "Один анализ или обследование",
-                impact3: "Часть больничных расходов",
-                impact4: "Недельный курс лечения",
+                medTitle: "Диагноз и контакты",
+                medSubtitle: "Диагноз Yusif-а, его лечение и связь с семьёй",
+                medDiagTitle: "Диагноз",
+                medDiag: "Острый лимфобластный лейкоз (ALL) — рак крови. Yusif лечится с 2023 года, после пересадки костного мозга борется с GVHD.",
+                medTreatTitle: "Лечение",
+                medTreat: "Ему необходимы непрерывные лекарства, регулярные анализы и наблюдение врачей — перерыв в лечении опасен для его жизни.",
+                medContactTitle: "Семья / Контакт",
+                medLabelParent: "Мама",
+                medParent: "Гюляр — мама Yusif-а",
+                medLabelAddress: "Адрес",
+                medAddress: "г. Баку, Йени Рамана, ул. Карабах 104, кв. 28",
+                medLabelPhone: "Телефон",
 
                 galleryTitle: "Глазами Yusif-а",
                 gallerySubtitle: "Дни, проведённые в больнице",
@@ -2022,12 +2084,18 @@
                 storyP4: "His father works as a day laborer, and I clean houses whenever I can. All our resources are exhausted. We ask for your help.",
                 storySignature: "— Gülər, Yusif's mother",
 
-                impactTitle: "The True Power of a Single Donation",
-                impactSubtitle: "Every manat directly impacts Yusif's treatment",
-                impact1: "1 dose of medication",
-                impact2: "One test or examination",
-                impact3: "Part of hospital expenses",
-                impact4: "One week's treatment package",
+                medTitle: "Medical condition & contact",
+                medSubtitle: "Yusif's diagnosis, treatment and how to reach his family",
+                medDiagTitle: "Diagnosis",
+                medDiag: "Acute lymphoblastic leukemia (ALL) — blood cancer. Yusif has been in treatment since 2023 and is now fighting GVHD after a bone marrow transplant.",
+                medTreatTitle: "Treatment",
+                medTreat: "He needs uninterrupted medication, regular tests and constant medical supervision — pausing the treatment puts his life at risk.",
+                medContactTitle: "Family / Contact",
+                medLabelParent: "Mother",
+                medParent: "Gülər — Yusif's mother",
+                medLabelAddress: "Address",
+                medAddress: "Baku, Yeni Ramana, Qarabağ str. 104, apt. 28",
+                medLabelPhone: "Phone",
 
                 galleryTitle: "Through Yusif's Eyes",
                 gallerySubtitle: "Days spent at the hospital",
@@ -2084,12 +2152,18 @@
                 storyP4: "Babası gündelikçi olarak çalışıyor, ben evlerde temizliğe gidiyorum. Tüm imkânlarımız tükendi. Sizden yardım diliyoruz.",
                 storySignature: "— Gülər, Yusif'in annesi",
 
-                impactTitle: "Bir bağışın gerçek gücü",
-                impactSubtitle: "Her manat Yusif'in tedavisine doğrudan etki eder",
-                impact1: "1 doz ilaç",
-                impact2: "Bir tahlil veya muayene",
-                impact3: "Hastane masraflarının bir kısmı",
-                impact4: "Bir haftalık tedavi paketi",
+                medTitle: "Tıbbi durum ve iletişim",
+                medSubtitle: "Yusif'in teşhisi, tedavisi ve ailesiyle iletişim",
+                medDiagTitle: "Teşhis",
+                medDiag: "Akut lenfoblastik lösemi (ALL) — kan kanseri. Yusif 2023'ten beri tedavi görüyor, ilik nakli sonrası GVHD ile mücadele ediyor.",
+                medTreatTitle: "Tedavi",
+                medTreat: "Kesintisiz ilaç, düzenli tahlil ve doktor takibine ihtiyacı var — tedavinin yarıda kalması hayatını tehlikeye atıyor.",
+                medContactTitle: "Aile / İletişim",
+                medLabelParent: "Anne",
+                medParent: "Gülər — Yusif'in annesi",
+                medLabelAddress: "Adres",
+                medAddress: "Bakü, Yeni Ramana, Karabağ sokağı 104, daire 28",
+                medLabelPhone: "Telefon",
 
                 galleryTitle: "Yusif'in gözünden",
                 gallerySubtitle: "Hastanede geçen günler",
