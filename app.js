@@ -297,10 +297,10 @@ const TRANSLATIONS = {
 
 /* Interface labels the live copy has no key for, from the earlier site version */
 const UI_LABELS = {
-  az: { skipLink: "Əsas məzmuna keç", langLabel: "Dil", lightboxClose: "Bağla", lightboxPrev: "Əvvəlki şəkil", lightboxNext: "Növbəti şəkil" },
-  ru: { skipLink: "Перейти к содержанию", langLabel: "Язык", lightboxClose: "Закрыть", lightboxPrev: "Предыдущее фото", lightboxNext: "Следующее фото" },
-  en: { skipLink: "Skip to main content", langLabel: "Language", lightboxClose: "Close", lightboxPrev: "Previous photo", lightboxNext: "Next photo" },
-  tr: { skipLink: "Ana içeriğe geç", langLabel: "Dil", lightboxClose: "Kapat", lightboxPrev: "Önceki fotoğraf", lightboxNext: "Sonraki fotoğraf" }
+  az: { skipLink: "Əsas məzmuna keç", langLabel: "Dil", lightboxClose: "Bağla", lightboxPrev: "Əvvəlki şəkil", lightboxNext: "Növbəti şəkil", waAria: "WhatsApp ilə əlaqə" },
+  ru: { skipLink: "Перейти к содержанию", langLabel: "Язык", lightboxClose: "Закрыть", lightboxPrev: "Предыдущее фото", lightboxNext: "Следующее фото", waAria: "Связаться через WhatsApp" },
+  en: { skipLink: "Skip to main content", langLabel: "Language", lightboxClose: "Close", lightboxPrev: "Previous photo", lightboxNext: "Next photo", waAria: "Contact via WhatsApp" },
+  tr: { skipLink: "Ana içeriğe geç", langLabel: "Dil", lightboxClose: "Kapat", lightboxPrev: "Önceki fotoğraf", lightboxNext: "Sonraki fotoğraf", waAria: "WhatsApp ile iletişim" }
 };
 
 const LANGS = ['az', 'ru', 'en', 'tr'];
@@ -900,9 +900,12 @@ function setupChrome() {
     sync();
   }
 
-  // Contact event, same name the live site sends
+  // Contact events: the floating button keeps the name the live site sends
   const floatWa = $('#floatWhatsapp');
   if (floatWa) floatWa.addEventListener('click', () => trackContact('WhatsApp Float Button'));
+  $$('[data-track-contact]').forEach(el => {
+    el.addEventListener('click', () => trackContact(el.dataset.trackContact));
+  });
 }
 
 /* =============================================================================

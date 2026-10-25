@@ -562,6 +562,7 @@ button { font: inherit; }
   margin-top: var(--sp-8);
 }
 .hero__actions .btn { flex: 1 1 auto; }
+.btn--wa .icon { color: var(--accent-text); }
 
 .hero__media { position: relative; margin: 0; }
 .hero__media img {
