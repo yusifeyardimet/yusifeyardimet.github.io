@@ -11,7 +11,7 @@
                       the page (see display()); the share message keeps them.
    ============================================================================= */
 
-const WHATSAPP_NUMBER = "994706605889";
+const WHATSAPP_NUMBER = "994559840086";
 const WHATSAPP_MESSAGE = "Salam, Yusifə yardım etmək istəyirəm";
 const PHONE_TEL = "+994706605889";
 
