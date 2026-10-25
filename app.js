@@ -310,6 +310,7 @@ const REVEAL_FAILSAFE_MS = 2000;
 const FLOAT_WA_DELAY_MS = 2000;
 const INSTAGRAM_OPEN_DELAY_MS = 600;
 const SWIPE_MIN = 48;
+const DOCK_BAND_PCT_INV = 85;   // the dock covers roughly the bottom 15% of the screen
 
 /* =============================================================================
    State and helpers
@@ -829,19 +830,16 @@ function setupGalleryDots() {
    Header state + floating dock
    Phones: the dock (cards CTA + WhatsApp) appears once the hero's buttons have
    scrolled away. Desktop: only the WhatsApp button, from 2s after load (as on
-   the live site). Both hide while the donation section or the footer is on
-   screen, so they never sit on top of the card numbers or copy buttons. Only
-   one "Kartlara bax" is on screen at a time: the header CTA steps aside while
-   the dock shows it, and inside #donation.
+   the live site). Both hide only while the card blocks are under them (in
+   the bottom band of the screen the dock occupies), so they never cover a
+   card number or copy button. The header CTA stays visible the whole time.
    ============================================================================= */
 
 function setupChrome() {
   const header = $('#siteHeader');
   const dock = $('#floatingActions');
   const heroActions = $('.hero__actions');
-  const donation = $('#donation');
-  const blockers = [donation, $('.footer')].filter(Boolean);
-  const root = document.documentElement;
+  const blockers = [$('#bankList')].filter(Boolean);
 
   const onScroll = () => {
     if (header) header.classList.toggle('is-scrolled', window.scrollY > 8);
@@ -860,8 +858,6 @@ function setupChrome() {
       // hidden dock must not be reachable by Tab or a screen reader
       if (show) dock.removeAttribute('inert'); else dock.setAttribute('inert', '');
       dock.setAttribute('aria-hidden', show ? 'false' : 'true');
-      root.classList.toggle('dock-on', show && !desktop);
-      root.classList.toggle('in-donate', blocking.has(donation));
     };
     setTimeout(() => { waDelayDone = true; sync(); }, FLOAT_WA_DELAY_MS);
 
@@ -873,13 +869,14 @@ function setupChrome() {
         sync();
       }).observe(heroActions);
 
+      // root shrunk to the bottom 15% of the viewport: the band the dock sits in
       const blockObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) blocking.add(entry.target);
           else blocking.delete(entry.target);
         });
         sync();
-      });
+      }, { rootMargin: '-' + DOCK_BAND_PCT_INV + '% 0% 0% 0%' });
       blockers.forEach(el => blockObserver.observe(el));
     } else {
       // Old WebViews: plain scroll maths
@@ -889,7 +886,7 @@ function setupChrome() {
         blocking.clear();
         blockers.forEach(el => {
           const r = el.getBoundingClientRect();
-          if (r.top < vh && r.bottom > 0) blocking.add(el);
+          if (r.top < vh && r.bottom > vh * (DOCK_BAND_PCT_INV / 100)) blocking.add(el);
         });
         sync();
       };

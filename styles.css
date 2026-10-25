@@ -432,11 +432,6 @@ button { font: inherit; }
 
 .masthead__nav { display: none; }
 
-/* One "Kömək et" on screen at a time: the header CTA steps aside while the
-   dock shows it, and while the visitor is already inside #donation */
-.masthead__cta { transition: opacity var(--dur-2) var(--ease-out), visibility var(--dur-instant) linear var(--dur-2); }
-.dock-on .masthead__cta,
-.in-donate .masthead__cta { opacity: 0; visibility: hidden; }
 
 /* Language menu */
 .lang { position: relative; }
@@ -992,7 +987,8 @@ button { font: inherit; }
 
 /* ---------------------------------------------------------------- Footer -- */
 .footer {
-  padding-block: var(--sp-11) var(--sp-9);
+  /* bottom room for the floating dock, which stays visible down here */
+  padding-block: var(--sp-11) calc(var(--sp-9) + var(--tap) + var(--sp-7) + env(safe-area-inset-bottom));
   border-top: var(--border-w) solid var(--border);
 }
 .footer__grid { display: grid; gap: var(--sp-8); }
