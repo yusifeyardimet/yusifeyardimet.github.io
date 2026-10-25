@@ -597,17 +597,15 @@ function setupLanguageMenu() {
 }
 
 /* =============================================================================
-   Share: WhatsApp / Facebook links, Instagram = copy link + open Instagram
+   Share: Facebook link, Instagram = copy link + open Instagram.
+   The WhatsApp button here goes to the family's WhatsApp like every other
+   WhatsApp button (data-whatsapp), at the family's request
    (Instagram has no web share URL)
    ============================================================================= */
 
 function updateShareLinks() {
-  const tr = t();
   const url = window.location.href;
-  const text = tr.shareText + ' ' + url;
-  const wa = $('#shareWhatsApp');
   const fb = $('#shareFacebook');
-  if (wa) wa.href = 'https://wa.me/?text=' + encodeURIComponent(text);
   if (fb) fb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
 }
 
