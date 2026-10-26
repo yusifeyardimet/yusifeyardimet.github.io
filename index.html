@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
+<!-- In-app browsers (TikTok, Instagram) keep pages and assets in their own
+     disk cache and often ignore max-age. Ask them to revalidate the page, and
+     bump the ?v= on styles.css/app.js whenever either file changes. -->
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
 <!-- Tag <html> as "js" before styles.css parses. Reveal rules are scoped to
      .js, so with scripts blocked nothing is ever hidden. -->
 <script>document.documentElement.classList.add('js');</script>
@@ -89,7 +96,7 @@
 <link rel="preload" as="image" type="image/webp" fetchpriority="high"
       imagesrcset="yusif-main-480.webp 480w, yusif-main-720.webp 720w"
       imagesizes="(min-width: 76rem) 30rem, (min-width: 48rem) 40vw, calc(100vw - 2rem)">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=20261026">
 
 <!-- Meta Pixel Code (Pixel ID: 1388202686387085) -->
 <script>
@@ -474,6 +481,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   </div>
 </dialog>
 
-<script src="app.js" defer></script>
+<script src="app.js?v=20261026" defer></script>
 </body>
 </html>
