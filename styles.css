@@ -47,6 +47,8 @@
   --pine-tint-dark-2: #1F3B33;
   --pine-tint-dark-3: #254439;
   --pine-tint-dark-soft: #142620;
+  --red-700: #B42318;
+  --red-300: #F08A80;
 
   /* Semantic: light */
   --bg: var(--n-25);
@@ -64,6 +66,7 @@
   --accent-soft: var(--pine-50);
   --accent-text: var(--pine-600);
   --focus: var(--pine-600);
+  --warn-text: var(--red-700);
   --header-bg: rgb(244 245 242 / 0.84);
   --glass-bg: rgb(255 255 255 / 0.82);
   --img-edge: transparent;
@@ -156,6 +159,7 @@
   --dot-active: 1.25rem;
   --mark: 0.5rem;
   --zoom-badge: 2rem;
+  --paid-chip-h: 1.5rem;
   --menu-w: 7rem;
   --shot-h: min(24rem, 58svh, 82vw);
 
@@ -210,6 +214,7 @@
     --accent-soft: var(--pine-tint-dark-soft);
     --accent-text: var(--pine-300);
     --focus: var(--pine-300);
+    --warn-text: var(--red-300);
     --header-bg: rgb(14 17 16 / 0.84);
     --glass-bg: rgb(21 26 24 / 0.82);
     --img-edge: rgb(255 255 255 / 0.07);
@@ -513,7 +518,32 @@ button { font: inherit; }
 }
 
 /* ------------------------------------------------------------------ Hero -- */
-.hero { padding-block: var(--sp-7) 0; }
+.hero { position: relative; padding-block: var(--sp-7) 0; }
+
+/* Paid-days marker: a neutral chip in the hero's top-right corner, aligned
+   with the shell edge. Billing only, so no campaign colour and no countdown cue. */
+.paid-chip {
+  position: absolute;
+  top: var(--sp-1);
+  right: max(var(--gutter), (100% - var(--shell)) / 2);
+  min-width: var(--paid-chip-h);
+  height: var(--paid-chip-h);
+  padding: 0 var(--sp-2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--glass-bg);
+  box-shadow: var(--shadow-paper);
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  font-weight: var(--w-medium);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.paid-chip[hidden] { display: none; }
+.paid-chip.is-low { color: var(--warn-text); }
 
 .hero__grid { display: grid; gap: var(--sp-8); }
 

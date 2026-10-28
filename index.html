@@ -4,6 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
+<!-- Paid-until gate. Runs before anything else on the page: once the date has
+     passed, the parser is stopped and only a short notice is shown, so no
+     stylesheet, font, pixel, script or image is fetched. -->
+<script>
+(function () {
+  var PAID_UNTIL = "2026-11-02";   // change this date to extend (YYYY-MM-DD, valid through the end of that day, Baku time)
+  var deadline = new Date(PAID_UNTIL + "T23:59:59+04:00").getTime();
+  if (!(Date.now() > deadline)) {
+    window.PAID_UNTIL = PAID_UNTIL;
+    window.PAID_UNTIL_END = deadline;
+    return;
+  }
+
+  var MESSAGES = {
+    az: "Sayt müvəqqəti olaraq əlçatan deyil.",
+    ru: "Сайт временно недоступен.",
+    en: "This site is temporarily unavailable.",
+    tr: "Site geçici olarak erişilemiyor."
+  };
+  var lang = "az";
+  try {
+    var stored = localStorage.getItem("yusif-lang");
+    if (MESSAGES[stored]) lang = stored;
+  } catch (e) {}
+
+  var page =
+    '<head><meta charset="UTF-8">' +
+    '<meta name="viewport" content="width=device-width, initial-scale=1">' +
+    '<meta name="robots" content="noindex">' +
+    '<title>' + MESSAGES[lang] + '</title>' +
+    '<style>' +
+    'html{color-scheme:light dark}' +
+    'body{box-sizing:border-box;margin:0;min-height:100vh;padding:24px;display:flex;align-items:center;justify-content:center;' +
+    'background:#F4F5F2;color:#4A5350;font:17px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:center}' +
+    '@media (prefers-color-scheme:dark){body{background:#0E1110;color:#A8B2AE}}' +
+    'p{margin:0;max-width:30ch}' +
+    '</style></head>' +
+    '<body><p>' + MESSAGES[lang] + '</p></body>';   /* ds-allow-hardcode: the site's --bg / --text-muted, no stylesheet loads here */
+
+  function render() {
+    var root = document.documentElement;
+    root.lang = lang;
+    root.removeAttribute("class");
+    root.innerHTML = page;
+  }
+
+  if (window.stop) window.stop();
+  else if (document.execCommand) document.execCommand("Stop");
+  render();
+  // If the parser could not be aborted, whatever it appended is wiped again.
+  document.addEventListener("DOMContentLoaded", render);
+})();
+</script>
+
 <!-- In-app browsers (TikTok, Instagram) keep pages and assets in their own
      disk cache and often ignore max-age. Ask them to revalidate the page, and
      bump the ?v= on styles.css/app.js whenever either file changes. -->
@@ -96,7 +150,7 @@
 <link rel="preload" as="image" type="image/webp" fetchpriority="high"
       imagesrcset="yusif-main-480.webp?v=2 480w, yusif-main-720.webp?v=2 720w"
       imagesizes="(min-width: 76rem) 30rem, (min-width: 48rem) 40vw, calc(100vw - 2rem)">
-<link rel="stylesheet" href="styles.css?v=20261028i">
+<link rel="stylesheet" href="styles.css?v=20261029a">
 
 <!-- Meta Pixel Code (Pixel ID: 1388202686387085) -->
 <script>
@@ -189,6 +243,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
   <!-- ===================== Hero ===================== -->
   <section class="hero" id="top" aria-labelledby="heroTitle">
+    <span class="paid-chip" id="paidChip" role="img" hidden></span>
     <div class="shell hero__grid">
       <div class="hero__copy">
         <h1 class="hero__title" id="heroTitle" data-i18n="heroTitle">Yusifin arzusu sadədir: <em>böyümək</em></h1>
@@ -532,6 +587,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   </div>
 </dialog>
 
-<script src="app.js?v=20261028i" defer></script>
+<script src="app.js?v=20261029a" defer></script>
 </body>
 </html>

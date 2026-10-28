@@ -333,10 +333,10 @@ const TRANSLATIONS = {
 
 /* Interface labels the live copy has no key for, from the earlier site version */
 const UI_LABELS = {
-  az: { skipLink: "Əsas məzmuna keç", langLabel: "Dil", lightboxClose: "Bağla", lightboxPrev: "Əvvəlki şəkil", lightboxNext: "Növbəti şəkil", waAria: "WhatsApp ilə əlaqə", videoLabel: "Yusifin videosu" },
-  ru: { skipLink: "Перейти к содержанию", langLabel: "Язык", lightboxClose: "Закрыть", lightboxPrev: "Предыдущее фото", lightboxNext: "Следующее фото", waAria: "Связаться через WhatsApp", videoLabel: "Видео Юсифа" },
-  en: { skipLink: "Skip to main content", langLabel: "Language", lightboxClose: "Close", lightboxPrev: "Previous photo", lightboxNext: "Next photo", waAria: "Contact via WhatsApp", videoLabel: "Video of Yusif" },
-  tr: { skipLink: "Ana içeriğe geç", langLabel: "Dil", lightboxClose: "Kapat", lightboxPrev: "Önceki fotoğraf", lightboxNext: "Sonraki fotoğraf", waAria: "WhatsApp ile iletişim", videoLabel: "Yusif’in videosu" }
+  az: { skipLink: "Əsas məzmuna keç", langLabel: "Dil", lightboxClose: "Bağla", lightboxPrev: "Əvvəlki şəkil", lightboxNext: "Növbəti şəkil", waAria: "WhatsApp ilə əlaqə", videoLabel: "Yusifin videosu", paidDaysLeft: "{n} gün qalıb", paidLastDay: "Son gün" },
+  ru: { skipLink: "Перейти к содержанию", langLabel: "Язык", lightboxClose: "Закрыть", lightboxPrev: "Предыдущее фото", lightboxNext: "Следующее фото", waAria: "Связаться через WhatsApp", videoLabel: "Видео Юсифа", paidDaysLeft: "Остался {n} день|Осталось {n} дня|Осталось {n} дней", paidLastDay: "Последний день" },
+  en: { skipLink: "Skip to main content", langLabel: "Language", lightboxClose: "Close", lightboxPrev: "Previous photo", lightboxNext: "Next photo", waAria: "Contact via WhatsApp", videoLabel: "Video of Yusif", paidDaysLeft: "{n} days left", paidLastDay: "Last day" },
+  tr: { skipLink: "Ana içeriğe geç", langLabel: "Dil", lightboxClose: "Kapat", lightboxPrev: "Önceki fotoğraf", lightboxNext: "Sonraki fotoğraf", waAria: "WhatsApp ile iletişim", videoLabel: "Yusif’in videosu", paidDaysLeft: "{n} gün kaldı", paidLastDay: "Son gün" }
 };
 
 const LANGS = ['az', 'ru', 'en', 'tr'];
@@ -583,7 +583,37 @@ function applyLanguage(lang) {
   $$('.copy.is-copied').forEach(b => setCopyState(b, true));
 
   updateShareLinks();
+  updatePaidChip();
   if (lightbox.isOpen()) lightbox.refreshCaption();
+}
+
+/* Paid-days chip in the hero. The date lives in the gate script at the top of
+   index.html (window.PAID_UNTIL); this only reads it. */
+const DAY_MS = 86400000;
+const PAID_LOW_DAYS = 3;
+
+function pluralForm(forms, n) {
+  if (forms.length < 3) return forms[0];
+  const n10 = n % 10, n100 = n % 100;   // Russian: 1 день, 2-4 дня, 5+ дней
+  if (n10 === 1 && n100 !== 11) return forms[0];
+  if (n10 >= 2 && n10 <= 4 && (n100 < 12 || n100 > 14)) return forms[1];
+  return forms[2];
+}
+
+function updatePaidChip() {
+  const chip = $('#paidChip');
+  if (!chip || typeof window.PAID_UNTIL_END !== 'number') return;
+  const days = Math.ceil((window.PAID_UNTIL_END - Date.now()) / DAY_MS);
+  if (days <= 0) { chip.hidden = true; return; }
+  const labels = ui();
+  const label = days === 1
+    ? labels.paidLastDay
+    : pluralForm(labels.paidDaysLeft.split('|'), days).replace('{n}', days);
+  chip.textContent = String(days);
+  chip.setAttribute('aria-label', label);
+  chip.setAttribute('title', label);
+  chip.classList.toggle('is-low', days <= PAID_LOW_DAYS);
+  chip.hidden = false;
 }
 
 function setupLanguageMenu() {
