@@ -96,7 +96,7 @@
 <link rel="preload" as="image" type="image/webp" fetchpriority="high"
       imagesrcset="yusif-main-480.webp?v=2 480w, yusif-main-720.webp?v=2 720w"
       imagesizes="(min-width: 76rem) 30rem, (min-width: 48rem) 40vw, calc(100vw - 2rem)">
-<link rel="stylesheet" href="styles.css?v=20261026">
+<link rel="stylesheet" href="styles.css?v=20261028">
 
 <!-- Meta Pixel Code (Pixel ID: 1388202686387085) -->
 <script>
@@ -223,13 +223,13 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       <h2 class="label letter__label" id="storyTitle" data-i18n="storyTitle">Yusifin hekayəsi</h2>
       <p class="letter__quote" data-reveal data-i18n="storyLead">&quot;Mən Gülər. Yusifin anası.&quot;</p>
       <figure class="letter__photo">
-        <button class="shot__btn" type="button" data-lightbox="yusif1.jpg" data-group="story" style="--ar: 1080 / 1080">
-          <picture>
-            <source type="image/webp" srcset="yusif1-480.webp 480w, yusif1-800.webp 800w"
-                    sizes="(min-width: 64rem) 18rem, calc(100vw - 2rem)">
-            <img src="yusif1.jpg" width="1080" height="1080" loading="lazy" decoding="async" alt="Yusif">
-          </picture>
-        </button>
+        <!-- preload="none": only the poster loads with the page; the video
+             is fetched when someone presses play. -->
+        <video class="letter__video" controls playsinline preload="none"
+               width="540" height="960" poster="yusif-video-poster.webp"
+               aria-label="Yusif — video" data-ui-aria="videoLabel">
+          <source src="yusif-video.mp4" type="video/mp4">
+        </video>
       </figure>
       <div class="letter__body">
         <div class="prose" data-reveal>
@@ -481,6 +481,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   </div>
 </dialog>
 
-<script src="app.js?v=20261026" defer></script>
+<script src="app.js?v=20261028" defer></script>
 </body>
 </html>

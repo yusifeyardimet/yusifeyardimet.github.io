@@ -654,6 +654,15 @@ button { font: inherit; }
 .letter__grid { display: grid; gap: var(--sp-7); }
 .letter__photo { max-width: 24rem; margin: 0; }
 .letter__photo .shot__btn { border-radius: var(--r-l); }
+.letter__video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: var(--r-l);
+  background: var(--surface-sunk);
+}
 
 .letter__quote {
   max-width: 18ch;
