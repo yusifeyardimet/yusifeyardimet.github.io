@@ -155,7 +155,6 @@
   --dot: 0.375rem;
   --dot-active: 1.25rem;
   --mark: 0.5rem;
-  --rule: 1.5rem;
   --zoom-badge: 2rem;
   --menu-w: 7rem;
   --shot-h: min(24rem, 58svh, 82vw);
@@ -640,12 +639,6 @@ button { font: inherit; }
   font-size: var(--fs-s);
   font-weight: var(--w-medium);
   letter-spacing: var(--track-label);
-}
-.label::before {
-  content: "";
-  width: var(--rule);
-  height: var(--border-w);
-  background: currentColor;
 }
 
 /* ---------------------------------------------------------------- Letter -- */
