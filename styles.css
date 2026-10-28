@@ -801,6 +801,13 @@ button { font: inherit; }
 
 /* ------------------------------------------------------------- Documents -- */
 .docs__grid { display: grid; gap: var(--sp-2); }
+.docs__groups { display: grid; gap: var(--sp-5); }
+.docs__group {
+  padding: var(--sp-5);
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--r-l);
+}
+.docs__group-title { margin: 0 0 var(--sp-5); }
 .docs__list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

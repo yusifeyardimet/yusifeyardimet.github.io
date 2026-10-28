@@ -70,6 +70,10 @@ const TRANSLATIONS = {
 
                 docsTitle: "Şəffaflıq və həqiqət",
                 docsSubtitle: "Bütün məlumatlar real və yoxlanılıbdır",
+                docsGroupDiagnosis: "Xəstəlik və diaqnoz",
+                docsGroupTreatment: "Davam edən müalicə",
+                doc3Title: "Memorial — Genetik analiz (FISH), 3 səhifə",
+                doc4Title: "Memorial — Həkim rəyi (iyul 2026)",
                 doc1Title: "Medical Park — Tibbi sənəd",
                 doc2Title: "Milli Hematologiya Mərkəzi — Epikriz",
                 verified: "✓ Yoxlanılıb",
@@ -143,6 +147,10 @@ const TRANSLATIONS = {
 
                 docsTitle: "Прозрачность и правда",
                 docsSubtitle: "Все данные реальны и проверены",
+                docsGroupDiagnosis: "Болезнь и диагноз",
+                docsGroupTreatment: "Текущее лечение",
+                doc3Title: "Memorial — Генетический анализ (FISH), 3 стр.",
+                doc4Title: "Memorial — Заключение врача (июль 2026)",
                 doc1Title: "Medical Park — Медицинский документ",
                 doc2Title: "Национальный гематологический центр — Эпикриз",
                 verified: "✓ Проверено",
@@ -216,6 +224,10 @@ const TRANSLATIONS = {
 
                 docsTitle: "Transparency and Truth",
                 docsSubtitle: "All information is real and verified",
+                docsGroupDiagnosis: "Illness and diagnosis",
+                docsGroupTreatment: "Ongoing treatment",
+                doc3Title: "Memorial — Genetic analysis (FISH), 3 pages",
+                doc4Title: "Memorial — Doctor’s report (July 2026)",
                 doc1Title: "Medical Park — Medical document",
                 doc2Title: "National Hematology Center — Epicrisis",
                 verified: "✓ Verified",
@@ -289,6 +301,10 @@ const TRANSLATIONS = {
 
                 docsTitle: "Şeffaflık ve gerçek",
                 docsSubtitle: "Tüm bilgiler gerçek ve doğrulanmıştır",
+                docsGroupDiagnosis: "Hastalık ve teşhis",
+                docsGroupTreatment: "Devam eden tedavi",
+                doc3Title: "Memorial — Genetik analiz (FISH), 3 sayfa",
+                doc4Title: "Memorial — Doktor raporu (Temmuz 2026)",
                 doc1Title: "Medical Park — Tıbbi belge",
                 doc2Title: "Milli Hematoloji Merkezi — Epikriz",
                 verified: "✓ Doğrulandı",
