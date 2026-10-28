@@ -96,7 +96,7 @@
 <link rel="preload" as="image" type="image/webp" fetchpriority="high"
       imagesrcset="yusif-main-480.webp?v=2 480w, yusif-main-720.webp?v=2 720w"
       imagesizes="(min-width: 76rem) 30rem, (min-width: 48rem) 40vw, calc(100vw - 2rem)">
-<link rel="stylesheet" href="styles.css?v=20261028">
+<link rel="stylesheet" href="styles.css?v=20261028c">
 
 <!-- Meta Pixel Code (Pixel ID: 1388202686387085) -->
 <script>
@@ -288,36 +288,43 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         <p class="section-head__sub" data-i18n="gallerySubtitle">Xəstəxanada keçən günlər</p>
       </header>
     </div>
+    <!-- Videos use preload="none", so only their posters load with the page. -->
     <div class="gallery__track" id="galleryTrack">
-      <figure class="shot" style="--ar: 1080 / 1080">
-        <button class="shot__btn" type="button" data-lightbox="yusif1.jpg" data-group="gallery">
-          <picture>
-            <source type="image/webp" srcset="yusif1-480.webp 480w, yusif1-800.webp 800w"
-                    sizes="(min-width: 48rem) 34vw, 82vw">
-            <img src="yusif1.jpg" width="1080" height="1080" loading="lazy" decoding="async" alt="Yusif">
-          </picture>
-        </button>
-        <figcaption data-i18n="galleryCaption1">Yusif — müalicə günlərində</figcaption>
+      <figure class="shot" style="--ar: 9 / 16">
+        <video class="shot__video" controls playsinline preload="none"
+               width="540" height="960" poster="yusif-video-poster.webp"
+               aria-label="Yusif — video" data-ui-aria="videoLabel">
+          <source src="yusif-video.mp4" type="video/mp4">
+        </video>
+        <figcaption data-i18n="galleryCaption4">Yusif — anasının yanında</figcaption>
       </figure>
-      <figure class="shot" style="--ar: 807 / 1280">
-        <button class="shot__btn" type="button" data-lightbox="yusif2.jpg" data-group="gallery">
+      <figure class="shot" style="--ar: 720 / 1280">
+        <button class="shot__btn" type="button" data-lightbox="yusif4.jpg" data-group="gallery">
           <picture>
-            <source type="image/webp" srcset="yusif2-480.webp 480w, yusif2-800.webp 800w"
-                    sizes="(min-width: 48rem) 22vw, 52vw">
-            <img src="yusif2.jpg" width="807" height="1280" loading="lazy" decoding="async" alt="Yusif">
+            <source type="image/webp" srcset="yusif4-480.webp 480w, yusif4-720.webp 720w"
+                    sizes="(min-width: 48rem) 20vw, 47vw">
+            <img src="yusif4.jpg" width="720" height="1280" loading="lazy" decoding="async" alt="Yusif">
           </picture>
         </button>
-        <figcaption data-i18n="galleryCaption2">Yusif — xəstəxanada</figcaption>
+        <figcaption data-i18n="galleryCaption5">Yusif — palatada</figcaption>
       </figure>
-      <figure class="shot" style="--ar: 962 / 1280">
-        <button class="shot__btn" type="button" data-lightbox="yusif3.jpg" data-group="gallery">
+      <figure class="shot" style="--ar: 9 / 16">
+        <video class="shot__video" controls playsinline preload="none"
+               width="540" height="960" poster="yusif-video2-poster.webp"
+               aria-label="Yusif — video" data-ui-aria="videoLabel">
+          <source src="yusif-video2.mp4" type="video/mp4">
+        </video>
+        <figcaption data-i18n="galleryCaption6">Yusif — həkim müayinəsində</figcaption>
+      </figure>
+      <figure class="shot" style="--ar: 720 / 1280">
+        <button class="shot__btn" type="button" data-lightbox="yusif5.jpg" data-group="gallery">
           <picture>
-            <source type="image/webp" srcset="yusif3-480.webp 480w, yusif3-800.webp 800w"
-                    sizes="(min-width: 48rem) 26vw, 62vw">
-            <img src="yusif3.jpg" width="962" height="1280" loading="lazy" decoding="async" alt="Yusif">
+            <source type="image/webp" srcset="yusif5-480.webp 480w, yusif5-720.webp 720w"
+                    sizes="(min-width: 48rem) 20vw, 47vw">
+            <img src="yusif5.jpg" width="720" height="1280" loading="lazy" decoding="async" alt="Yusif">
           </picture>
         </button>
-        <figcaption data-i18n="galleryCaption3">Yusif — ümidlə</figcaption>
+        <figcaption data-i18n="galleryCaption7">Yusif — yuxuda</figcaption>
       </figure>
     </div>
     <div class="gallery__dots" id="galleryDots" aria-hidden="true"></div>
@@ -481,6 +488,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   </div>
 </dialog>
 
-<script src="app.js?v=20261028" defer></script>
+<script src="app.js?v=20261028b" defer></script>
 </body>
 </html>

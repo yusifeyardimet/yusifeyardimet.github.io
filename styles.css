@@ -654,7 +654,8 @@ button { font: inherit; }
 .letter__grid { display: grid; gap: var(--sp-7); }
 .letter__photo { max-width: 24rem; margin: 0; }
 .letter__photo .shot__btn { border-radius: var(--r-l); }
-.letter__video {
+.letter__video,
+.shot__video {
   display: block;
   width: 100%;
   height: auto;
@@ -663,6 +664,7 @@ button { font: inherit; }
   border-radius: var(--r-l);
   background: var(--surface-sunk);
 }
+.shot__video { border-radius: var(--r-m); }
 
 .letter__quote {
   max-width: 18ch;

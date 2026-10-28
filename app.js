@@ -62,6 +62,10 @@ const TRANSLATIONS = {
                 galleryCaption1: "Yusif — müalicə günlərində",
                 galleryCaption2: "Yusif — xəstəxanada",
                 galleryCaption3: "Yusif — ümidlə",
+                galleryCaption4: "Yusif — anasının yanında",
+                galleryCaption5: "Yusif — palatada",
+                galleryCaption6: "Yusif — həkim müayinəsində",
+                galleryCaption7: "Yusif — yuxuda",
 
                 docsTitle: "Şəffaflıq və həqiqət",
                 docsSubtitle: "Bütün məlumatlar real və yoxlanılıbdır",
@@ -130,6 +134,10 @@ const TRANSLATIONS = {
                 galleryCaption1: "Yusif — в дни лечения",
                 galleryCaption2: "Yusif — в больнице",
                 galleryCaption3: "Yusif — с надеждой",
+                galleryCaption4: "Yusif — рядом с мамой",
+                galleryCaption5: "Yusif — в палате",
+                galleryCaption6: "Yusif — на осмотре у врачей",
+                galleryCaption7: "Yusif — во сне",
 
                 docsTitle: "Прозрачность и правда",
                 docsSubtitle: "Все данные реальны и проверены",
@@ -198,6 +206,10 @@ const TRANSLATIONS = {
                 galleryCaption1: "Yusif — during treatment days",
                 galleryCaption2: "Yusif — at the hospital",
                 galleryCaption3: "Yusif — with hope",
+                galleryCaption4: "Yusif — with his mother by his side",
+                galleryCaption5: "Yusif — in the ward",
+                galleryCaption6: "Yusif — a doctors' examination",
+                galleryCaption7: "Yusif — asleep",
 
                 docsTitle: "Transparency and Truth",
                 docsSubtitle: "All information is real and verified",
@@ -266,6 +278,10 @@ const TRANSLATIONS = {
                 galleryCaption1: "Yusif — tedavi günlerinde",
                 galleryCaption2: "Yusif — hastanede",
                 galleryCaption3: "Yusif — umutla",
+                galleryCaption4: "Yusif — annesinin yanında",
+                galleryCaption5: "Yusif — odasında",
+                galleryCaption6: "Yusif — doktor muayenesinde",
+                galleryCaption7: "Yusif — uykuda",
 
                 docsTitle: "Şeffaflık ve gerçek",
                 docsSubtitle: "Tüm bilgiler gerçek ve doğrulanmıştır",
