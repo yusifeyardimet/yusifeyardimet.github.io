@@ -571,18 +571,16 @@ button { font: inherit; }
 }
 .hero__note {
   position: absolute;
-  left: var(--sp-3);
-  right: var(--sp-3);
-  bottom: var(--sp-3);
-  padding: var(--sp-3) var(--sp-4);
-  border-radius: var(--r-m);
-  background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--blur-glass));
-  backdrop-filter: blur(var(--blur-glass));
-  color: var(--text);
-  font-family: var(--font-display);
+  top: var(--sp-4);
+  left: var(--sp-4);
+  max-width: calc(100% - 2 * var(--sp-4));
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--font-sans);
   font-size: var(--fs-s);
-  font-style: italic;
+  font-weight: var(--w-semibold);
   line-height: var(--lh-snug);
 }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
