@@ -13,7 +13,7 @@
 
 const WHATSAPP_NUMBER = "994559840086";
 const WHATSAPP_MESSAGE = "Salam, Yusifə yardım etmək istəyirəm";
-const PHONE_TEL = "+994706605889";
+const PHONE_TEL = "+994559840086";
 
 /* =============================================================================
    TRANSLATIONS: copied verbatim from the live page (AZ default + RU/EN/TR).
@@ -26,7 +26,7 @@ const TRANSLATIONS = {
                 lastUpdated: "Son yenilənmə",
                 heroSubtitle: "13 yaşı var. İndi qan xərçəngi ilə döyüşür. Bu döyüşdə tək deyil — sən də onun yanında ola bilərsən.",
                 heroCta: "Kartlara bax",
-                heroTitle: "Yusifin <em>yaşamaq</em> uğrunda mübarizəsinə qoşul",
+                heroTitle: "Yusifin arzusu sadədir: <em>böyümək</em>",
                 heroCta2: "Sənədlərə bax",
                 heroCta3: "Görüntülərə bax",
                 trust1: "✓ Sənədlər yoxlanılıb",
@@ -91,7 +91,7 @@ const TRANSLATIONS = {
                 instagramAlert: "Link köçürüldü! İndi Instagram-da story paylaşa bilərsiniz 📷",
 
                 footerQuote: "Allah kömək olan hər kəsdən razı olsun 🤲",
-                footerContact: "📞 070 660 58 89  | 📍 Bakı şəhəri, Yeni Ramana, Qarabağ küçəsi 104, ev 28",
+                footerContact: "📞 055 984 00 86  | 📍 Bakı şəhəri, Yeni Ramana, Qarabağ küçəsi 104, ev 28",
                 footerCopyright: "Yusifə dəstək",
 
                 floatingBtn: "Kart hesabları",
@@ -103,7 +103,7 @@ const TRANSLATIONS = {
                 lastUpdated: "Последнее обновление",
                 heroSubtitle: "Ему 13 лет. Сейчас он борется с раком крови. В этой борьбе он не одинок — ты можешь быть рядом.",
                 heroCta: "Посмотреть карты",
-                heroTitle: "Присоединись к борьбе Юсифа за <em>жизнь</em>",
+                heroTitle: "Мечта Юсифа проста: <em>вырасти</em>",
                 heroCta2: "Посмотреть документы",
                 heroCta3: "Смотреть фото и видео",
                 trust1: "✓ Документы проверены",
@@ -168,7 +168,7 @@ const TRANSLATIONS = {
                 instagramAlert: "Ссылка скопирована! Теперь вы можете поделиться в Instagram Stories 📷",
 
                 footerQuote: "Пусть Аллах будет доволен каждым, кто помогает 🤲",
-                footerContact: "📞 070 660 58 89  | 📍 Bakı şəhəri, Yeni Ramana, Qarabağ küçəsi 104, ev 28",
+                footerContact: "📞 055 984 00 86  | 📍 Bakı şəhəri, Yeni Ramana, Qarabağ küçəsi 104, ev 28",
                 footerCopyright: "Поддержка Yusif-а",
 
                 floatingBtn: "Банковские карты",
@@ -180,7 +180,7 @@ const TRANSLATIONS = {
                 lastUpdated: "Last updated",
                 heroSubtitle: "He is 13. He is fighting blood cancer. He is not alone in this fight — you can stand by his side.",
                 heroCta: "View cards",
-                heroTitle: "Join Yusif's fight for <em>life</em>",
+                heroTitle: "Yusif's wish is simple: to <em>grow up</em>",
                 heroCta2: "View documents",
                 heroCta3: "View photos & videos",
                 trust1: "✓ Documents verified",
@@ -245,7 +245,7 @@ const TRANSLATIONS = {
                 instagramAlert: "Link copied! Now you can share on Instagram Stories 📷",
 
                 footerQuote: "May Allah bless everyone who helps 🤲",
-                footerContact: "📞 070 660 58 89  | 📍 Bakı, Yeni Ramana, Qarabağ str. 104, apt. 28",
+                footerContact: "📞 055 984 00 86  | 📍 Bakı, Yeni Ramana, Qarabağ str. 104, apt. 28",
                 footerCopyright: "Support Yusif",
 
                 floatingBtn: "Bank Cards",
@@ -257,7 +257,7 @@ const TRANSLATIONS = {
                 lastUpdated: "Son güncelleme",
                 heroSubtitle: "13 yaşında. Şu an kan kanseri ile mücadele ediyor. Bu mücadelede yalnız değil — sen de yanında olabilirsin.",
                 heroCta: "Kartlara bak",
-                heroTitle: "Yusif'in <em>yaşam</em> mücadelesine katıl",
+                heroTitle: "Yusif'in hayali basit: <em>büyümek</em>",
                 heroCta2: "Belgelere bak",
                 heroCta3: "Görüntülere bak",
                 trust1: "✓ Belgeler doğrulandı",
@@ -322,7 +322,7 @@ const TRANSLATIONS = {
                 instagramAlert: "Bağlantı kopyalandı! Şimdi Instagram hikâyesinde paylaşabilirsiniz 📷",
 
                 footerQuote: "Allah yardım eden herkesten razı olsun 🤲",
-                footerContact: "📞 070 660 58 89  | 📍 Bakü, Yeni Ramana, Karabağ sokağı 104, daire 28",
+                footerContact: "📞 055 984 00 86  | 📍 Bakü, Yeni Ramana, Karabağ sokağı 104, daire 28",
                 footerCopyright: "Yusif'e destek",
 
                 floatingBtn: "Banka Kartları",
