@@ -8,12 +8,12 @@
 
 /* ---------------------------------------------------------------- Tokens -- */
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 
-  /* Primitives: neutrals carry a hair of green, never beige */
+  /* Primitives: warm cream page and sunk section backgrounds */
   --n-0: #FFFFFF;
-  --n-25: #F4F5F2;
-  --n-50: #EBEEEA;
+  --n-25: #FAF6EF;
+  --n-50: #F3ECE0;
   --n-200: #D3D9D5;
   --n-300: #B3BCB7;
   --n-500: #5F6865;
@@ -21,14 +21,6 @@
   --n-900: #131716;
 
   --d-950: #0A0D0C;
-  --d-900: #0E1110;
-  --d-850: #151A18;
-  --d-800: #121615;
-  --d-700: #262E2B;
-  --d-600: #36403C;
-  --d-400: #8C9692;
-  --d-300: #A8B2AE;
-  --d-100: #E6EAE8;
 
   --pine-950: #0F1F1A;
   --pine-900: #15291F;
@@ -43,12 +35,7 @@
   --pine-50: #E2EEE9;
   --pine-ink-200: #EAF1EE;
   --pine-ink-400: #A6BAB2;
-  --pine-tint-dark: #18302A;
-  --pine-tint-dark-2: #1F3B33;
-  --pine-tint-dark-3: #254439;
-  --pine-tint-dark-soft: #142620;
   --red-700: #B42318;
-  --red-300: #F08A80;
 
   /* Semantic: light */
   --bg: var(--n-25);
@@ -67,7 +54,9 @@
   --accent-text: var(--pine-600);
   --focus: var(--pine-600);
   --warn-text: var(--red-700);
-  --header-bg: rgb(244 245 242 / 0.84);
+  --whatsapp: #25D366;
+  --header-bg: rgb(250 246 239 / 0.84);
+  --hero-glow: radial-gradient(60% 50% at 85% 10%, rgb(242 178 92 / 0.16) 0%, transparent 70%), radial-gradient(50% 45% at 10% 90%, rgb(14 124 120 / 0.08) 0%, transparent 70%);
   --glass-bg: rgb(255 255 255 / 0.82);
   --img-edge: transparent;
 
@@ -100,7 +89,6 @@
   --shadow-float: 0 1px 2px rgb(19 23 22 / 0.06), 0 18px 44px -18px rgb(19 23 22 / 0.4);
 
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  --grain-opacity: 0.05;
   --grain-opacity-panel: 0.09;
 
   /* Type */
@@ -197,43 +185,6 @@
   --z-toast: 60;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: var(--d-900);
-    --surface: var(--d-850);
-    --surface-sunk: var(--d-800);
-    --text: var(--d-100);
-    --text-muted: var(--d-300);
-    --text-subtle: var(--d-400);
-    --border: var(--d-700);
-    --border-strong: var(--d-600);
-    --accent: var(--pine-300);
-    --accent-hover: var(--pine-200);
-    --accent-active: var(--pine-500);
-    --on-accent: var(--pine-950);
-    --accent-soft: var(--pine-tint-dark-soft);
-    --accent-text: var(--pine-300);
-    --focus: var(--pine-300);
-    --warn-text: var(--red-300);
-    --header-bg: rgb(14 17 16 / 0.84);
-    --glass-bg: rgb(21 26 24 / 0.82);
-    --img-edge: rgb(255 255 255 / 0.07);
-
-    --panel-bg: var(--pine-tint-dark);
-    --panel-surface: var(--pine-tint-dark-2);
-    --panel-surface-hover: var(--pine-tint-dark-3);
-    --panel-border: var(--pine-700);
-    --panel-sheen: rgb(255 255 255 / 0.03);
-
-    --shadow-paper: 0 0 0 1px rgb(255 255 255 / 0.04), 0 14px 32px -16px rgb(0 0 0 / 0.7);
-    --shadow-paper-hover: 0 0 0 1px rgb(255 255 255 / 0.06), 0 20px 40px -16px rgb(0 0 0 / 0.8);
-    --shadow-float: 0 0 0 1px rgb(255 255 255 / 0.04), 0 18px 44px -14px rgb(0 0 0 / 0.75);
-
-    --grain-opacity: 0.07;
-    --grain-opacity-panel: 0.08;
-  }
-}
-
 /* ------------------------------------------------------------------ Base -- */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -256,16 +207,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image: var(--grain);
-  opacity: var(--grain-opacity);
 }
 
 img { display: block; max-width: 100%; height: auto; }
@@ -305,6 +246,7 @@ button { font: inherit; }
   stroke-linejoin: round;
 }
 .icon--s { width: var(--icon-s); height: var(--icon-s); }
+#i-whatsapp path { fill: var(--whatsapp); stroke: none; }
 
 .shell {
   width: min(100% - 2 * var(--gutter), var(--shell));
@@ -518,7 +460,7 @@ button { font: inherit; }
 }
 
 /* ------------------------------------------------------------------ Hero -- */
-.hero { position: relative; padding-block: var(--sp-7) 0; }
+.hero { position: relative; padding-block: var(--sp-7) 0; background-image: var(--hero-glow); }
 
 /* Paid-days marker: a neutral chip in the hero's top-right corner, aligned
    with the shell edge. Billing only, so no campaign colour and no countdown cue. */
@@ -586,8 +528,6 @@ button { font: inherit; }
   margin-top: var(--sp-8);
 }
 .hero__actions .btn { flex: 1 1 auto; }
-.btn--wa .icon { color: var(--accent-text); }
-
 .hero__media { position: relative; margin: 0; }
 .hero__media img {
   width: 100%;
