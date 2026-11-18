@@ -1460,11 +1460,7 @@ button { font: inherit; }
   border-radius: 2rem;
   color: var(--panel-text);
   background-color: var(--panel-bg);
-  background-image:
-    radial-gradient(rgb(255 255 255 / 0.075) 1px, transparent 1.6px),
-    radial-gradient(60% 55% at 92% 8%, rgb(242 178 92 / 0.18) 0%, transparent 70%),
-    radial-gradient(55% 50% at 0% 100%, rgb(116 189 164 / 0.16) 0%, transparent 70%);
-  background-size: 22px 22px, auto, auto;
+  background-image: none;
 }
 .hero .paid-chip { top: var(--sp-4); background: rgb(255 255 255 / 0.1); border-color: var(--panel-border); color: var(--panel-muted); box-shadow: none; }
 .hero .paid-chip.is-low { color: #ff9b8f; }
