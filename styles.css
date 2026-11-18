@@ -1508,3 +1508,12 @@ button { font: inherit; }
 }
 .hero__more .btn { white-space: nowrap; padding-inline: var(--sp-2); font-size: 0.875rem; gap: 0.4rem; }
 @media (min-width: 48rem) { .hero__more .btn { padding-inline: var(--sp-4); font-size: var(--fs-s); } }
+
+/* Hero title: plain white, bolder, no accent colour or marker */
+.hero__title {
+  font-weight: 600;
+  max-width: none;
+  text-wrap: wrap;
+  /* "Yusifin dəstəyinizə" (~9.2em) must fit on the first line */
+  font-size: min(3.5rem, calc((100vw - 4.5rem) / 9.2));
+}
